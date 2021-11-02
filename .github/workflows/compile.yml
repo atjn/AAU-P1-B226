@@ -1,0 +1,52 @@
+name: Compile
+
+on: [push, pull_request]
+
+jobs:
+
+  test:
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+            - {
+              name: "Ubuntu with GCC",
+              os: ubuntu-latest,
+              extension: "out",
+            }
+            - {
+              name: "Windows with MinGW GCC",
+              os: windows-latest,
+              extension: "exe",
+            }
+            - {
+              name: "MacOS with Clang GCC",
+              os: macos-latest,
+              extension: "out",
+            }
+
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Debug - version info
+        run: |
+          gcc --version
+          make --version
+
+      - name: Compile source
+        run: |
+          make
+
+      - name: Debug - folder contents
+        run: |
+          ls
+
+      - name: Run unit tests
+        run: |
+          ./program.${{ matrix.config.extension }} --test

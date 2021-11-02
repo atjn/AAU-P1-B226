@@ -1,3 +1,14 @@
+## Custom:
+
+# Auto-generated files
+tests.c
+
+# Misc. local stuff
+.vscode
+makefile-*
+
+## Standard C stuff:
+
 # Prerequisites
 *.d
 
