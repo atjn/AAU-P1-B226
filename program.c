@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "function.h"
-#include "tests.h"
+#include "jesper.h"
 
 int main(int argc, char **argv){
 
