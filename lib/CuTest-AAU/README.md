@@ -11,7 +11,7 @@ accidentally breaking earlier features.
 
 # LICENSING
 
-For details on licensing see license.txt.
+For details on licensing see the `LICENSE` file.
 
 
 # GETTING STARTED
