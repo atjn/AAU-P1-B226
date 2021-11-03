@@ -19,10 +19,21 @@ void testGaming(CuTest *tc){
 int function(){
     return 1;
 }
+int jespersFunction(){
+    return 2;
+}
+
 
 void testFunction1(CuTest *tc){
     int actual = function();
     int expected = 1;
+    CuAssertIntEquals(tc, expected, actual);
+}
+
+
+void testJespersFunction(CuTest *tc){
+    int actual = jespersFunction();
+    int expected = 2;
     CuAssertIntEquals(tc, expected, actual);
 }
 
@@ -36,5 +47,6 @@ int brixFunction() {
 void testFunction2(CuTest *tc){
     int actual = brixFunction();
     int expected = 1;
+
     CuAssertIntEquals(tc, expected, actual);
 }
