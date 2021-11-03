@@ -19,7 +19,7 @@ int howLongIsAddisSlong(){
     return cm;
 }
 
-void testFunktion2(CuTest *tc){
+void testSlongFunktion(CuTest *tc){
     int actual = howLongIsAddisSlong();
     int expected = 32;
     CuAssertIntEquals(tc, expected, actual);
