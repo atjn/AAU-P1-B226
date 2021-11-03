@@ -1,5 +1,6 @@
 #include "lib/CuTest-AAU/CuTest.h"
-#include "math.h"
+#include <stdio.h>
+#include <math.h>
 
 /**
  * Sample function - this is what a function looks like with an included function test.
