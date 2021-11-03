@@ -1,4 +1,4 @@
-HOW TO USE
+## HOW TO USE
 
 You can use CuTest to create unit tests to drive your development
 in the style of Extreme Programming. You can also add unit tests to
@@ -9,12 +9,12 @@ code and add new features confidently without worrying about
 accidentally breaking earlier features.
 
 
-LICENSING
+# LICENSING
 
 For details on licensing see license.txt.
 
 
-GETTING STARTED
+# GETTING STARTED
 
 To add unit testing to your C code the only files you need are
 CuTest.c and CuTest.h. 
@@ -41,7 +41,7 @@ the output on the console. You can replace cl.exe with gcc or
 your favorite compiler in the command above.
 
 
-DETAILED EXAMPLE
+# DETAILED EXAMPLE
 
 Here is a more detailed example. We will work through a simple
 test first exercise. The goal is to create a library of string
@@ -51,7 +51,7 @@ null-terminated string to all upper case.
 Ensure that CuTest.c and CuTest.h are accessible from your C
 project. Next, create a file called StrUtil.c with these
 contents:
-
+```c
     #include <string.h>
     #include <ctype.h>
     #include "CuTest.h"
@@ -72,9 +72,9 @@ contents:
         SUITE_ADD_TEST(suite, TestStrToUpper);
         return suite;
     }
-    
+```    
 Create another file called AllTests.c with these contents:
-
+```c
     #include <stdio.h>
     #include "CuTest.h"
     
@@ -95,7 +95,7 @@ Create another file called AllTests.c with these contents:
     int main(void) {
         RunAllTests();
     }
-
+```
 Then type this on the command line:
 
     gcc AllTests.c CuTest.c StrUtil.c
@@ -109,7 +109,7 @@ compilers. Then to run the tests type:
 This will print an error because we haven't implemented the
 StrToUpper function correctly. We are just returning the string
 without changing it to upper case. 
-
+```c
     char* StrToUpper(char* str) {
         return str;
     }
@@ -121,12 +121,12 @@ Rewrite this as follows:
         for (p = str ; *p ; ++p) *p = toupper(*p);
         return str;
     }
-
+```
 Recompile and run the tests again. The test should pass this
 time.
 
 
-WHAT TO DO NEXT
+# WHAT TO DO NEXT
 
 At this point you might want to write more tests for the
 StrToUpper function. Here are some ideas:
@@ -150,7 +150,7 @@ And add FunkyStuffGetSuite to AllTests.c.
 The framework is designed in the way it is so that it is easy to
 organize a lot of tests.
 
-THE BIG PICTURE
+# THE BIG PICTURE
 
 Each individual test corresponds to a CuTest. These are grouped
 to form a CuSuite. CuSuites can hold CuTests or other CuSuites.
@@ -178,14 +178,14 @@ piece of your system that is malfunctioning in the customer's
 environment. 
 
 CuTest offers a rich set of CuAssert functions. Here is a list:
-
+```c
 void CuAssert(CuTest* tc, char* message, int condition);
 void CuAssertTrue(CuTest* tc, int condition);
 void CuAssertStrEquals(CuTest* tc, char* expected, char* actual);
 void CuAssertIntEquals(CuTest* tc, int expected, int actual);
 void CuAssertPtrEquals(CuTest* tc, void* expected, void* actual);
 void CuAssertPtrNotNull(CuTest* tc, void* pointer);
-
+```
 The project is open source and so you can add other more powerful
 asserts to make your tests easier to write and more concise.
 Please feel free to send me changes you make so that I can
@@ -195,7 +195,7 @@ If you see any errors in this document please contact me at
 asimjalis@peakprogramming.com.
 
 
-AUTOMATING TEST SUITE GENERATION
+# AUTOMATING TEST SUITE GENERATION
 
 make-tests.sh will grep through all the .c files in the current
 directory and generate the code to run all the tests contained in
@@ -203,7 +203,7 @@ them. Using this script you don't have to worry about writing
 AllTests.c or dealing with any of the other suite code.
 
 
-CREDITS
+# CREDITS
 
 These people have contributed useful code changes to the CuTest project.
 Thanks!
