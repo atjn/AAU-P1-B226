@@ -13,3 +13,14 @@ void testFunction1(CuTest *tc){
     int expected = 1;
     CuAssertIntEquals(tc, expected, actual);
 }
+
+int howLongIsAddisSlong(){
+    int cm = 32;
+    return cm;
+}
+
+void testFunktion2(CuTest *tc){
+    int actual = howLongIsAddisSlong();
+    int expected = 32;
+    CuAssertIntEquals(tc, expected, actual);
+}
