@@ -32,6 +32,17 @@ void testFunction1(CuTest *tc){
 }
 
 
+int howLongIsAddisSlong(){
+    int cm = 32;
+    return cm;
+}
+
+void testSlongFunktion(CuTest *tc){
+    int actual = howLongIsAddisSlong();
+    int expected = 32;
+    CuAssertIntEquals(tc, expected, actual);
+}
+
 void testJespersFunction(CuTest *tc){
     int actual = jespersFunction();
     int expected = 2;
@@ -48,6 +59,5 @@ int brixFunction() {
 void testFunction2(CuTest *tc){
     int actual = brixFunction();
     int expected = 1;
-
     CuAssertIntEquals(tc, expected, actual);
 }
