@@ -197,7 +197,7 @@ asimjalis@peakprogramming.com.
 
 # AUTOMATING TEST SUITE GENERATION
 
-make-tests.sh will grep through all the .c files in the current
+`make-tests.sh` will grep through all the .c files in the current
 directory and generate the code to run all the tests contained in
 them. Using this script you don't have to worry about writing
 AllTests.c or dealing with any of the other suite code.
