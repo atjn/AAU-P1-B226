@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include "function.h"
 #include "tests.h"
-
+// ny ændring
 int main(int argc, char **argv){
 
     for (int a = 0; a < argc; a++){
