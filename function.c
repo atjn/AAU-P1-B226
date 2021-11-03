@@ -24,6 +24,8 @@ void testFunction1(CuTest *tc){
 void testJespersFunction(CuTest *tc){
     int actual = jespersFunction();
     int expected = 2;
+    CuAssertIntEquals(tc, expected, actual);
+}
 
 int brixFunction() {
     for (int i = 0; i < pow(10, 2); i++) {
