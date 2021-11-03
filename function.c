@@ -18,7 +18,7 @@ void testFunction1(CuTest *tc){
 
 int brixFunction() {
     for (int i = 0; i < pow(10, 2); i++) {
-        printf("Abekat %d\n", i);
+        //printf("Abekat %d\n", i);
     }
     return 1;
 }
