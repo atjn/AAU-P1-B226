@@ -1,4 +1,4 @@
-## HOW TO USE
+# HOW TO USE
 
 You can use CuTest to create unit tests to drive your development
 in the style of Extreme Programming. You can also add unit tests to
