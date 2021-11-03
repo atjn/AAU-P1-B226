@@ -17,21 +17,21 @@ For details on licensing see the `LICENSE` file.
 # GETTING STARTED
 
 To add unit testing to your C code the only files you need are
-CuTest.c and CuTest.h. 
+CuTest.c and CuTest.h.
 
 CuTestTest.c and AllTests.c have been included to provide an
 example of how to write unit tests and then how to aggregate them
 into suites and into a single AllTests.c file. Suites allow you
 to put group tests into logical sets. AllTests.c combines all the
-suites and runs them. 
+suites and runs them.
 
 You should not have to look inside CuTest.c. Looking in
 CuTestTest.c and AllTests.c (for example usage) should be
-sufficient. 
+sufficient.
 
 After downloading the sources, run your compiler to create an
 executable called AllTests.exe. For example, if you are using
-Windows with the cl.exe compiler you would type: 
+Windows with the cl.exe compiler you would type:
 
     cl.exe AllTests.c CuTest.c CuTestTest.c
     AllTests.exe
@@ -52,49 +52,49 @@ Ensure that CuTest.c and CuTest.h are accessible from your C
 project. Next, create a file called StrUtil.c with these
 contents:
 ```c
-    #include <string.h>
-    #include <ctype.h>
-    #include "CuTest.h"
-    
-    char* StrToUpper(char* str) {
-        return str;
-    }
-    
-    void TestStrToUpper(CuTest *tc) {
-        char* input = strdup("hello world");
-        char* actual = StrToUpper(input);
-        char* expected = "HELLO WORLD";
-        CuAssertStrEquals(tc, expected, actual);
-    }
-   
-    CuSuite* StrUtilGetSuite() {
-        CuSuite* suite = CuSuiteNew();
-        SUITE_ADD_TEST(suite, TestStrToUpper);
-        return suite;
-    }
-```    
+#include <string.h>
+#include <ctype.h>
+#include "CuTest.h"
+
+char* StrToUpper(char* str) {
+    return str;
+}
+
+void TestStrToUpper(CuTest *tc) {
+    char* input = strdup("hello world");
+    char* actual = StrToUpper(input);
+    char* expected = "HELLO WORLD";
+    CuAssertStrEquals(tc, expected, actual);
+}
+
+CuSuite* StrUtilGetSuite() {
+    CuSuite* suite = CuSuiteNew();
+    SUITE_ADD_TEST(suite, TestStrToUpper);
+    return suite;
+}
+```
 Create another file called AllTests.c with these contents:
 ```c
-    #include <stdio.h>
-    #include "CuTest.h"
-    
-    CuSuite* StrUtilGetSuite();
-    
-    void RunAllTests(void) {
-        CuString *output = CuStringNew();
-        CuSuite* suite = CuSuiteNew();
-        
-        CuSuiteAddSuite(suite, StrUtilGetSuite());
-    
-        CuSuiteRun(suite);
-        CuSuiteSummary(suite, output);
-        CuSuiteDetails(suite, output);
-        printf("%s\n", output->buffer);
-    }
-    
-    int main(void) {
-        RunAllTests();
-    }
+#include <stdio.h>
+#include "CuTest.h"
+
+CuSuite* StrUtilGetSuite();
+
+void RunAllTests(void) {
+    CuString *output = CuStringNew();
+    CuSuite* suite = CuSuiteNew();
+
+    CuSuiteAddSuite(suite, StrUtilGetSuite());
+
+    CuSuiteRun(suite);
+    CuSuiteSummary(suite, output);
+    CuSuiteDetails(suite, output);
+    printf("%s\n", output->buffer);
+}
+
+int main(void) {
+    RunAllTests();
+}
 ```
 Then type this on the command line:
 
@@ -108,19 +108,20 @@ compilers. Then to run the tests type:
 
 This will print an error because we haven't implemented the
 StrToUpper function correctly. We are just returning the string
-without changing it to upper case. 
+without changing it to upper case.
 ```c
-    char* StrToUpper(char* str) {
-        return str;
-    }
+char* StrToUpper(char* str) {
+    return str;
+}
+```
 
 Rewrite this as follows:
-
-    char* StrToUpper(char* str) {
-        char* p;
-        for (p = str ; *p ; ++p) *p = toupper(*p);
-        return str;
-    }
+```c
+char* StrToUpper(char* str) {
+    char* p;
+    for (p = str ; *p ; ++p) *p = toupper(*p);
+    return str;
+}
 ```
 Recompile and run the tests again. The test should pass this
 time.
@@ -131,10 +132,12 @@ time.
 At this point you might want to write more tests for the
 StrToUpper function. Here are some ideas:
 
+```c
 TestStrToUpper_EmptyString :  pass in ""
 TestStrToUpper_UpperCase   :  pass in "HELLO WORLD"
 TestStrToUpper_MixedCase   :  pass in "HELLO world"
 TestStrToUpper_Numbers     :  pass in "1234 hello"
+```
 
 As you write each one of these tests add it to StrUtilGetSuite
 function. If you don't the tests won't be run. Later as you write
@@ -175,7 +178,7 @@ Shipping the tests with the code can be useful. If you customers
 complain about a problem you can ask them to run the unit tests
 and send you the output. This can help you to quickly isolate the
 piece of your system that is malfunctioning in the customer's
-environment. 
+environment.
 
 CuTest offers a rich set of CuAssert functions. Here is a list:
 ```c
