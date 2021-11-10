@@ -9,7 +9,7 @@
 # Author: Asim Jalis
 # Date: 01/08/2003
 
-if test $# -eq 0 ; then FILES=*.c ; else FILES=$* ; fi
+if test $# -eq 0 ; then FILES=functions/*.c ; else FILES=$* ; fi
 
 echo '
 
@@ -21,7 +21,7 @@ echo '
 #include <string.h>
 #include <stdbool.h>
 
-#include "lib/CuTest-AAU/CuTest.h"
+#include "functions/lib/CuTest-AAU/CuTest.h"
 
 '
 

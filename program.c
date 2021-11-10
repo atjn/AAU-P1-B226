@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include "function.h"
-#include "fileHandle.h"
-#include "tests.h"
+#include "functions/function.h"
+#include "functions/fileHandle.h"
+#include "functions/tests.h"
 
 int main(int argc, char **argv){
 
