@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "function.h"
+#include "fileHandle.h"
 #include "tests.h"
 
 int main(int argc, char **argv){
@@ -14,6 +15,8 @@ int main(int argc, char **argv){
             exit(success ? EXIT_SUCCESS : EXIT_FAILURE);
         }
     }
+
+    readFile();
 
     exit(EXIT_SUCCESS);
 }
