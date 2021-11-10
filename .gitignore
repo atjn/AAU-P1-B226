@@ -6,6 +6,7 @@ tests.c
 # Misc. local stuff
 .vscode
 makefile-*
+.DS_Store
 
 ## Standard C stuff:
 
