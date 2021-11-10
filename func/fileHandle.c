@@ -16,13 +16,6 @@ void readFile() {
     fp = fopen("data/recipes.csv", "r");
     if (fp == NULL) exit(EXIT_FAILURE);
 
-    while ((read = getline(&line, &len, fp)) != -1) {
-        if (lineNumber != 0) {
-            printf("%s", line);
-        }
-        lineNumber++;
-    }
-
     fclose(fp);
     if (line) free(line);
 }
