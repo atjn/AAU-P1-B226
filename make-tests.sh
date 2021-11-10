@@ -9,7 +9,7 @@
 # Author: Asim Jalis
 # Date: 01/08/2003
 
-if test $# -eq 0 ; then FILES=*.c ; else FILES=$* ; fi
+if test $# -eq 0 ; then FILES=func/*.c ; else FILES=$* ; fi
 
 echo '
 
