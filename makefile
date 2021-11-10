@@ -1,7 +1,7 @@
 compiler = gcc -std=c17 -Wall -Wextra -Werror -pedantic -O2
-cutest = functions/lib/CuTest-AAU/CuTest.c
+cutest = lib/CuTest-AAU/CuTest.c
 name = program
-function_files = functions/function.c functions/fileHandle.c
+function_files = func/function.c func/fileHandle.c
 test_runner_name = tests
 
 ifeq ($(OS),Windows_NT)

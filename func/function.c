@@ -1,4 +1,4 @@
-#include "lib/CuTest-AAU/CuTest.h"
+#include "../lib/CuTest-AAU/CuTest.h"
 #include <stdio.h>
 #include <math.h>
 

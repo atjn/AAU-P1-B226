@@ -1,4 +1,4 @@
-#include "lib/CuTest-AAU/CuTest.h"
+#include "../lib/CuTest-AAU/CuTest.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -13,7 +13,7 @@ void readFile() {
     int lineNumber = 0;
     
 
-    fp = fopen("recipes/recipes.csv", "r");
+    fp = fopen("data/recipes.csv", "r");
     if (fp == NULL) exit(EXIT_FAILURE);
 
     while ((read = getline(&line, &len, fp)) != -1) {
