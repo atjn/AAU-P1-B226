@@ -8,7 +8,7 @@ void readFile() {
     FILE *fp;
     char *line = NULL;
     size_t len = 0;
-    ssize_t read;
+    size_t read;
 
     int lineNumber = 0;
     
