@@ -2,9 +2,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include "func/function.h"
 #include "func/fileHandle.h"
+#include "func/ui.h"
+#include "func/algorithm.h"
 #include "func/tests.h"
+
+void foodForChange();
 
 int main(int argc, char **argv){
 
@@ -16,7 +19,18 @@ int main(int argc, char **argv){
         }
     }
 
-    readFile();
+    foodForChange();
 
     exit(EXIT_SUCCESS);
+}
+
+void foodForChange(){
+    readFile();
+    requestRecipeName();
+    requestAmountOfPeople();
+    makeListOfRecipes();
+    printListOfRecipes();
+    requestRecipeNumber();
+    printRecipe();
+
 }
