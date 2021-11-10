@@ -7,11 +7,6 @@
 void readFile() {
     FILE *fp;
     char *line = NULL;
-    size_t len = 0;
-    size_t read;
-
-    int lineNumber = 0;
-    
 
     fp = fopen("data/recipes.csv", "r");
     if (fp == NULL) exit(EXIT_FAILURE);
