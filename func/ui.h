@@ -3,8 +3,8 @@
 void requestRecipeName();
 void requestAmountOfPeople();
 void printListOfRecipes();
-void requestRecipeNumber();
-void printRecipe();
+int requestRecipeNumber();
+void printRecipe(int);
 CuSuite *requestRecipeNameGetSuite();
 CuSuite *requestAmountOfPeopleGetSuite();
 CuSuite *printListOfRecipesGetSuite();
