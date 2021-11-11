@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "definition.h"
 
 /* Using semicolons instead of commas (Thanks Microsoft) */
 void readFile() {
