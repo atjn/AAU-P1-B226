@@ -19,7 +19,7 @@ void printListOfRecipes(){
  * Ask the user which recipes number they want.
  * Returns the choice in an int pointer.
  */
-void requestRecipeNumber(int *recipeNumber){
+int requestRecipeNumber(){
 
     bool inputSuccess = false;
     while(!inputSuccess){
