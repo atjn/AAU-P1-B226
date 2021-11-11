@@ -15,11 +15,15 @@ void printListOfRecipes(){
 
 }
 
+/**
+ * Ask the user which recipes number they want.
+ * Returns the choice in an int pointer.
+ */
 void requestRecipeNumber(int *recipeNumber){
 
     bool inputSuccess = false;
     while(!inputSuccess){
-        printf("Which version did you want?\n");
+        printf("Which version did you want? > ");
         const int inputs = scanf(" %d", recipeNumber);
 
         inputSuccess = inputs == 1 && *recipeNumber >= 1 && *recipeNumber <= 5;
