@@ -1,6 +1,9 @@
 #include "../lib/CuTest-AAU/CuTest.h"
+#include "./definition.h"
 
-void requestRecipeName();
+int requestRecipeName(Recipe* recipes, int recipeCount);
+int getIdFromString(char* recipeName, Recipe* recipes, int recipeCount);
+void toLowerCase(char* recipeName);
 void requestAmountOfPeople();
 void printListOfRecipes();
 void requestRecipeNumber();
