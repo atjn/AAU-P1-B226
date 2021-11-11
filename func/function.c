@@ -11,8 +11,3 @@ int gaming(){
     return 3;
 }
 
-void testGaming(CuTest *tc){
-    int actual = gaming();
-    int expected = 3;
-    CuAssertIntEquals(tc, expected, actual);
-}
