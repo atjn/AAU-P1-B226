@@ -25,12 +25,14 @@ int main(int argc, char **argv){
 }
 
 void foodForChange(){
+    int recipeNumber;
+
     readFile();
     requestRecipeName();
     requestAmountOfPeople();
     makeListOfRecipes();
     printListOfRecipes();
-    requestRecipeNumber();
+    requestRecipeNumber(&recipeNumber);
     printRecipe();
 
 }
