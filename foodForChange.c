@@ -25,14 +25,13 @@ int main(int argc, char **argv){
 }
 
 void foodForChange(){
-    int recipeNumber;
-
     readFile();
     requestRecipeName();
     requestAmountOfPeople();
     makeListOfRecipes();
     printListOfRecipes();
-    requestRecipeNumber(&recipeNumber);
-    printRecipe();
+
+    const int recipeNumber = requestRecipeNumber();
+    printRecipe(recipeNumber);
 
 }
