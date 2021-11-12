@@ -48,7 +48,7 @@ Recipe * readFile(int *recipesNumber) {
                 tempIngredientCount = 0;
                 
                 //int tempRecipeLength = strlen(line) - 4;
-                snprintf(loadedRecipes[currRecipeIndex].recipeName, sizeof(line) - 4, "%s", line);
+                snprintf(loadedRecipes[currRecipeIndex].recipeName, strlen(line) - 4, "%s", line);
                 //strncpy(loadedRecipes[currRecipeIndex].recipeName, line, tempRecipeLength);
                 strcat(loadedRecipes[currRecipeIndex].recipeName, "\0");
             }
