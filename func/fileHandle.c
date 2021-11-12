@@ -56,8 +56,7 @@ Recipe * readFile(int *recipesNumber) {
                 while(ingredientPtr != NULL) {
                     ingredientPtr[strcspn(ingredientPtr, "\n")] = 0;
                     if (tempIngredientInfoCount == 0) {
-                        int tempIngredientLength = strlen(ingredientPtr);
-                        strncpy(loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].ingredientName, ingredientPtr, tempIngredientLength);
+                        strcpy(loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].ingredientName, ingredientPtr);
                         tempIngredientInfoCount++;
                     }
                     else if (tempIngredientInfoCount == 1) {
