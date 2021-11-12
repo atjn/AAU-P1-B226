@@ -26,7 +26,7 @@ int main(int argc, char **argv){
 
 void foodForChange(){
     readFile();
-    requestRecipeName();
+    //requestRecipeName();
     requestAmountOfPeople();
     makeListOfRecipes();
     printListOfRecipes();
