@@ -46,8 +46,9 @@ Recipe * readFile(int *recipesNumber) {
             if (line[0] != ';') {
                 currRecipeIndex++;
                 tempIngredientCount = 0;
-
-                strncpy(loadedRecipes[currRecipeIndex].recipeName, line, strlen(line) - 4);
+                
+                int tempRecipeLength = strlen(line) - 4;
+                strncpy(loadedRecipes[currRecipeIndex].recipeName, line, tempRecipeLength);
                 strcat(loadedRecipes[currRecipeIndex].recipeName, "\0");
             }
             else {
