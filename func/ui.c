@@ -41,7 +41,8 @@ int requestRecipeName(Recipe* recipes, int recipeCount){
 
 }
 
-//This function gets the index of a recipes in the recipes array.
+//This function is a utility only used inside this file.
+//This function gets the index of a recipe in the recipes array.
 int getIdFromString(char *recipeName, Recipe* recipes, int recipeCount){
     toLowerCase(recipeName);
 
