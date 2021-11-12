@@ -30,7 +30,8 @@ void foodForChange(){
     requestAmountOfPeople();
     makeListOfRecipes();
     printListOfRecipes();
-    requestRecipeNumber();
-    printRecipe();
+
+    const int recipeNumber = requestRecipeNumber();
+    printRecipe(recipeNumber);
 
 }
