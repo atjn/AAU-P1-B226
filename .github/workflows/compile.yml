@@ -1,13 +1,13 @@
 name: Compile
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
 
   test:
 
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         config:
             - {
