@@ -2,7 +2,7 @@
 #include "./definition.h"
 
 int requestRecipeName(Recipe* recipes, int recipeCount);
-void requestAmountOfPeople();
+int requestAmountOfPeople();
 void printListOfRecipes();
 int requestRecipeNumber();
 void printRecipe(int);
