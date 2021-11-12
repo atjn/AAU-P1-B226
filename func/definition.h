@@ -1,3 +1,4 @@
+#define RECIPES_LOCATION "data/recipes.csv"
 #define MAX_RECIPE_NAME 128
 #define MAX_INGREDIENTS 64
 #define MAX_INGREDIENT_NAME 16

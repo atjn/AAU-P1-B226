@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include "func/definition.h"
 #include "func/fileHandle.h"
 #include "func/ui.h"
 #include "func/algorithm.h"
@@ -25,7 +26,13 @@ int main(int argc, char **argv){
 }
 
 void foodForChange(){
-    readFile();
+    /* How to use the readFile funtion */
+    
+    int recipesNumber;
+    Recipe *recipes = readFile(&recipesNumber);
+    printf("%d\n", recipesNumber);
+    free(recipes);
+  
     //requestRecipeName();
     requestAmountOfPeople();
     makeListOfRecipes();
@@ -33,5 +40,4 @@ void foodForChange(){
 
     const int recipeNumber = requestRecipeNumber();
     printRecipe(recipeNumber);
-
 }
