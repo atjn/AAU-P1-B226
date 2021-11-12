@@ -27,11 +27,11 @@ int main(int argc, char **argv){
 
 void foodForChange(){
     /* How to use the readFile funtion */
-    /*
+    
     int recipesNumber;
     Recipe *recipes = readFile(&recipesNumber);
     printf("%d\n", recipesNumber);
-    free(recipes); */
+    free(recipes);
 
     requestRecipeName();
     requestAmountOfPeople();
