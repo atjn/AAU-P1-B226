@@ -6,6 +6,9 @@
 #include "../lib/CuTest-AAU/CuTest.h"
 #include "./ui.h"
 
+
+//This function is a utility only used inside this file.
+//This function takes the letters in a char array and makes it lower case.
 void toLowerCase(char* recipeName){
 
     for(int i = 0; recipeName[i]; i++){
@@ -13,6 +16,8 @@ void toLowerCase(char* recipeName){
     }
 }
 
+
+//This function ask the user for a recipe name, if there is no recipe name it will return the function and start over.
 int requestRecipeName(Recipe* recipes, int recipeCount){
     char* recipeName = "";
 
@@ -35,7 +40,7 @@ int requestRecipeName(Recipe* recipes, int recipeCount){
 
 }
 
-
+//This function gets the index of a recipes in the recipes array.
 int getIdFromString(char *recipeName, Recipe* recipes, int recipeCount){
     toLowerCase(recipeName);
 
