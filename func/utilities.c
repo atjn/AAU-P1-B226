@@ -3,8 +3,9 @@
 #include <stdio.h>
 
 /**
- * Flush the input buffer.
- * Otherwise scanf will read the previous answer, and create an infinite loop.
+ * Flushes the input buffer.
+ * This is useful when taking input from the user with `scanf`,
+ * because unreadable input might be left in the buffer, causing an infinite loop.
  */
 void flushInput(){
     int inputChar;
