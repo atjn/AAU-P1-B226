@@ -5,8 +5,10 @@
 
 #include "../lib/CuTest-AAU/CuTest.h"
 
+#include "./definition.h"
 #include "./ui.h"
 #include "./utilities.h"
+
 
 
 //This function is a utility only used inside this file.
