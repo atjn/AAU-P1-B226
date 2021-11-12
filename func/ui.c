@@ -17,7 +17,8 @@ void toLowerCase(char* recipeName){
 }
 
 
-//This function ask the user for a recipe name, if there is no recipe name it will return the function and start over.
+//This function ask the user for a recipe name. If it cannot match the user input to a recipe, it will return itself, and thus start the process again.
+//It returns an `int` corresponding the index of the recipe in the recipes array.
 int requestRecipeName(Recipe* recipes, int recipeCount){
     char* recipeName = "";
 
