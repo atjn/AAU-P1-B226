@@ -13,7 +13,7 @@ void readFile() {
     FILE *fp;
     char *line = NULL;
     size_t len = 0;
-    ssize_t read;
+    size_t read;
     char ingredientDelim[] = ";";
 
     /* Other variables */
@@ -25,7 +25,7 @@ void readFile() {
     if (fp == NULL) exit(EXIT_FAILURE);
 
     /* Reading the file to get the number of recipes */
-    while ((read = getline(&line, &len, fp)) != (long) -1) {
+    while ((read = getline(&line, &len, fp)) != (unsigned long) -1) {
         if (line[0] != ';') {
             recipesNum++;
         }
@@ -42,7 +42,7 @@ void readFile() {
     rewind(fp);
 
     /* Reading the file to get the number of recipes */
-    while ((read = getline(&line, &len, fp)) != (long) -1) {
+    while ((read = getline(&line, &len, fp)) != (unsigned long) -1) {
         if (currLine > 0) {
             if (line[0] != ';') {
                 currRecipeIndex++;
