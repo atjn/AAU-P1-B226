@@ -10,7 +10,7 @@ typedef struct {
 } Ingredient;
 
 typedef struct {
-   char recipeName[MAX_RECIPE_NAME];
+   char name[MAX_RECIPE_NAME];
    Ingredient ingredients[MAX_INGREDIENTS];
    unsigned short ingredientCount;
 } Recipe;

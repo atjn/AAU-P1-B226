@@ -56,9 +56,9 @@ Recipe * readFile(int *recipesNumber) {
             currRecipeIndex++;
             tempIngredientCount = 0;
 
-            /* Copies the recipe name into the given structs recipeName variable */
-            snprintf(loadedRecipes[currRecipeIndex].recipeName, strlen(line) - 4, "%s", line);
-            strcat(loadedRecipes[currRecipeIndex].recipeName, "\0");
+            /* Copies the recipe name into the given structs name variable */
+            snprintf(loadedRecipes[currRecipeIndex].name, strlen(line) - 4, "%s", line);
+            strcat(loadedRecipes[currRecipeIndex].name, "\0");
         }
         else {
             /* Splits the line variable every time we encounter a semicolon */
@@ -91,7 +91,7 @@ Recipe * readFile(int *recipesNumber) {
     /* For loop for checking input */
     /*
     for (int i = 0; i < 2; i++) {
-        printf("%s\n", loadedRecipes[i].recipeName);
+        printf("%s\n", loadedRecipes[i].name);
         printf("%d\n", loadedRecipes[i].ingredientCount);
         for (unsigned short j = 0; j < loadedRecipes[i].ingredientCount; j++) {
             printf("%s, %hu, %hu\n", loadedRecipes[i].ingredients[j].ingredientName,

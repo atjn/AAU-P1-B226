@@ -13,10 +13,10 @@
 
 //This function is a utility only used inside this file.
 //This function takes the letters in a char array and makes it lower case.
-void toLowerCase(char* recipeName){
+void toLowerCase(char* string){
 
-    for(int i = 0; recipeName[i]; i++){
-        recipeName[i] = tolower(recipeName[i]);
+    for(int i = 0; string[i]; i++){
+        string[i] = tolower(string[i]);
     }
 }
 
@@ -27,7 +27,7 @@ int getIdFromString(char *recipeName, Recipe* recipes, int recipeCount){
     toLowerCase(recipeName);
 
     for (int i = 0; i < recipeCount; i++){
-        if (recipes[i].recipeName == recipeName){
+        if (recipes[i].name == recipeName){
             return i;
         }
     }
