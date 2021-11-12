@@ -45,7 +45,7 @@ Recipe * readFile(int *recipesNumber) {
 
     /* Reading the file to get the number of recipes */
     while (fgets(line, len, fp) != NULL) {
-        /* Skipping the first line containt CSV metadata */
+        /* Skipping the first line containing CSV metadata */
         if (currLine == 0) {
             currLine++;
             continue;
