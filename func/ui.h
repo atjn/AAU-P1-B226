@@ -1,5 +1,4 @@
 #include "../lib/CuTest-AAU/CuTest.h"
-#include "./definition.h"
 
 int requestRecipeName(Recipe* recipes, int recipeCount);
 int requestAmountOfPeople();
