@@ -6,7 +6,7 @@
 #include "definition.h"
 
 /* Using semicolons instead of commas (Thanks Microsoft) */
-void readFile() {
+Recipe * readFile(int *recipesNumber) {
     /* Tempoary variabls for reading the recipe file */
     FILE *fp;
     char line[60];
@@ -41,6 +41,7 @@ void readFile() {
 
     /* Reading the file to get the number of recipes */
     while (fgets(line, len, fp) != NULL) {
+        /* Skipping the first line containt CSV metadata*/
         if (currLine > 0) {
             if (line[0] != ';') {
                 currRecipeIndex++;
@@ -67,8 +68,6 @@ void readFile() {
                         tempIngredientInfoCount = 0;
                         tempIngredientCount++;
                     }
-
-                    printf("%s\n", ingredientPtr);
 		            ingredientPtr = strtok(NULL, ingredientDelim);
 	            }
             }
@@ -90,6 +89,8 @@ void readFile() {
     */
 
     /* Deallocating memory for the array and closing the file */
-    free(loadedRecipes);
     fclose(fp);
+
+    *recipesNumber = recipesNum;
+    return loadedRecipes;
 }
