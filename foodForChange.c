@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include "func/definition.h"
 #include "func/fileHandle.h"
 #include "func/ui.h"
 #include "func/algorithm.h"
