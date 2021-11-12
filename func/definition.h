@@ -4,7 +4,7 @@
 #define MAX_INGREDIENT_NAME 16
 
 typedef struct {
-   char ingredientName[MAX_INGREDIENT_NAME];
+   char name[MAX_INGREDIENT_NAME];
    unsigned short amount;
    unsigned short weight;
 } Ingredient;

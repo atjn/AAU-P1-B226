@@ -67,7 +67,7 @@ Recipe * readFile(int *recipesNumber) {
                 ingredientPtr[strcspn(ingredientPtr, "\n")] = 0;
                 /* Stores the ingredient name for the given ingredient */
                 if (tempIngredientInfoCount == 0) {
-                    strcpy(loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].ingredientName, ingredientPtr);
+                    strcpy(loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].name, ingredientPtr);
                     tempIngredientInfoCount++;
                 }
                 /* Stores the amount (Grams) for the given ingredient */
@@ -94,7 +94,7 @@ Recipe * readFile(int *recipesNumber) {
         printf("%s\n", loadedRecipes[i].name);
         printf("%d\n", loadedRecipes[i].ingredientCount);
         for (unsigned short j = 0; j < loadedRecipes[i].ingredientCount; j++) {
-            printf("%s, %hu, %hu\n", loadedRecipes[i].ingredients[j].ingredientName,
+            printf("%s, %hu, %hu\n", loadedRecipes[i].ingredients[j].name,
                                      loadedRecipes[i].ingredients[j].amount,
                                      loadedRecipes[i].ingredients[j].weight);
         }
