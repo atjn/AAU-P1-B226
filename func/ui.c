@@ -17,6 +17,20 @@ void toLowerCase(char* recipeName){
 }
 
 
+//This function is a utility only used inside this file.
+//This function gets the index of a recipe in the recipes array.
+int getIdFromString(char *recipeName, Recipe* recipes, int recipeCount){
+    toLowerCase(recipeName);
+
+    for (int i = 0; i < recipeCount; i++){
+        if (recipes[i].recipeName == recipeName){
+            return i;
+        }
+    }
+    return -1;
+}
+
+
 //This function ask the user for a recipe name. If it cannot match the user input to a recipe, it will return itself, and thus start the process again.
 //It returns an `int` corresponding the index of the recipe in the recipes array.
 int requestRecipeName(Recipe* recipes, int recipeCount){
@@ -40,22 +54,6 @@ int requestRecipeName(Recipe* recipes, int recipeCount){
         return id;
 
 }
-
-//This function is a utility only used inside this file.
-//This function gets the index of a recipe in the recipes array.
-int getIdFromString(char *recipeName, Recipe* recipes, int recipeCount){
-    toLowerCase(recipeName);
-
-    for (int i = 0; i < recipeCount; i++){
-        if (recipes[i].recipeName == recipeName){
-            return i;
-        }
-    }
-    return -1;
-}
-
-
-
 
 
 void requestAmountOfPeople(){
