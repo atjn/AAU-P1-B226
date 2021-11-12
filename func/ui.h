@@ -1,10 +1,11 @@
 #include "../lib/CuTest-AAU/CuTest.h"
+#include "./definition.h"
 
-void requestRecipeName();
-void requestAmountOfPeople();
+int requestRecipeName(Recipe* recipes, int recipeCount);
+int requestAmountOfPeople();
 void printListOfRecipes();
-void requestRecipeNumber();
-void printRecipe();
+int requestRecipeNumber();
+void printRecipe(int);
 CuSuite *requestRecipeNameGetSuite();
 CuSuite *requestAmountOfPeopleGetSuite();
 CuSuite *printListOfRecipesGetSuite();

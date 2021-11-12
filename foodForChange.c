@@ -32,11 +32,12 @@ void foodForChange(){
     Recipe *recipes = readFile(&recipesNumber);
     printf("%d\n", recipesNumber);
     free(recipes);
-
-    requestRecipeName();
+  
+    //requestRecipeName();
     requestAmountOfPeople();
     makeListOfRecipes();
     printListOfRecipes();
-    requestRecipeNumber();
-    printRecipe();
+
+    const int recipeNumber = requestRecipeNumber();
+    printRecipe(recipeNumber);
 }
