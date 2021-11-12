@@ -6,6 +6,7 @@
 #include "../lib/CuTest-AAU/CuTest.h"
 
 #include "./ui.h"
+#include "./utilities.h"
 
 
 //This function is a utility only used inside this file.
@@ -40,8 +41,7 @@ int requestRecipeName(Recipe* recipes, int recipeCount){
     printf("What recipe do you want to eat?");
     const int inputs = scanf("%c", recipeName);
 
-    // Flush the input buffer, otherwise scanf will read the previous answer, and create an infinite loop
-    int c; while((c = getchar()) != '\n' && c != EOF);
+    flushInput();
 
     if (inputs <= 0)
         return requestRecipeName(recipes, recipeCount);
@@ -62,7 +62,7 @@ int requestAmountOfPeople(){
     printf("How many people are you cooking for (1-100)?");
     int res = scanf("%d", &amountOfPeople);
 
-    while ((getchar()) != '\n');
+    flushInput();
 
     if (amountOfPeople <= 0 || amountOfPeople > 100 || res != 1){
         return requestAmountOfPeople();
@@ -94,8 +94,7 @@ int requestRecipeNumber(){
             printf("Sorry, I did not understand that. Please input a number between 1 and 5\n");
         }
 
-        // Flush the input buffer, otherwise scanf will read the previous answer, and create an infinite loop
-        int c; while((c = getchar()) != '\n' && c != EOF);
+        flushInput();
     }
 
     return recipeNumber;
