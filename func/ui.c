@@ -56,10 +56,20 @@ int requestRecipeName(Recipe* recipes, int recipeCount){
 
 }
 
+//This function ask for how  many people the user are cooking for.
+int requestAmountOfPeople(){
+    int amountOfPeople = 0;
+    printf("How many people are you cooking for (1-99)?");
+    int res = scanf("%d", &amountOfPeople);
 
-void requestAmountOfPeople(){
+    while ((getchar()) != '\n');
 
+    if (amountOfPeople <= 0 || amountOfPeople > 100 || res != 1){
+        return requestAmountOfPeople();
+    }
+    return amountOfPeople;
 }
+
 
 void printListOfRecipes(){
 
