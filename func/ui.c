@@ -102,7 +102,7 @@ int requestRecipeNumber(){
     return recipeNumber;
 }
 
-//This function is printing the information about the recipe.
+//This function prints information about a given recipe.
 void printRecipe(Recipe recipe, int people) {
     printf("\n\n");
     printf("┌────────────────────────────────────────────────────────┐\n");
