@@ -102,6 +102,9 @@ int requestRecipeNumber(){
     return recipeNumber;
 }
 
-void printRecipe(int recipeNumber){
-    printf(" %d", recipeNumber);
+void printRecipe(Recipe recipe){
+    printf("\n\n");
+    printf("---------------------------------------------------------");
+    printf("|                    %-10s                       |", recipe.name);
+
 }
