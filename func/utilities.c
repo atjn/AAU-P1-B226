@@ -17,7 +17,6 @@ void flushInput(){
 /*
 This function makes it uppercase and returns string
 */
-
 const char* capitaliseFirst(char* string){
 
     string[0] = toupper(string[0]);
