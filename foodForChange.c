@@ -34,7 +34,7 @@ void foodForChange(){
     free(recipes);
 
 
-    int people = requestAmountOfPeople();
+    const int people = requestAmountOfPeople();
     makeListOfRecipes();
     printListOfRecipes();
     //const int recipeNumber = requestRecipeNumber();
