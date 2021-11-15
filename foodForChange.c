@@ -27,17 +27,16 @@ int main(int argc, char **argv){
 
 void foodForChange(){
     /* How to use the readFile funtion */
-    
+
     int recipesNumber;
     Recipe *recipes = readFile(&recipesNumber);
     printf("%d\n", recipesNumber);
     free(recipes);
-  
-    //requestRecipeName();
-    requestAmountOfPeople();
+
+
+    const int people = requestAmountOfPeople();
     makeListOfRecipes();
     printListOfRecipes();
-
-    const int recipeNumber = requestRecipeNumber();
-    printRecipe(recipeNumber);
+    //const int recipeNumber = requestRecipeNumber();
+    printRecipe(recipes[0],people);
 }

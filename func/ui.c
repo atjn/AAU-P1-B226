@@ -61,7 +61,7 @@ int requestRecipeName(Recipe* recipes, int recipeCount){
 
 int requestAmountOfPeople(){
     int amountOfPeople = 0;
-    printf("How many people are you cooking for (1-100)?");
+    printf("How many people are you cooking for (1─100)?");
     int res = scanf("%d", &amountOfPeople);
 
     flushInput();
@@ -102,6 +102,19 @@ int requestRecipeNumber(){
     return recipeNumber;
 }
 
-void printRecipe(int recipeNumber){
-    printf(" %d", recipeNumber);
+//This function prints information about a given recipe.
+void printRecipe(Recipe recipe, int people) {
+    printf("\n\n");
+    printf("┌────────────────────────────────────────────────────────┐\n");
+    printf("│                        %-10s                      │\n", capitaliseFirst(recipe.name));
+    printf("├─────────────────────┬──────────────────┬───────────────┤\n");
+    for (int i = 0; i < recipe.ingredientCount; i++){
+        //TODO: do the number
+        printf("│ %-20s│%10d(g)     │%6d(g CO₂)  │\n", capitaliseFirst(recipe.ingredients[i].name), recipe.ingredients[i].amount*people , 25);
+
+    }
+    printf("├─────────────────────┴──────────────────┴───────────────┤\n");
+    //TODO: do the number
+    printf("│ Amount of CO₂: %-10d                              │\n", 10);
+    printf("└────────────────────────────────────────────────────────┘\n");
 }

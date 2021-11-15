@@ -4,7 +4,7 @@ int requestRecipeName(Recipe* recipes, int recipeCount);
 int requestAmountOfPeople();
 void printListOfRecipes();
 int requestRecipeNumber();
-void printRecipe(int);
+void printRecipe(Recipe, int);
 CuSuite *requestRecipeNameGetSuite();
 CuSuite *requestAmountOfPeopleGetSuite();
 CuSuite *printListOfRecipesGetSuite();
