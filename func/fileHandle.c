@@ -57,7 +57,7 @@ Recipe * readFile(int *recipesNumber) {
             tempIngredientCount = 0;
 
             /* Copies the recipe name into the given structs recipeName variable */
-            snprintf(loadedRecipes[currRecipeIndex].recipeName, strlen(line) - 4, "%s", line);
+            snprintf(loadedRecipes[currRecipeIndex].recipeName, strlen(line) - 3, "%s", line);
             strcat(loadedRecipes[currRecipeIndex].recipeName, "\0");
         }
         else {
@@ -72,7 +72,7 @@ Recipe * readFile(int *recipesNumber) {
                 }
                 /* Stores the amount (Grams) for the given ingredient */
                 else if (tempIngredientInfoCount == 1) {
-                    loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].amount = (unsigned short) atoi(ingredientPtr);
+                    loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].amount = atof(ingredientPtr);
                     tempIngredientInfoCount++;
                 }
                 /* Stores the weight for the given ingredient */
@@ -89,17 +89,15 @@ Recipe * readFile(int *recipesNumber) {
     }
 
     /* For loop for checking input */
-    /*
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 1; i++) {
         printf("%s\n", loadedRecipes[i].recipeName);
         printf("%d\n", loadedRecipes[i].ingredientCount);
         for (unsigned short j = 0; j < loadedRecipes[i].ingredientCount; j++) {
-            printf("%s, %hu, %hu\n", loadedRecipes[i].ingredients[j].ingredientName,
+            printf("%s, %f, %hu\n", loadedRecipes[i].ingredients[j].ingredientName,
                                      loadedRecipes[i].ingredients[j].amount,
                                      loadedRecipes[i].ingredients[j].weight);
         }
     }
-    */
 
     /* Deallocating memory for the array and closing the file */
     fclose(fp);
