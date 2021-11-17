@@ -2,6 +2,7 @@
 #define MAX_RECIPE_NAME 128
 #define MAX_INGREDIENTS 64
 #define MAX_INGREDIENT_NAME 16
+#define MAX_CATEGORY_NAME 16
 
 typedef struct {
    char ingredientName[MAX_INGREDIENT_NAME];
@@ -14,3 +15,8 @@ typedef struct {
    Ingredient ingredients[MAX_INGREDIENTS];
    unsigned short ingredientCount;
 } Recipe;
+
+typedef struct {
+   char categoryName[MAX_CATEGORY_NAME];
+   char ingredients[MAX_INGREDIENT_NAME];
+} Category;
