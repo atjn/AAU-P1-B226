@@ -41,7 +41,7 @@ int requestRecipeName(Recipe* recipes, int recipeCount){
     char* recipeName = "";
 
     printf("What recipe do you want to eat?");
-    const int inputs = scanf("%c", recipeName);
+    const int inputs = scanf(" %c", recipeName);
 
     flushInput();
 
@@ -62,7 +62,7 @@ int requestRecipeName(Recipe* recipes, int recipeCount){
 int requestAmountOfPeople(){
     int amountOfPeople = 0;
     printf("How many people are you cooking for (1─100)?");
-    int res = scanf("%d", &amountOfPeople);
+    int res = scanf(" %d", &amountOfPeople);
 
     flushInput();
 
