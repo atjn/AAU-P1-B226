@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include "../lib/CuTest-AAU/CuTest.h"
 
@@ -27,7 +28,7 @@ int getIdFromString(char *recipeName, Recipe* recipes, int recipeCount){
     toLowerCase(recipeName);
 
     for (int i = 0; i < recipeCount; i++){
-        if (recipes[i].name == recipeName){
+        if (strcmp(recipes[i].name, recipeName) == 0){
             return i;
         }
     }
@@ -38,10 +39,10 @@ int getIdFromString(char *recipeName, Recipe* recipes, int recipeCount){
 //This function ask the user for a recipe name. If it cannot match the user input to a recipe, it will return itself, and thus start the process again.
 //It returns an `int` corresponding the index of the recipe in the recipes array.
 int requestRecipeName(Recipe* recipes, int recipeCount){
-    char* recipeName = "";
+    char recipeName[MAX_RECIPE_NAME];
 
-    printf("What recipe do you want to eat?");
-    const int inputs = scanf(" %c", recipeName);
+    printf("What recipe do you want to eat? ");
+    const int inputs = scanf(" %s", recipeName);
 
     flushInput();
 
@@ -61,7 +62,7 @@ int requestRecipeName(Recipe* recipes, int recipeCount){
 
 int requestAmountOfPeople(){
     int amountOfPeople = 0;
-    printf("How many people are you cooking for (1─100)?");
+    printf("How many people are you cooking for (1─100)? ");
     int res = scanf(" %d", &amountOfPeople);
 
     flushInput();
@@ -87,7 +88,7 @@ int requestRecipeNumber(){
     bool inputSuccess = false;
     while(!inputSuccess){
 
-        printf("Which version did you want? > ");
+        printf("Which version did you want? ");
         const int inputs = scanf(" %d", &recipeNumber);
 
         inputSuccess = inputs == 1 && recipeNumber >= 1 && recipeNumber <= 5;
