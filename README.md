@@ -1,5 +1,5 @@
 # P1 Exam Program for B226
-
+![GitHub Workflow Status (event)](https://img.shields.io/github/workflow/status/atjn/AAU-P1-B226/Compile)
 
 ## Developer zone
 
