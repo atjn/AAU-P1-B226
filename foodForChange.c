@@ -6,7 +6,7 @@
 #include "func/fileHandle.h"
 #include "func/ui.h"
 #include "func/algorithm.h"
-#include "func/tests.h"
+#include "tests.h"
 
 void foodForChange();
 
