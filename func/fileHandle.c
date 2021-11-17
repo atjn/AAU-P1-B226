@@ -116,8 +116,6 @@ IngredientData* readIngredients(int *ingredientCount) {
     /* Other variables */
     int ingredientNum = -1;
     IngredientData *loadedIngredients;
-    loadedIngredients = malloc(1 * sizeof(IngredientData));
-    snprintf(loadedIngredients[0].ingredientName, 3, "%s", "abekat");
 
     /* Opening the recipes file */
     fp = fopen(INGREDIENT_DATA_LOCATION, "r");
@@ -125,9 +123,30 @@ IngredientData* readIngredients(int *ingredientCount) {
 
     /* Reading the file to get the number of recipes */
     while (fgets(line, len, fp) != NULL) {
-
         ingredientNum++;
     }
+
+    /* Allocating memory for the loaded ingredients array */
+    loadedIngredients = malloc(ingredientNum * sizeof(IngredientData));
+
+    /* Rewinding the file to start reading it again */
+    rewind(fp);
+
+    //int currIngredintIndex = -1;
+    int currLine = 0;
+
+    /* Reading the file to get the number of recipes */
+    while (fgets(line, len, fp) != NULL) {
+        /* Skipping the first line containing CSV metadata */
+        if (currLine == 0) {
+            currLine++;
+            continue;
+        }
+        printf("%s", line);
+        currLine++;
+    }
+
+    snprintf(loadedIngredients[0].ingredientName, 3, "%s", "abekat");
 
     *ingredientCount = ingredientNum;
     return loadedIngredients;
