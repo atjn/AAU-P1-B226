@@ -1,5 +1,5 @@
 #define RECIPES_LOCATION "data/recipes.csv"
-#define MAX_RECIPE_NAME 128
+#define MAX_RECIPE_NAME 32
 #define MAX_INGREDIENTS 64
 #define MAX_INGREDIENT_NAME 16
 #define MAX_CATEGORY_NAME 16
@@ -17,6 +17,11 @@ typedef struct {
 } Recipe;
 
 typedef struct {
+   char ingredientName[MAX_INGREDIENT_NAME];
+   float coo;
+} IngredientData;
+
+typedef struct {
    char categoryName[MAX_CATEGORY_NAME];
-   char ingredients[MAX_INGREDIENT_NAME];
+   IngredientData ingredientsData[MAX_INGREDIENTS];
 } Category;
