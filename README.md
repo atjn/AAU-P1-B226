@@ -16,14 +16,14 @@ make -f makefile-local
 
 Now you can run the program from the command line by writing:
 ```sh
-./program.out
+./foodForChange.out
 ```
 Or on Windows:
 ```sh
-./program.exe
+./foodForChange.exe
 ```
 
 You can also run all unit tests with:
 ```sh
-./program.out --test
+./foodForChange.out --test
 ```
