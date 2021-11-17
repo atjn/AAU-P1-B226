@@ -10,7 +10,7 @@
 /* The function takes a pointer to an integer as a parameter. The parameter is used to return the number to recipes loaded */
 /* The function returns a pointer to the array of structs loaded */
 /* Using semicolons instead of commas in the .csv files (Thanks Microsoft) */
-Recipe * readFile(int *recipesNumber) {
+Recipe * readRecipe(int *recipesNumber) {
     /* Tempoary variabls for reading the recipe file */
     FILE *fp;
     char line[60];
@@ -104,4 +104,31 @@ Recipe * readFile(int *recipesNumber) {
 
     *recipesNumber = recipesNum;
     return loadedRecipes;
+}
+
+IngredientData* readIngredients(int *ingredientCount) {
+    FILE *fp;
+    char line[128];
+    int len = 128;
+    /*char ingredientDelim[] = ";";*/
+
+    /* Other variables */
+    int ingredientNum = -1;
+    IngredientData *loadedIngredients;
+    loadedIngredients = malloc(1 * sizeof(IngredientData));
+    snprintf(loadedIngredients[0].ingredientName, 3, "%s", "abekat");
+
+    /* Opening the recipes file */
+    fp = fopen(INGREDIENT_DATA_LOCATION, "r");
+    if (fp == NULL) exit(EXIT_FAILURE);
+
+    /* Reading the file to get the number of recipes */
+    while (fgets(line, len, fp) != NULL) {
+
+        ingredientNum++;
+    }
+
+    *ingredientCount = ingredientNum;
+    return loadedIngredients;
+    free(loadedIngredients);
 }
