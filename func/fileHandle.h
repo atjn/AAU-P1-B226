@@ -1,4 +1,5 @@
 #include "../lib/CuTest-AAU/CuTest.h"
 
-Recipe * readFile(int *recipesNumber);
+Recipe * readRecipe(int *recipesNumber);
+IngredientData* readIngredients(int *ingredientCount);
 CuSuite *readFileGetSuite();
