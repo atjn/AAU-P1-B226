@@ -89,7 +89,7 @@ Recipe * readRecipe(int *recipesNumber) {
     }
 
     /* For loop for checking input */
-    for (int i = 0; i < 1; i++) {
+   /* for (int i = 0; i < 1; i++) {
         printf("%s\n", loadedRecipes[i].recipeName);
         printf("%d\n", loadedRecipes[i].ingredientCount);
         for (unsigned short j = 0; j < loadedRecipes[i].ingredientCount; j++) {
@@ -98,6 +98,7 @@ Recipe * readRecipe(int *recipesNumber) {
                                      loadedRecipes[i].ingredients[j].weight);
         }
     }
+    */
 
     /* Deallocating memory for the array and closing the file */
     fclose(fp);
