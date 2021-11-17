@@ -30,13 +30,16 @@ void foodForChange(){
 
     int recipesNumber;
     Recipe *recipes = readFile(&recipesNumber);
-    printf("Recipes: %d\n", recipesNumber);
+    printf("Loaded recipes: %d\n", recipesNumber);
 
     const int people = requestAmountOfPeople();
+
     makeListOfRecipes();
-    printListOfRecipes();
     //const int recipeNumber = requestRecipeNumber();
-    printRecipe(recipes[0], people);
+    printListOfRecipes();
+
+    const int recipeIndex = requestRecipeName(recipes, recipesNumber);
+    printRecipe(recipes[recipeIndex], people);
 
     free(recipes);
 }
