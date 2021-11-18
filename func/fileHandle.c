@@ -106,14 +106,14 @@ Recipe * readRecipe(int *recipesNumber) {
     }
     */
 
-    /* Deallocating memory for the array and closing the file */
+    /* Closing the file */
     fclose(fp);
 
     *recipesNumber = recipesNum;
     return loadedRecipes;
 }
 
-IngredientData* readIngredients(int *ingredientCount) {
+void readIngredients(IngredientData *ingredients[], int *ingredientCount, Category *categories[], int *categoryCount) {
     FILE *fp;
     char line[128];
     int len = 128;
@@ -176,54 +176,43 @@ IngredientData* readIngredients(int *ingredientCount) {
 
                 /* While loop for checking and indexing the categories */
                 while (categoryPtr != NULL) {
-                    //categoryPtr[strcspn(categoryPtr, "\n")] = 0;
-                    
-                    
+                    categoryPtr[strcspn(categoryPtr, "\n")] = 0;
+
+                    /* Allocating memory for the loaded categories */
                     if (loadedCategories == 0) {
                         loadedCategories = malloc(1 * sizeof(Category)); //(Category*) 
                     }
-                    
 
-                    int categoryIndex = 0;
+                    /* INSERT EXPLANATION HERE LOL XD GAMING GAMERS */
+                    for (int i = 0; i < (int) strlen(categoryPtr); i++) {
+                        if (categoryPtr[i] == 13) {
+                            categoryPtr[i] = '\0';
+                        }
+                    }
 
                     /* Checking whether the category exists */
-                    /*
+                    int categoryIndex = 0;
                     if (categoryNum != 0) {
                         categoryIndex = categoryExist(categoryPtr, loadedCategories, categoryNum);
                     }
                     else {
                         categoryIndex = 0;
-                    }*/
-                    /*
-                    char tempChar = 'n';
-                    int index = 0;
-                    while (tempChar != '\0') {
-                        tempChar = categoryPtr[index];
-                        printf("%c", tempChar);
-                        index++;
-                    }*/
-                    printf("%d + %s\n", categoryNum, categoryPtr);
-                    for (int i = 0; i < categoryNum; i++) {
-                        printf("%d + %s\n", categoryNum, categoryPtr);
-                        int temp = strcmp(loadedCategories[i].categoryName, categoryPtr);
-                        printf("%s %s equal to %s\n", categoryPtr, (temp == 0) ? "is" : "is not", loadedCategories[i].categoryName);
-                        printf("%d + %s + %d\n", categoryNum, categoryPtr, temp);
-
                     }
-                    printf("\n");
                     
-                    
-                    
-                    if (categoryIndex > 0) {
+                    /* Adding data to the indvidual arrays. If-statement for setting up a new category if nessesary */
+                    /* TODO Change the structure of the structs as we are atoring the same data multiple times whih is a big waste of memory */
+                    if (categoryIndex != 0) {
                         loadedCategories[categoryIndex].ingredientCount += 1;
-                        //loadedCategories[categoryIndex].ingredientData[loadedCategories[categoryNum - 1].ingredientCount - 1] = loadedIngredients[currLine - 1];
+                        strcpy(loadedCategories[categoryIndex].ingredientData[loadedCategories[categoryIndex].ingredientCount - 1].ingredientName, loadedIngredients[currLine - 1].ingredientName);
+                        loadedCategories[categoryIndex].ingredientData[loadedCategories[categoryIndex].ingredientCount - 1].coo = loadedIngredients[currLine - 1].coo;
                     }
                     else {
                         categoryNum++;
                         loadedCategories = realloc(loadedCategories, categoryNum * sizeof(Category)); //(Category*) 
-                        snprintf(loadedCategories[categoryNum - 1].categoryName, strlen(categoryPtr), "%s", categoryPtr);
+                        strcpy(loadedCategories[categoryNum - 1].categoryName, categoryPtr);
                         loadedCategories[categoryNum - 1].ingredientCount = 1;
-                        //loadedCategories[categoryNum - 1].ingredientData[0] = loadedIngredients[currLine - 1];
+                        strcpy(loadedCategories[categoryNum - 1].ingredientData[0].ingredientName, loadedIngredients[currLine - 1].ingredientName);
+                        loadedCategories[categoryNum - 1].ingredientData[0].coo = loadedIngredients[currLine - 1].coo;
                     }
 
                     /* Fetching the next part of the string */
@@ -236,43 +225,35 @@ IngredientData* readIngredients(int *ingredientCount) {
         currLine++;
     }
     
-    /*
+    /* Test loop for printing all indexed and read data */
     for (int i = 0; i < categoryNum; i++) {
+        printf("%d \n", i);
         printf("%d: category %s, ingredients: %d \n", i, loadedCategories[i].categoryName, loadedCategories[i].ingredientCount);
-        //printf("%d: category :(, ingredients: %d \n", i, loadedCategories[i].ingredientCount);
+        for (int j = 0; j < loadedCategories[i].ingredientCount; j++) {
+            printf("\t%s, CO2: %f\n",loadedCategories[i].ingredientData[j].ingredientName, loadedCategories[i].ingredientData[j].coo);
+        }
     }
-    */
+    
 
-    /* Deallocating memory for the array and closing the file */
+    /* Closing the file */
     fclose(fp);
 
     /* Returning values */
+    ingredients = &loadedIngredients;
+    printf("%s\n", ingredients[0]->ingredientName);
     *ingredientCount = ingredientNum;
-    return loadedIngredients;
+    categories = &loadedCategories;
+    printf("%s\n", categories[0]->ingredientData[0].ingredientName);
+    *categoryCount = categoryNum;
 }
 
 /* A function that checks if the category has already been made and allocated */
 int categoryExist(char categoryName[], Category *categoryArray, int categories) {
-    int categoryFound = 0;
-    int tempIndex = 0;
-
-    while (!categoryFound && tempIndex < categories) {
-        /*for (int i = 0; i < (int) strlen(categoryName); i++) {
-            printf("%c", categoryName[i]);
+    for (int i = 0; i < categories; i++){
+        //printf("%s %s %s\n", categoryName, (strcmp(categoryName, categoryArray[i].categoryName) == 0) ? "is the same as" : "is not the same as", categoryArray[i].categoryName);
+        if (strcmp(categoryName, categoryArray[i].categoryName) == 0) {
+            return i;
         }
-        printf("\n");
-        for (int i = 0; i < (int) strlen(categoryArray[tempIndex].categoryName); i++) {
-            printf("%c", categoryArray[tempIndex].categoryName[i]);
-        }
-        printf("\n");
-        printf("\n");*/
-    
-        if (strcmp(categoryName, categoryArray[tempIndex].categoryName) == 0) {
-            categoryFound = 1;
-        }
-        tempIndex++;
     }
-    //printf("------%d\n", tempIndex);
-    //printf("Tempindex: %d String1: %s, String2: %s strcmp: %d\n", tempIndex, categoryArray[tempIndex].categoryName, categoryName, strcmp(categoryName, categoryArray[tempIndex].categoryName));
-    return tempIndex;
+    return 0;
 }

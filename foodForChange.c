@@ -33,10 +33,14 @@ void foodForChange(){
     //printf("%d\n", recipesNumber);
     free(recipes);
 
+    IngredientData **ingredients = 0;
     int ingredientsNumber;
-    IngredientData *ingredientData = readIngredients(&ingredientsNumber);
-    //printf("%d\n", ingredientsNumber);
-    free(ingredientData);
+    Category **categories = 0;
+    int categoriesNumber;
+    readIngredients(ingredients, &ingredientsNumber, categories, &categoriesNumber);
+    free(categories);
+    free(ingredients);
+
     /*
     //requestRecipeName();
     requestAmountOfPeople();
