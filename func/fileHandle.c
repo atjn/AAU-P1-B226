@@ -5,6 +5,9 @@
 #include <string.h>
 #include "definition.h"
 
+/* Including gnu strtok revised function */
+#include "../lib/GNU-Func/strtok_gnu.h"
+
 
 /* This function is used in the beginning of the foodForChange.c file to load the recipes file in the data folder */
 /* The function takes a pointer to an integer as a parameter. The parameter is used to return the number to recipes loaded */
@@ -163,13 +166,12 @@ IngredientData* readIngredients(int *ingredientCount) {
                 /* Temporary varables */
                 char *rest = NULL;
                 char *categoryPtr;
-                categoryPtr = strtok_r(ingredientPtr, categoryDelim, &rest);
+                categoryPtr = strtok_gnu(ingredientPtr, categoryDelim, &rest);
 
                 /* For loop for checking and indexing the categories */
                 while (categoryPtr != NULL) {
-
                     printf("categoryPtr:%s\n", categoryPtr);
-                    categoryPtr = strtok_r(NULL, categoryDelim, &rest);
+                    categoryPtr = strtok_gnu(NULL, categoryDelim, &rest);
                 }
 
                 tempIngredientInfoCount = 0;
