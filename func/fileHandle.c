@@ -163,14 +163,15 @@ IngredientData* readIngredients(int *ingredientCount) {
                 /* Temporary varables */
                 char *rest = NULL;
                 char *categoryPtr;
+                categoryPtr = strtok_r(ingredientPtr, categoryDelim, &rest);
 
                 /* For loop for checking and indexing the categories */
-                for (categoryPtr = strtok_r(ingredientPtr, categoryDelim, &rest);
-                    categoryPtr != NULL;
-                    categoryPtr = strtok_r(NULL, categoryDelim, &rest)) {   
+                while (categoryPtr != NULL) {
+
                     printf("categoryPtr:%s\n", categoryPtr);
+                    categoryPtr = strtok_r(NULL, categoryDelim, &rest);
                 }
-                
+
                 tempIngredientInfoCount = 0;
             }
             ingredientPtr = strtok(NULL, ingredientDelim);
