@@ -35,7 +35,7 @@ void foodForChange(){
 
     int ingredientsNumber;
     IngredientData *ingredientData = readIngredients(&ingredientsNumber);
-    printf("%d\n", ingredientsNumber);
+    //printf("%d\n", ingredientsNumber);
     free(ingredientData);
     /*
     //requestRecipeName();
