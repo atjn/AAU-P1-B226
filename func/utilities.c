@@ -15,8 +15,8 @@ void flushInput(){
 }
 
 /**
-This function capitalises the first character of a string.
-*/
+ * Capitalises the first character of a string.
+ */
 const char* capitaliseFirst(char* string){
 
     string[0] = toupper(string[0]);
@@ -51,5 +51,47 @@ void testCapitaliseFirst(CuTest* testCase){
 
     char string9[] = "   ";
     CuAssertStrEquals(testCase, "   ", capitaliseFirst(string9));
+
+}
+
+/**
+ * Takes the letters in a char array and makes them all lower case.
+ */
+const char* toLowerCase(char* string){
+
+    char* lowerString = string;
+
+    for(int i = 0; string[i]; i++){
+        string[i] = tolower(string[i]);
+    }
+
+    return lowerString;
+}
+
+void testToLowerCase(CuTest* testCase){
+
+    char string1[] = "PHOENIX";
+    CuAssertStrEquals(testCase, "phoenix", toLowerCase(string1));
+
+    char string2[] = "PhoenIx";
+    CuAssertStrEquals(testCase, "phoenix", toLowerCase(string2));
+
+    char string3[] = "moO";
+    CuAssertStrEquals(testCase, "moo", toLowerCase(string3));
+
+    char string4[] = "moo";
+    CuAssertStrEquals(testCase, "moo", toLowerCase(string4));
+
+    char string5[] = "Ph03n1x says MOO!!";
+    CuAssertStrEquals(testCase, "ph03n1x says moo!!", toLowerCase(string5));
+
+    char string6[] = "";
+    CuAssertStrEquals(testCase, "", toLowerCase(string6));
+
+    char string7[] = " ";
+    CuAssertStrEquals(testCase, " ", toLowerCase(string7));
+
+    char string8[] = "&_!/";
+    CuAssertStrEquals(testCase, "&_!/", toLowerCase(string8));
 
 }

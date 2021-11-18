@@ -11,24 +11,13 @@
 #include "./utilities.h"
 
 
-
-//This function is a utility only used inside this file.
-//This function takes the letters in a char array and makes it lower case.
-void toLowerCase(char* string){
-
-    for(int i = 0; string[i]; i++){
-        string[i] = tolower(string[i]);
-    }
-}
-
-
 //This function is a utility only used inside this file.
 //This function gets the index of a recipe in the recipes array.
 int getIdFromString(char *recipeName, Recipe* recipes, int recipeCount){
-    toLowerCase(recipeName);
+    const char* recipeNameInLower = toLowerCase(recipeName);
 
     for (int i = 0; i < recipeCount; i++){
-        if (strcmp(recipes[i].name, recipeName) == 0){
+        if (strcmp(recipes[i].name, recipeNameInLower) == 0){
             return i;
         }
     }
