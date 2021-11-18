@@ -111,7 +111,7 @@ IngredientData* readIngredients(int *ingredientCount) {
     FILE *fp;
     char line[128];
     int len = 128;
-    /*char ingredientDelim[] = ";";*/
+    char ingredientDelim[] = ";";
 
     /* Other variables */
     int ingredientNum = -1;
@@ -132,7 +132,7 @@ IngredientData* readIngredients(int *ingredientCount) {
     /* Rewinding the file to start reading it again */
     rewind(fp);
 
-    //int currIngredintIndex = -1;
+    int tempIngredientInfoCount = 0;
     int currLine = 0;
 
     /* Reading the file to get the number of recipes */
@@ -142,13 +142,39 @@ IngredientData* readIngredients(int *ingredientCount) {
             currLine++;
             continue;
         }
-        printf("%s", line);
+
+        /* Splits the line variable every time we encounter a semicolon */
+        char *ingredientPtr = strtok(line, ingredientDelim);
+        while(ingredientPtr != NULL) {
+            ingredientPtr[strcspn(ingredientPtr, "\n")] = 0;
+            /* Stores the ingredient name for the given ingredient */
+            if (tempIngredientInfoCount == 0) {
+                strcpy(loadedIngredients[currLine - 1].ingredientName, ingredientPtr);
+                tempIngredientInfoCount++;
+            }
+            /* Stores the amount (Grams) for the given ingredient */
+            else if (tempIngredientInfoCount == 1) {
+                loadedIngredients[currLine - 1].coo = atof(ingredientPtr);
+                tempIngredientInfoCount++;
+            }
+            /* Stores the weight for the given ingredient */
+            else if (tempIngredientInfoCount == 2) {
+                printf("%s\n", ingredientPtr);
+                tempIngredientInfoCount = 0;
+            }
+            ingredientPtr = strtok(NULL, ingredientDelim);
+        }
+
+        //printf("%s", line);
         currLine++;
     }
 
     snprintf(loadedIngredients[0].ingredientName, 3, "%s", "abekat");
 
+    /* Deallocating memory for the array and closing the file */
+    fclose(fp);
+
+    /* Returning values */
     *ingredientCount = ingredientNum;
     return loadedIngredients;
-    free(loadedIngredients);
 }
