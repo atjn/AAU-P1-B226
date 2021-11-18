@@ -120,6 +120,8 @@ IngredientData* readIngredients(int *ingredientCount) {
     /* Other variables */
     int ingredientNum = -1;
     IngredientData *loadedIngredients;
+    int categoryNum = 0;
+    Category *loadedCategories = 0;
 
     /* Opening the recipes file */
     fp = fopen(INGREDIENT_DATA_LOCATION, "r");
@@ -131,7 +133,7 @@ IngredientData* readIngredients(int *ingredientCount) {
     }
 
     /* Allocating memory for the loaded ingredients array */
-    loadedIngredients = malloc(ingredientNum * sizeof(IngredientData));
+    loadedIngredients = (IngredientData*) malloc(ingredientNum * sizeof(IngredientData));
 
     /* Rewinding the file to start reading it again */
     rewind(fp);
@@ -168,9 +170,20 @@ IngredientData* readIngredients(int *ingredientCount) {
                 char *categoryPtr;
                 categoryPtr = strtok_gnu(ingredientPtr, categoryDelim, &rest);
 
-                /* For loop for checking and indexing the categories */
+                /* While loop for checking and indexing the categories */
                 while (categoryPtr != NULL) {
-                    printf("categoryPtr:%s\n", categoryPtr);
+                    if (loadedCategories == 0) {
+                        loadedCategories = (Category*) malloc(1 * sizeof(Category));                }
+
+                    /* Checking whether the category exists */
+
+                    else {
+                        loadedCategories = (Category*) realloc(loadedCategories, categoryNum * sizeof(Category));
+                    }
+
+                    /* Adding information to the specific category */
+
+                    /* Fetching the next part of the string */
                     categoryPtr = strtok_gnu(NULL, categoryDelim, &rest);
                 }
 
