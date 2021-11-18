@@ -8,6 +8,9 @@
 /* Including gnu strtok revised function */
 #include "../lib/GNU-Func/strtok_gnu.h"
 
+/* Functions */
+int categoryExist(char categoryName[], Category *categoryArray, int categoryLength);
+
 
 /* This function is used in the beginning of the foodForChange.c file to load the recipes file in the data folder */
 /* The function takes a pointer to an integer as a parameter. The parameter is used to return the number to recipes loaded */
@@ -168,17 +171,27 @@ IngredientData* readIngredients(int *ingredientCount) {
                 /* Temporary varables */
                 char *rest = NULL;
                 char *categoryPtr;
+
                 categoryPtr = strtok_gnu(ingredientPtr, categoryDelim, &rest);
 
                 /* While loop for checking and indexing the categories */
                 while (categoryPtr != NULL) {
                     if (loadedCategories == 0) {
-                        loadedCategories = (Category*) malloc(1 * sizeof(Category));                }
+                        loadedCategories = (Category*) malloc(1 * sizeof(Category));
+                    }
 
                     /* Checking whether the category exists */
-
+                    int categoryIndex = categoryExist(categoryPtr, loadedCategories, categoryNum);
+                    if (categoryIndex > 0) {
+                        loadedCategories[categoryIndex].ingredientCount += 1;
+                        loadedCategories[categoryIndex].ingredientData[loadedCategories[categoryNum - 1].ingredientCount - 1] = loadedIngredients[currLine - 1];
+                    }
                     else {
+                        categoryNum++;
                         loadedCategories = (Category*) realloc(loadedCategories, categoryNum * sizeof(Category));
+                        strcpy(loadedCategories[categoryNum - 1].categoryName, categoryPtr);
+                        loadedCategories[categoryNum - 1].ingredientCount = 1;
+                        loadedCategories[categoryNum - 1].ingredientData[0] = loadedIngredients[currLine - 1];
                     }
 
                     /* Adding information to the specific category */
@@ -204,4 +217,14 @@ IngredientData* readIngredients(int *ingredientCount) {
     /* Returning values */
     *ingredientCount = ingredientNum;
     return loadedIngredients;
+}
+
+/* A function that checks if the category has already been made and allocated */
+int categoryExist(char categoryName[], Category *categoryArray, int categoryLength) {
+    for (int i = 0; i < categoryLength; i++) {
+        if (strcmp(categoryName, categoryArray[i].categoryName) == 0) {
+            return i;
+        }
+    }
+    return 0;
 }
