@@ -4,6 +4,7 @@
 #define MAX_INGREDIENTS 128
 #define MAX_INGREDIENT_NAME 128
 #define MAX_CATEGORY_NAME 128
+#define MAX_CATEGORIES 128
 
 typedef struct {
    char ingredientName[MAX_INGREDIENT_NAME];
@@ -27,3 +28,10 @@ typedef struct {
    IngredientData ingredientData[MAX_INGREDIENTS];
    unsigned short ingredientCount;
 } Category;
+
+typedef struct {
+   Category categories[MAX_CATEGORIES];
+   unsigned short categoriesCount;
+   IngredientData ingredients[MAX_INGREDIENTS];
+   unsigned short ingredientsCount;
+} IngredientCategory;
