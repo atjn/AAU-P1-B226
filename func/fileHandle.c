@@ -160,14 +160,15 @@ IngredientData* readIngredients(int *ingredientCount) {
             }
             /* Stores the weight for the given ingredient */
             else if (tempIngredientInfoCount == 2) {
+                /* Temporary varables */
+                char *rest = NULL;
+                char *categoryPtr;
 
-                if (strstr(ingredientPtr, categoryDelim) != NULL) {
-                    char *categoryPtr = strtok(line, categoryDelim);
-                    while(categoryPtr != NULL) {
-                        //categoryPtr[strcspn(categoryPtr, "\n")] = 0;
-                        printf("%s\n", categoryPtr);
-                        categoryPtr = strtok(NULL, categoryDelim);
-                    }
+                /* For loop for checking and indexing the categories */
+                for (categoryPtr = strtok_r(ingredientPtr, categoryDelim, &rest);
+                    categoryPtr != NULL;
+                    categoryPtr = strtok_r(NULL, categoryDelim, &rest)) {   
+                    printf("categoryPtr:%s\n", categoryPtr);
                 }
                 
                 tempIngredientInfoCount = 0;
