@@ -22,3 +22,8 @@ const char* capitaliseFirst(char* string){
     string[0] = toupper(string[0]);
     return string;
 }
+
+void testCapitaliseFirst(CuTest* testCase){
+    char string[] = "hello";
+    CuAssertStrEquals(testCase, "Hello", capitaliseFirst(string));
+}
