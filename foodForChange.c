@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include "func/definition.h"
+#include "func/definitions.h"
 #include "func/fileHandle.h"
 #include "func/ui.h"
 #include "func/algorithm.h"
@@ -32,14 +32,15 @@ void foodForChange(){
     Recipe *recipes = readRecipe(&recipesNumber);
     //printf("Loaded recipes: %d\n", recipesNumber);
 
+    const int originalRecipeIndex = requestRecipeName(recipes, recipesNumber);
     const int people = requestAmountOfPeople();
 
-    makeListOfRecipes();
-    //const int recipeNumber = requestRecipeNumber();
-    printListOfRecipes();
+    Recipe alternativeRecipes[RECIPES_IN_ALTERNATIVES_LIST];
+    makeListOfAlternativeRecipes(originalRecipeIndex, recipes, alternativeRecipes);
+    printListOfAlternativeRecipes(alternativeRecipes);
+    const int alternativeRecipeIndex = requestRecipeNumber();
 
-    const int recipeIndex = requestRecipeName(recipes, recipesNumber);
-    printRecipe(recipes[recipeIndex], people);
+    printRecipe(alternativeRecipes[alternativeRecipeIndex], people);
 
     free(recipes);
 }
