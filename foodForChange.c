@@ -29,8 +29,8 @@ void foodForChange(){
     /* How to use the readFile funtion */
 
     int recipesNumber;
-    Recipe *recipes = readFile(&recipesNumber);
-    printf("Loaded recipes: %d\n", recipesNumber);
+    Recipe *recipes = readRecipe(&recipesNumber);
+    //printf("Loaded recipes: %d\n", recipesNumber);
 
     const int people = requestAmountOfPeople();
 

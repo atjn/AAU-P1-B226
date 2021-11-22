@@ -1,7 +1,12 @@
 "RECIPE";"INGREDIENT";"AMOUNT";"WEIGHT"
-lasagne;;;
-;Beef;125;5
-;Pasta;50;3
 burger;;;
-;Beef;75;6
-;Salad;20;2
+;minced beef;125;1
+;bacon;14;1
+;salted butter;4;1
+;cheddar;28;1
+;burger bun;60;1
+;mayonnaise;2.43;1
+;tomato;70;1
+;cucumber;29;1
+;red onion;28;1
+;looseleaf lettuce;6;1
