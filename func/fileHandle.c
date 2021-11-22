@@ -113,7 +113,7 @@ Recipe * readRecipe(int *recipesNumber) {
     return loadedRecipes;
 }
 
-int readIngredients() {
+void readIngredients(IngredientData *ingredients[], int *ingredientCount, Category *categories[], int *categoryCount) {
     FILE *fp;
     char line[128];
     int len = 128;
@@ -239,14 +239,12 @@ int readIngredients() {
     fclose(fp);
 
     /* Returning values */
-    //ingredients = &loadedIngredients;
-    //printf("%s\n", ingredients[0]->ingredientName);
-    //*ingredientCount = ingredientNum;
-    //categories = &loadedCategories;
-    //printf("%s\n", categories[0]->ingredientData[0].ingredientName);
-    //*categoryCount = categoryNum;
-
-    return 1;
+    ingredients = &loadedIngredients;
+    printf("%s\n", ingredients[0]->ingredientName);
+    *ingredientCount = ingredientNum;
+    categories = &loadedCategories;
+    printf("%s\n", categories[0]->ingredientData[0].ingredientName);
+    *categoryCount = categoryNum;
 }
 
 /* A function that checks if the category has already been made and allocated */

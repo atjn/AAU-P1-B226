@@ -34,8 +34,13 @@ void foodForChange(){
     */
     //printf("Loaded recipes: %d\n", recipesNumber);
 
-    int ingredientData = readIngredients();
-    printf("%d\n", ingredientData);
+    IngredientData **ingredients = 0;
+    int ingredientsNumber;
+    Category **categories = 0;
+    int categoriesNumber;
+    readIngredients(ingredients, &ingredientsNumber, categories, &categoriesNumber);
+    free(categories);
+    free(ingredients);
     /*
     const int people = requestAmountOfPeople();
 
