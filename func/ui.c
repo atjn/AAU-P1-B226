@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <math.h>
 
 #include "../lib/CuTest-AAU/CuTest.h"
 
@@ -10,24 +11,14 @@
 #include "./ui.h"
 #include "./utilities.h"
 
-
-//This function is a utility only used inside this file.
-//This function gets the index of a recipe in the recipes array.
-int getIdFromString(char *recipeName, Recipe* recipes, int recipeCount){
-    const char* recipeNameInLower = toLowerCase(recipeName);
-
-    for (int i = 0; i < recipeCount; i++){
-        if (strcmp(recipes[i].name, recipeNameInLower) == 0){
-            return i;
-        }
-    }
-    return -1;
-}
+int getIdFromString(char *, Recipe *, int);
+void padAround(char [], char [], int);
+void printLine(char [], char [], char [], int, int []);
 
 
 //This function ask the user for a recipe name. If it cannot match the user input to a recipe, it will return itself, and thus start the process again.
 //It returns an `int` corresponding the index of the recipe in the recipes array.
-int requestRecipeName(Recipe* recipes, int recipeCount){
+int requestRecipeName(Recipe *recipes, int recipeCount){
     char recipeName[MAX_RECIPE_NAME];
 
     printf("What recipe do you want to eat? ");
@@ -48,7 +39,25 @@ int requestRecipeName(Recipe* recipes, int recipeCount){
 
 }
 
+/**
+ * Takes the name (string) of a recipe, and returns the recipe's index in the recipes array.
+ */
+int getIdFromString(char *recipeName, Recipe *recipes, int recipeCount){
+    char recipeNameInLower[MAX_RECIPE_NAME];
+    strcpy(recipeNameInLower, recipeName);
+    toLowerCase(recipeNameInLower);
 
+    for (int i = 0; i < recipeCount; i++){
+        if (strcmp(recipes[i].name, recipeNameInLower) == 0){
+            return i;
+        }
+    }
+    return -1;
+}
+
+/**
+ * Asks the user how many people they are making dinner for, and returns the value in an int.
+ */
 int requestAmountOfPeople(){
     int amountOfPeople = 0;
     printf("How many people are you cooking for (1─100)? ");
@@ -92,19 +101,73 @@ int requestRecipeNumber(){
     return recipeNumber;
 }
 
-//This function prints information about a given recipe.
-void printRecipe(Recipe recipe, int people) {
+/**
+ * Prints information about a given recipe.
+ */
+void printRecipe(Recipe recipe, int people){
+    /**
+     * For mysterious reasons, the last digit of "cellLengths" becomes really big, and wrecks the system.
+     * This issue is solved with a hack: add an extra item at the end of the array, and don't read it.
+     */
+    int cellLengths[] = {22, 14, 14, 0};
+    const int numberOfCells = sizeof(cellLengths) / sizeof(cellLengths[0]) - 1;
+
+    const int titleLength = 50;
+    char title[titleLength];
+    char name[MAX_RECIPE_NAME];
+    strcpy(name, recipe.name);
+    capitaliseFirst(name);
+    padAround(name, title, titleLength);
+
     printf("\n\n");
-    printf("┌────────────────────────────────────────────────────────┐\n");
-    printf("│                        %-10s                      │\n", capitaliseFirst(recipe.name));
-    printf("├─────────────────────┬──────────────────┬───────────────┤\n");
+    printLine("┌", "─", "┐", numberOfCells, cellLengths);
+    printf("│ %s │", title);
+    printLine("├", "┬", "┤", numberOfCells, cellLengths);
     for (int i = 0; i < recipe.ingredientCount; i++){
-        //TODO: do the number
-        printf("│ %-20s│%10f(g)     │%6d(g CO₂)  │\n", capitaliseFirst(recipe.ingredients[i].name), recipe.ingredients[i].amount*people , 25);
+        char ingredientName[MAX_INGREDIENT_NAME];
+        strcpy(ingredientName, recipe.ingredients[i].name);
+        capitaliseFirst(ingredientName);
+
+        //TODO: print the correct g CO₂ number
+        printf("│ %-20s │ %9.1lf(g) │ %5d(g CO₂) │", ingredientName, recipe.ingredients[i].amount * people , 25);
+        if(i < recipe.ingredientCount - 1) printf("\n");
 
     }
-    printf("├─────────────────────┴──────────────────┴───────────────┤\n");
-    //TODO: do the number
-    printf("│ Amount of CO₂: %-10d                              │\n", 10);
-    printf("└────────────────────────────────────────────────────────┘\n");
+    printLine("├", "┴", "┤", numberOfCells, cellLengths);
+
+    //TODO: print the correct g CO₂ number
+    printf("│ Amount of CO₂: %-35d │", 10);
+
+    printLine("└", "─", "┘", numberOfCells, cellLengths);
+}
+
+/**
+ * Takes a string and inserts it in the center of a wider string.
+ * Useful when you want to center some text in a graphical output.
+ */
+void padAround(char string[], char centeredString[], int centeredStringLength){
+
+    const int stringLength = strlen(string);
+    const int frontPadding = floor((centeredStringLength - stringLength) / 2);
+
+    for(int c = 0; c < centeredStringLength; c++) centeredString[c] = ' ';
+    for(int c = 0; c < stringLength; c++) centeredString[c + frontPadding] = string[c];
+
+}
+
+/**
+ * Prints a vertical table delimiter line.
+ * Allows defining the number- and length of cells, along with which start, end, and delimiter characters should be used.
+ */
+void printLine(char start[], char delimiter[], char end[], int numberOfCells, int cellLengths[]){
+
+    printf("\n%s", start);
+
+    for(int c = 0; c < numberOfCells; c++){
+        if(c != 0) printf("%s", delimiter);
+        for(int l = 0; l < cellLengths[c]; l++) printf("─");
+    }
+
+    printf("%s\n", end);
+
 }
