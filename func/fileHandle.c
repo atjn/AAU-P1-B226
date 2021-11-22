@@ -118,13 +118,10 @@ IngredientData * readIngredients(int *ingredientCount) {
     char line[128];
     int len = 128;
     char ingredientDelim[] = ";";
-    char categoryDelim[] = ".";
 
     /* Other variables */
     int ingredientNum = -1;
     IngredientData *loadedIngredients;
-    int categoryNum = 0;
-    Category *loadedCategories = 0;
 
     /* Opening the recipes file */
     fp = fopen(INGREDIENT_DATA_LOCATION, "r");
@@ -165,6 +162,9 @@ IngredientData * readIngredients(int *ingredientCount) {
             else if (tempIngredientInfoCount == 1) {
                 loadedIngredients[currLine - 1].coo = atof(ingredientPtr);
                 tempIngredientInfoCount++;
+            }
+            else {
+                tempIngredientInfoCount = 0;
             }
             ingredientPtr = strtok(NULL, ingredientDelim);
         }
