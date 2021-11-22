@@ -17,7 +17,7 @@ int getIdFromString(char *recipeName, Recipe* recipes, int recipeCount){
     const char* recipeNameInLower = toLowerCase(recipeName);
 
     for (int i = 0; i < recipeCount; i++){
-        if (strcmp(recipes[i].name, recipeNameInLower) == 0){
+        if (strcmp(recipes[i].recipeName, recipeNameInLower) == 0){
             return i;
         }
     }
@@ -96,11 +96,11 @@ int requestRecipeNumber(){
 void printRecipe(Recipe recipe, int people) {
     printf("\n\n");
     printf("┌────────────────────────────────────────────────────────┐\n");
-    printf("│                        %-10s                      │\n", capitaliseFirst(recipe.name));
+    printf("│                        %-10s                      │\n", capitaliseFirst(recipe.recipeName));
     printf("├─────────────────────┬──────────────────┬───────────────┤\n");
     for (int i = 0; i < recipe.ingredientCount; i++){
         //TODO: do the number
-        printf("│ %-20s│%10f(g)     │%6d(g CO₂)  │\n", capitaliseFirst(recipe.ingredients[i].name), recipe.ingredients[i].amount*people , 25);
+        printf("│ %-20s│%10f(g)     │%6d(g CO₂)  │\n", capitaliseFirst(recipe.ingredients[i].ingredientName), recipe.ingredients[i].amount*people , 25);
 
     }
     printf("├─────────────────────┴──────────────────┴───────────────┤\n");
