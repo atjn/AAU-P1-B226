@@ -1,4 +1,4 @@
-#include "../lib/CuTest-AAU/CuTest.h"
 
 void flushInput();
-CuSuite *flushInputGetSuite();
+const char* capitaliseFirst(char*);
+const char* toLowerCase(char*);

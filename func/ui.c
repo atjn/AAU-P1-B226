@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include "../lib/CuTest-AAU/CuTest.h"
 
@@ -10,24 +11,13 @@
 #include "./utilities.h"
 
 
-
-//This function is a utility only used inside this file.
-//This function takes the letters in a char array and makes it lower case.
-void toLowerCase(char* recipeName){
-
-    for(int i = 0; recipeName[i]; i++){
-        recipeName[i] = tolower(recipeName[i]);
-    }
-}
-
-
 //This function is a utility only used inside this file.
 //This function gets the index of a recipe in the recipes array.
 int getIdFromString(char *recipeName, Recipe* recipes, int recipeCount){
-    toLowerCase(recipeName);
+    const char* recipeNameInLower = toLowerCase(recipeName);
 
     for (int i = 0; i < recipeCount; i++){
-        if (recipes[i].recipeName == recipeName){
+        if (strcmp(recipes[i].name, recipeNameInLower) == 0){
             return i;
         }
     }
@@ -38,10 +28,10 @@ int getIdFromString(char *recipeName, Recipe* recipes, int recipeCount){
 //This function ask the user for a recipe name. If it cannot match the user input to a recipe, it will return itself, and thus start the process again.
 //It returns an `int` corresponding the index of the recipe in the recipes array.
 int requestRecipeName(Recipe* recipes, int recipeCount){
-    char* recipeName = "";
+    char recipeName[MAX_RECIPE_NAME];
 
-    printf("What recipe do you want to eat?");
-    const int inputs = scanf("%c", recipeName);
+    printf("What recipe do you want to eat? ");
+    const int inputs = scanf(" %s", recipeName);
 
     flushInput();
 
@@ -61,8 +51,8 @@ int requestRecipeName(Recipe* recipes, int recipeCount){
 
 int requestAmountOfPeople(){
     int amountOfPeople = 0;
-    printf("How many people are you cooking for (1-100)?");
-    int res = scanf("%d", &amountOfPeople);
+    printf("How many people are you cooking for (1─100)? ");
+    int res = scanf(" %d", &amountOfPeople);
 
     flushInput();
 
@@ -87,7 +77,7 @@ int requestRecipeNumber(){
     bool inputSuccess = false;
     while(!inputSuccess){
 
-        printf("Which version did you want? > ");
+        printf("Which version did you want? ");
         const int inputs = scanf(" %d", &recipeNumber);
 
         inputSuccess = inputs == 1 && recipeNumber >= 1 && recipeNumber <= 5;
@@ -102,6 +92,19 @@ int requestRecipeNumber(){
     return recipeNumber;
 }
 
-void printRecipe(int recipeNumber){
-    printf(" %d", recipeNumber);
+//This function prints information about a given recipe.
+void printRecipe(Recipe recipe, int people) {
+    printf("\n\n");
+    printf("┌────────────────────────────────────────────────────────┐\n");
+    printf("│                        %-10s                      │\n", capitaliseFirst(recipe.name));
+    printf("├─────────────────────┬──────────────────┬───────────────┤\n");
+    for (int i = 0; i < recipe.ingredientCount; i++){
+        //TODO: do the number
+        printf("│ %-20s│%10d(g)     │%6d(g CO₂)  │\n", capitaliseFirst(recipe.ingredients[i].name), recipe.ingredients[i].amount*people , 25);
+
+    }
+    printf("├─────────────────────┴──────────────────┴───────────────┤\n");
+    //TODO: do the number
+    printf("│ Amount of CO₂: %-10d                              │\n", 10);
+    printf("└────────────────────────────────────────────────────────┘\n");
 }

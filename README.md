@@ -1,5 +1,6 @@
 # P1 Exam Program for B226
-
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/atjn/AAU-P1-B226/Compile/main)
+![LGTM Grade](https://img.shields.io/lgtm/grade/cpp/github/atjn/AAU-P1-B226)
 
 ## Developer zone
 
@@ -15,14 +16,14 @@ make -f makefile-local
 
 Now you can run the program from the command line by writing:
 ```sh
-./program.out
+./foodForChange.out
 ```
 Or on Windows:
 ```sh
-./program.exe
+./foodForChange.exe
 ```
 
 You can also run all unit tests with:
 ```sh
-./program.out --test
+./foodForChange.out --test
 ```

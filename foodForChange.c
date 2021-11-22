@@ -6,7 +6,7 @@
 #include "func/fileHandle.h"
 #include "func/ui.h"
 #include "func/algorithm.h"
-#include "func/tests.h"
+#include "tests.h"
 
 void foodForChange();
 
@@ -30,18 +30,16 @@ void foodForChange(){
 
     int recipesNumber;
     Recipe *recipes = readRecipe(&recipesNumber);
-    //printf("%d\n", recipesNumber);
-    free(recipes);
+    //printf("Loaded recipes: %d\n", recipesNumber);
 
-    //IngredientCategory ingredientData = readIngredients();
+    const int people = requestAmountOfPeople();
 
-    /*
-    //requestRecipeName();
-    requestAmountOfPeople();
     makeListOfRecipes();
+    //const int recipeNumber = requestRecipeNumber();
     printListOfRecipes();
 
-    const int recipeNumber = requestRecipeNumber();
-    printRecipe(recipeNumber);
-    */
+    const int recipeIndex = requestRecipeName(recipes, recipesNumber);
+    printRecipe(recipes[recipeIndex], people);
+
+    free(recipes);
 }

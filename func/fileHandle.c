@@ -73,7 +73,7 @@ Recipe * readRecipe(int *recipesNumber) {
                 ingredientPtr[strcspn(ingredientPtr, "\n")] = 0;
                 /* Stores the ingredient name for the given ingredient */
                 if (tempIngredientInfoCount == 0) {
-                    strcpy(loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].ingredientName, ingredientPtr);
+                    strcpy(loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].name, ingredientPtr);
                     tempIngredientInfoCount++;
                 }
                 /* Stores the amount (Grams) for the given ingredient */
