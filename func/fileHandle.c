@@ -71,6 +71,14 @@ Recipe * readRecipe(int *recipesNumber) {
             char *ingredientPtr = strtok(line, ingredientDelim);
             while(ingredientPtr != NULL) {
                 ingredientPtr[strcspn(ingredientPtr, "\n")] = 0;
+
+                /* INSERT EXPLANATION HERE LOL XD GAMING GAMERS */
+                for (int i = 0; i < (int) strlen(ingredientPtr); i++) {
+                    if (ingredientPtr[i] == 13) {
+                        ingredientPtr[i] = '\0';
+                    }
+                }
+
                 /* Stores the ingredient name for the given ingredient */
                 if (tempIngredientInfoCount == 0) {
                     strcpy(loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].name, ingredientPtr);
