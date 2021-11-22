@@ -267,9 +267,6 @@ Category * readCategories(int *categoryCount, IngredientData *ingredients) {
                 }
                 tempIngredientInfoCount = 0;
             }
-
-
-
             ingredientPtr = strtok(NULL, ingredientDelim);
         }
         currLine++;
