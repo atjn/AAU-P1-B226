@@ -39,8 +39,8 @@ void foodForChange(){
     IngredientData *ingredients = readIngredients(&ingredientsNumber);
     Category *categories = readCategories(&categoriesNumber);
 
-    printf("%s\n", ingredients->ingredientName);
-    printf("%s\n", categories->categoryName);
+    printf("%s\n", ingredients[3].ingredientName);
+    printf("%s\n", categories[3].categoryName);
 
     //free(categories);
     //free(ingredients);
