@@ -63,8 +63,8 @@ Recipe * readRecipe(int *recipesNumber) {
             tempIngredientCount = 0;
 
             /* Copies the recipe name into the given structs recipeName variable */
-            snprintf(loadedRecipes[currRecipeIndex].recipeName, strlen(line) - 3, "%s", line);
-            strcat(loadedRecipes[currRecipeIndex].recipeName, "\0");
+            snprintf(loadedRecipes[currRecipeIndex].name, strlen(line) - 3, "%s", line);
+            strcat(loadedRecipes[currRecipeIndex].name, "\0");
         }
         else {
             /* Splits the line variable every time we encounter a semicolon */
@@ -159,7 +159,7 @@ IngredientCategory readIngredients() {
             ingredientPtr[strcspn(ingredientPtr, "\n")] = 0;
             /* Stores the ingredient name for the given ingredient */
             if (tempIngredientInfoCount == 0) {
-                strcpy(ingrCatData.ingredients[currLine - 1].ingredientName, ingredientPtr);
+                strcpy(ingrCatData.ingredients[currLine - 1].name, ingredientPtr);
                 tempIngredientInfoCount++;
             }
             /* Stores the amount (Grams) for the given ingredient */

@@ -9,19 +9,19 @@
 #define MAX_CATEGORIES 128
 
 typedef struct {
-   char ingredientName[MAX_INGREDIENT_NAME];
+   char name[MAX_INGREDIENT_NAME];
    float amount;
    unsigned short weight;
 } Ingredient;
 
 typedef struct {
-   char recipeName[MAX_RECIPE_NAME];
+   char name[MAX_RECIPE_NAME];
    Ingredient ingredients[MAX_INGREDIENTS_RECIPE];
    unsigned short ingredientCount;
 } Recipe;
 
 typedef struct {
-   char ingredientName[MAX_INGREDIENT_NAME];
+   char name[MAX_INGREDIENT_NAME];
    float coo;
 } IngredientData;
 
