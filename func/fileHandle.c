@@ -113,7 +113,7 @@ Recipe * readRecipe(int *recipesNumber) {
     return loadedRecipes;
 }
 
-void readIngredients(IngredientData *ingredients[], int *ingredientCount, Category *categories[], int *categoryCount) {
+IngredientCategory readIngredients() {
     FILE *fp;
     char line[128];
     int len = 128;
@@ -122,9 +122,10 @@ void readIngredients(IngredientData *ingredients[], int *ingredientCount, Catego
 
     /* Other variables */
     int ingredientNum = -1;
-    IngredientData *loadedIngredients;
     int categoryNum = 0;
-    Category *loadedCategories = 0;
+
+    IngredientCategory ingrCatData;
+    ingrCatData.ingredientsCount = 0;
 
     /* Opening the recipes file */
     fp = fopen(INGREDIENT_DATA_LOCATION, "r");
@@ -135,8 +136,8 @@ void readIngredients(IngredientData *ingredients[], int *ingredientCount, Catego
         ingredientNum++;
     }
 
-    /* Allocating memory for the loaded ingredients array */
-    loadedIngredients = (IngredientData*) malloc(ingredientNum * sizeof(IngredientData));
+    /* Setting the ingredientsCount variable */
+    ingrCatData.ingredientsCount = ingredientNum;
 
     /* Rewinding the file to start reading it again */
     rewind(fp);
@@ -158,12 +159,12 @@ void readIngredients(IngredientData *ingredients[], int *ingredientCount, Catego
             ingredientPtr[strcspn(ingredientPtr, "\n")] = 0;
             /* Stores the ingredient name for the given ingredient */
             if (tempIngredientInfoCount == 0) {
-                strcpy(loadedIngredients[currLine - 1].ingredientName, ingredientPtr);
+                strcpy(ingrCatData.ingredients[currLine - 1].ingredientName, ingredientPtr);
                 tempIngredientInfoCount++;
             }
             /* Stores the amount (Grams) for the given ingredient */
             else if (tempIngredientInfoCount == 1) {
-                loadedIngredients[currLine - 1].coo = atof(ingredientPtr);
+                ingrCatData.ingredients[currLine - 1].coo = atof(ingredientPtr);
                 tempIngredientInfoCount++;
             }
             /* Stores the weight for the given ingredient */
@@ -178,11 +179,6 @@ void readIngredients(IngredientData *ingredients[], int *ingredientCount, Catego
                 while (categoryPtr != NULL) {
                     categoryPtr[strcspn(categoryPtr, "\n")] = 0;
 
-                    /* Allocating memory for the loaded categories */
-                    if (loadedCategories == 0) {
-                        loadedCategories = malloc(1 * sizeof(Category)); //(Category*) 
-                    }
-
                     /* INSERT EXPLANATION HERE LOL XD GAMING GAMERS */
                     for (int i = 0; i < (int) strlen(categoryPtr); i++) {
                         if (categoryPtr[i] == 13) {
@@ -193,26 +189,25 @@ void readIngredients(IngredientData *ingredients[], int *ingredientCount, Catego
                     /* Checking whether the category exists */
                     int categoryIndex = 0;
                     if (categoryNum != 0) {
-                        categoryIndex = categoryExist(categoryPtr, loadedCategories, categoryNum);
+                        categoryIndex = categoryExist(categoryPtr, ingrCatData.categories, categoryNum);
                     }
                     else {
                         categoryIndex = 0;
                     }
-                    
+
                     /* Adding data to the indvidual arrays. If-statement for setting up a new category if nessesary */
                     /* TODO Change the structure of the structs as we are atoring the same data multiple times whih is a big waste of memory */
                     if (categoryIndex != 0) {
-                        loadedCategories[categoryIndex].ingredientCount += 1;
-                        strcpy(loadedCategories[categoryIndex].ingredientData[loadedCategories[categoryIndex].ingredientCount - 1].ingredientName, loadedIngredients[currLine - 1].ingredientName);
-                        loadedCategories[categoryIndex].ingredientData[loadedCategories[categoryIndex].ingredientCount - 1].coo = loadedIngredients[currLine - 1].coo;
+                        ingrCatData.categories[categoryIndex].ingredientCount += 1;
+                        ingrCatData.categories[categoryIndex].ingredientData[ingrCatData.categories[categoryIndex].ingredientCount] = &ingrCatData.ingredients[currLine - 1];
                     }
                     else {
                         categoryNum++;
-                        loadedCategories = realloc(loadedCategories, categoryNum * sizeof(Category)); //(Category*) 
-                        strcpy(loadedCategories[categoryNum - 1].categoryName, categoryPtr);
-                        loadedCategories[categoryNum - 1].ingredientCount = 1;
-                        strcpy(loadedCategories[categoryNum - 1].ingredientData[0].ingredientName, loadedIngredients[currLine - 1].ingredientName);
-                        loadedCategories[categoryNum - 1].ingredientData[0].coo = loadedIngredients[currLine - 1].coo;
+                        strcpy(ingrCatData.categories[categoryNum - 1].categoryName, categoryPtr);
+                        ingrCatData.categories[categoryNum - 1].ingredientCount = 1;
+                        ingrCatData.categories[categoryNum - 1].ingredientData[0] = &ingrCatData.ingredients[currLine - 1];
+                        //strcpy(loadedCategories[categoryNum - 1].ingredientData[0].ingredientName, loadedIngredients[currLine - 1].ingredientName);
+                        //loadedCategories[categoryNum - 1].ingredientData[0].coo = loadedIngredients[currLine - 1].coo;
                     }
 
                     /* Fetching the next part of the string */
@@ -224,27 +219,12 @@ void readIngredients(IngredientData *ingredients[], int *ingredientCount, Catego
         }
         currLine++;
     }
-    
-    /* Test loop for printing all indexed and read data */
-    for (int i = 0; i < categoryNum; i++) {
-        printf("%d \n", i);
-        printf("%d: category %s, ingredients: %d \n", i, loadedCategories[i].categoryName, loadedCategories[i].ingredientCount);
-        for (int j = 0; j < loadedCategories[i].ingredientCount; j++) {
-            printf("\t%s, CO2: %f\n",loadedCategories[i].ingredientData[j].ingredientName, loadedCategories[i].ingredientData[j].coo);
-        }
-    }
-    
 
+    ingrCatData.categoriesCount = categoryNum;
     /* Closing the file */
     fclose(fp);
 
-    /* Returning values */
-    ingredients = &loadedIngredients;
-    printf("%s\n", ingredients[0]->ingredientName);
-    *ingredientCount = ingredientNum;
-    categories = &loadedCategories;
-    printf("%s\n", categories[0]->ingredientData[0].ingredientName);
-    *categoryCount = categoryNum;
+    return ingrCatData;
 }
 
 /* A function that checks if the category has already been made and allocated */
