@@ -28,10 +28,15 @@ int main(int argc, char **argv){
 void foodForChange(){
     /* How to use the readFile funtion */
 
+    /*
     int recipesNumber;
     Recipe *recipes = readRecipe(&recipesNumber);
+    */
     //printf("Loaded recipes: %d\n", recipesNumber);
 
+    int ingredientData = readIngredients();
+    printf("%d\n", ingredientData);
+    /*
     const int people = requestAmountOfPeople();
 
     makeListOfRecipes();
@@ -42,4 +47,5 @@ void foodForChange(){
     printRecipe(recipes[recipeIndex], people);
 
     free(recipes);
+    */
 }

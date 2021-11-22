@@ -1,3 +1,3 @@
 Recipe * readRecipe(int *recipesNumber);
-IngredientCategory readIngredients();
+int readIngredients();
 /* CuSuite *readFileGetSuite(); */
