@@ -1,6 +1,6 @@
 
 int requestRecipeName(Recipe* recipes, int recipeCount);
 int requestAmountOfPeople();
-void printListOfRecipes();
+void printListOfAlternativeRecipes(Recipe[]);
 int requestRecipeNumber();
 void printRecipe(Recipe, int);

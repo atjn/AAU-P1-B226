@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "definition.h"
+#include "definitions.h"
 
 /* Including gnu strtok revised function */
 #include "../lib/GNU-Func/strtok_gnu.h"
