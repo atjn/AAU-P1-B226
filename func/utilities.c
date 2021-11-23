@@ -17,81 +17,95 @@ void flushInput(){
 /**
  * Capitalises the first character of a string.
  */
-const char* capitaliseFirst(char* string){
+void capitaliseFirst(char* string){
 
     string[0] = toupper(string[0]);
-    return string;
+
 }
 
 void testCapitaliseFirst(CuTest* testCase){
 
     char string1[] = "hello";
-    CuAssertStrEquals(testCase, "Hello", capitaliseFirst(string1));
+    capitaliseFirst(string1);
+    CuAssertStrEquals(testCase, "Hello", string1);
 
     char string2[] = "hello _?";
-    CuAssertStrEquals(testCase, "Hello _?", capitaliseFirst(string2));
+    capitaliseFirst(string2);
+    CuAssertStrEquals(testCase, "Hello _?", string2);
 
     char string3[] = "Hello";
-    CuAssertStrEquals(testCase, "Hello", capitaliseFirst(string3));
+    capitaliseFirst(string3);
+    CuAssertStrEquals(testCase, "Hello", string3);
 
     char string4[] = "HELLO";
-    CuAssertStrEquals(testCase, "HELLO", capitaliseFirst(string4));
+    capitaliseFirst(string4);
+    CuAssertStrEquals(testCase, "HELLO", string4);
 
     char string5[] = "&unicorns";
-    CuAssertStrEquals(testCase, "&unicorns", capitaliseFirst(string5));
+    capitaliseFirst(string5);
+    CuAssertStrEquals(testCase, "&unicorns", string5);
 
     char string6[] = "123";
-    CuAssertStrEquals(testCase, "123", capitaliseFirst(string6));
+    capitaliseFirst(string6);
+    CuAssertStrEquals(testCase, "123", string6);
 
     char string7[] = "";
-    CuAssertStrEquals(testCase, "", capitaliseFirst(string7));
+    capitaliseFirst(string7);
+    CuAssertStrEquals(testCase, "", string7);
 
     char string8[] = " ";
-    CuAssertStrEquals(testCase, " ", capitaliseFirst(string8));
+    capitaliseFirst(string8);
+    CuAssertStrEquals(testCase, " ", string8);
 
     char string9[] = "   ";
-    CuAssertStrEquals(testCase, "   ", capitaliseFirst(string9));
+    capitaliseFirst(string9);
+    CuAssertStrEquals(testCase, "   ", string9);
 
 }
 
 /**
  * Takes the letters in a char array and makes them all lower case.
  */
-const char* toLowerCase(char* string){
-
-    char* lowerString = string;
+void toLowerCase(char* string){
 
     for(int i = 0; string[i]; i++){
         string[i] = tolower(string[i]);
     }
 
-    return lowerString;
 }
 
 void testToLowerCase(CuTest* testCase){
 
     char string1[] = "PHOENIX";
-    CuAssertStrEquals(testCase, "phoenix", toLowerCase(string1));
+    toLowerCase(string1);
+    CuAssertStrEquals(testCase, "phoenix", string1);
 
     char string2[] = "PhoenIx";
-    CuAssertStrEquals(testCase, "phoenix", toLowerCase(string2));
+    toLowerCase(string2);
+    CuAssertStrEquals(testCase, "phoenix", string2);
 
     char string3[] = "moO";
-    CuAssertStrEquals(testCase, "moo", toLowerCase(string3));
+    toLowerCase(string3);
+    CuAssertStrEquals(testCase, "moo", string3);
 
     char string4[] = "moo";
-    CuAssertStrEquals(testCase, "moo", toLowerCase(string4));
+    toLowerCase(string4);
+    CuAssertStrEquals(testCase, "moo", string4);
 
     char string5[] = "Ph03n1x says MOO!!";
-    CuAssertStrEquals(testCase, "ph03n1x says moo!!", toLowerCase(string5));
+    toLowerCase(string5);
+    CuAssertStrEquals(testCase, "ph03n1x says moo!!", string5);
 
     char string6[] = "";
-    CuAssertStrEquals(testCase, "", toLowerCase(string6));
+    toLowerCase(string6);
+    CuAssertStrEquals(testCase, "", string6);
 
     char string7[] = " ";
-    CuAssertStrEquals(testCase, " ", toLowerCase(string7));
+    toLowerCase(string7);
+    CuAssertStrEquals(testCase, " ", string7);
 
     char string8[] = "&_!/";
-    CuAssertStrEquals(testCase, "&_!/", toLowerCase(string8));
+    toLowerCase(string8);
+    CuAssertStrEquals(testCase, "&_!/", string8);
 
 }
