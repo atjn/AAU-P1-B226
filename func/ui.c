@@ -47,7 +47,7 @@ int getIdFromString(char *recipeName, Recipe *recipes, int recipeCount){
     toLowerCase(recipeNameInLower);
 
     for (int i = 0; i < recipeCount; i++){
-        if (strcmp(recipes[i].recipeName, recipeNameInLower) == 0){
+        if (strcmp(recipes[i].name, recipeNameInLower) == 0){
             return i;
         }
     }
@@ -114,7 +114,7 @@ void printRecipe(Recipe recipe, int people){
     const int titleLength = 50;
     char title[titleLength];
     char name[MAX_RECIPE_NAME];
-    strcpy(name, recipe.recipeName);
+    strcpy(name, recipe.name);
     capitaliseFirst(name);
     padAround(name, title, titleLength);
 
@@ -124,7 +124,7 @@ void printRecipe(Recipe recipe, int people){
     printLine("├", "┬", "┤", numberOfCells, cellLengths);
     for (int i = 0; i < recipe.ingredientCount; i++){
         char ingredientName[MAX_INGREDIENT_NAME];
-        strcpy(ingredientName, recipe.ingredients[i].ingredientName);
+        strcpy(ingredientName, recipe.ingredients[i].name);
         capitaliseFirst(ingredientName);
 
         //TODO: print the correct g CO₂ number

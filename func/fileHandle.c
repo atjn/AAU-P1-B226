@@ -63,8 +63,8 @@ Recipe * readRecipe(int *recipesNumber) {
             tempIngredientCount = 0;
 
             /* Copies the recipe name into the given structs recipeName variable */
-            snprintf(loadedRecipes[currRecipeIndex].recipeName, strlen(line) - 3, "%s", line);
-            strcat(loadedRecipes[currRecipeIndex].recipeName, "\0");
+            snprintf(loadedRecipes[currRecipeIndex].name, strlen(line) - 3, "%s", line);
+            strcat(loadedRecipes[currRecipeIndex].name, "\0");
         }
         else {
             /* Splits the line variable every time we encounter a semicolon */
@@ -73,7 +73,7 @@ Recipe * readRecipe(int *recipesNumber) {
                 ingredientPtr[strcspn(ingredientPtr, "\n")] = 0;
                 /* Stores the ingredient name for the given ingredient */
                 if (tempIngredientInfoCount == 0) {
-                    strcpy(loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].ingredientName, ingredientPtr);
+                    strcpy(loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].name, ingredientPtr);
                     tempIngredientInfoCount++;
                 }
                 /* Stores the amount (Grams) for the given ingredient */
@@ -96,10 +96,10 @@ Recipe * readRecipe(int *recipesNumber) {
 
     /* For loop for checking input */
    /* for (int i = 0; i < 1; i++) {
-        printf("%s\n", loadedRecipes[i].recipeName);
+        printf("%s\n", loadedRecipes[i].name);
         printf("%d\n", loadedRecipes[i].ingredientCount);
         for (unsigned short j = 0; j < loadedRecipes[i].ingredientCount; j++) {
-            printf("%s, %f, %hu\n", loadedRecipes[i].ingredients[j].ingredientName,
+            printf("%s, %f, %hu\n", loadedRecipes[i].ingredients[j].name,
                                      loadedRecipes[i].ingredients[j].amount,
                                      loadedRecipes[i].ingredients[j].weight);
         }
@@ -155,7 +155,7 @@ IngredientData * readIngredients(int *ingredientCount) {
             ingredientPtr[strcspn(ingredientPtr, "\n")] = 0;
             /* Stores the ingredient name for the given ingredient */
             if (tempIngredientInfoCount == 0) {
-                strcpy(loadedIngredients[currLine - 1].ingredientName, ingredientPtr);
+                strcpy(loadedIngredients[currLine - 1].name, ingredientPtr);
                 tempIngredientInfoCount++;
             }
             /* Stores the amount (Grams) for the given ingredient */
@@ -250,7 +250,7 @@ Category * readCategories(int *categoryCount, IngredientData *ingredients) {
                     /* TODO Change the structure of the structs as we are atoring the same data multiple times whih is a big waste of memory */
                     if (categoryIndex != 0) {
                         loadedCategories[categoryIndex].ingredientCount += 1;
-                        strcpy(loadedCategories[categoryIndex].ingredientData[loadedCategories[categoryIndex].ingredientCount - 1].ingredientName, ingredients[currLine - 1].ingredientName);
+                        strcpy(loadedCategories[categoryIndex].ingredientData[loadedCategories[categoryIndex].ingredientCount - 1].name, ingredients[currLine - 1].name);
                         loadedCategories[categoryIndex].ingredientData[loadedCategories[categoryIndex].ingredientCount - 1].coo = ingredients[currLine - 1].coo;
                     }
                     else {
@@ -258,7 +258,7 @@ Category * readCategories(int *categoryCount, IngredientData *ingredients) {
                         loadedCategories = realloc(loadedCategories, categoryNum * sizeof(Category)); //(Category*)
                         strcpy(loadedCategories[categoryNum - 1].categoryName, categoryPtr);
                         loadedCategories[categoryNum - 1].ingredientCount = 1;
-                        strcpy(loadedCategories[categoryNum - 1].ingredientData[0].ingredientName, ingredients[currLine - 1].ingredientName);
+                        strcpy(loadedCategories[categoryNum - 1].ingredientData[0].name, ingredients[currLine - 1].name);
                         loadedCategories[categoryNum - 1].ingredientData[0].coo = ingredients[currLine - 1].coo;
                     }
 
