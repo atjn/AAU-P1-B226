@@ -1,4 +1,3 @@
 
 Recipe * readRecipe(int *recipesNumber);
-IngredientData * readIngredients(int *ingredientCount);
-Category * readCategories(int *categoryCount, IngredientData *ingredients);
+void readIngredients(const char *, IngredientData **, Category **, int *, int *);

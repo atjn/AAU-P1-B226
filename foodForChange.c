@@ -27,14 +27,13 @@ int main(int argc, char **argv){
 
 void foodForChange(){
 
-    int recipesNumber;
-    int ingredientsNumber;
-    //int categoriesNumber;
-    Recipe *recipes = readRecipe(&recipesNumber);
-    IngredientData *ingredients = readIngredients(&ingredientsNumber);
-    //Category *categories = readCategories(&categoriesNumber, ingredients);
+    int recipesLength, ingredientsLength, categoriesLength;
+    Recipe *recipes = readRecipe(&recipesLength);
+    IngredientData *ingredients = NULL;
+    Category *categories = NULL;
+    readIngredients(INGREDIENT_DATA_LOCATION, &ingredients, &categories, &ingredientsLength, &categoriesLength);
 
-    const int originalRecipeIndex = requestRecipeName(recipes, recipesNumber);
+    const int originalRecipeIndex = requestRecipeName(recipes, recipesLength);
     const int people = requestAmountOfPeople();
 
     Recipe alternativeRecipes[RECIPES_IN_ALTERNATIVES_LIST];
@@ -46,6 +45,6 @@ void foodForChange(){
 
     free(recipes);
     free(ingredients);
-    //free(categories);
+    free(categories);
 
 }
