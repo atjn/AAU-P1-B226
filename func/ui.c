@@ -7,7 +7,7 @@
 
 #include "../lib/CuTest-AAU/CuTest.h"
 
-#include "./definition.h"
+#include "./definitions.h"
 #include "./ui.h"
 #include "./utilities.h"
 
@@ -20,7 +20,7 @@ void printLine(char [], char [], char [], int, int []);
 int requestRecipeName(Recipe *recipes, int recipeCount){
     char recipeName[MAX_RECIPE_NAME];
 
-    printf("What recipe do you want to eat? ");
+    printf("What recipe do you want to make? ");
     const int inputs = scanf(" %s", recipeName);
 
     flushInput();
@@ -71,7 +71,24 @@ int requestAmountOfPeople(){
 }
 
 
-void printListOfRecipes(){
+void printListOfAlternativeRecipes(Recipe alternativeRecipes[]){
+
+    int cellLengths[] = {3, 28, 10};
+    const int numberOfCells = sizeof(cellLengths) / sizeof(cellLengths[0]);
+
+    printf("\nHere are some alternative versions:\n");
+    printLine("┌", "┬", "┐", numberOfCells, cellLengths);
+
+    for(int r = 0; r < RECIPES_IN_ALTERNATIVES_LIST; r++){
+        char name[MAX_RECIPE_NAME];
+        strcpy(name, alternativeRecipes[0].name);
+        capitaliseFirst(name);
+        printf("│ %i │ %-26s │ %3d%% CO₂ │", r +1, name, -50);
+        if(r < RECIPES_IN_ALTERNATIVES_LIST -1) printLine("├", "┼", "┤", numberOfCells, cellLengths);
+    }
+
+    printLine("└", "┴", "┘", numberOfCells, cellLengths);
+    printf("\n");
 
 }
 
@@ -85,7 +102,7 @@ int requestRecipeNumber(){
     bool inputSuccess = false;
     while(!inputSuccess){
 
-        printf("Which version did you want? ");
+        printf("Which version would you like to try making? ");
         const int inputs = scanf(" %d", &recipeNumber);
 
         inputSuccess = inputs == 1 && recipeNumber >= 1 && recipeNumber <= 5;
@@ -97,7 +114,7 @@ int requestRecipeNumber(){
         flushInput();
     }
 
-    return recipeNumber;
+    return recipeNumber -1;
 }
 
 /**
@@ -118,7 +135,7 @@ void printRecipe(Recipe recipe, int people){
     capitaliseFirst(name);
     padAround(name, title, titleLength);
 
-    printf("\n\n");
+    printf("\nHere you go:\n");
     printLine("┌", "─", "┐", numberOfCells, cellLengths);
     printf("│ %s │", title);
     printLine("├", "┬", "┤", numberOfCells, cellLengths);
@@ -138,6 +155,7 @@ void printRecipe(Recipe recipe, int people){
     printf("│ Amount of CO₂: %-35d │", 10);
 
     printLine("└", "─", "┘", numberOfCells, cellLengths);
+    printf("\n");
 }
 
 /**

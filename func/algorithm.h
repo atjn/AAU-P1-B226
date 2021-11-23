@@ -1,2 +1,2 @@
 
-void makeListOfRecipes();
+void makeListOfAlternativeRecipes(int, Recipe[], Recipe[]);
