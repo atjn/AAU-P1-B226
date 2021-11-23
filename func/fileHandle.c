@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <assert.h>
 #include "definitions.h"
 
 /* Including gnu strtok revised function */
@@ -250,6 +251,7 @@ Category * readCategories(int *categoryCount, IngredientData *ingredients) {
                     /* TODO Change the structure of the structs as we are atoring the same data multiple times whih is a big waste of memory */
                     if (categoryIndex != 0) {
                         loadedCategories[categoryIndex].ingredientCount += 1;
+                        assert(loadedCategories[categoryIndex].ingredientCount <= MAX_INGREDIENTS_CATEGORY);
                         strcpy(loadedCategories[categoryIndex].ingredientData[loadedCategories[categoryIndex].ingredientCount - 1].name, ingredients[currLine - 1].name);
                         loadedCategories[categoryIndex].ingredientData[loadedCategories[categoryIndex].ingredientCount - 1].coo = ingredients[currLine - 1].coo;
                     }

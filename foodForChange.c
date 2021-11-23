@@ -29,10 +29,10 @@ void foodForChange(){
 
     int recipesNumber;
     int ingredientsNumber;
-    //int categoriesNumber;
+    int categoriesNumber;
     Recipe *recipes = readRecipe(&recipesNumber);
     IngredientData *ingredients = readIngredients(&ingredientsNumber);
-    //Category *categories = readCategories(&categoriesNumber, ingredients);
+    Category *categories = readCategories(&categoriesNumber, ingredients);
 
     const int originalRecipeIndex = requestRecipeName(recipes, recipesNumber);
     const int people = requestAmountOfPeople();
@@ -46,6 +46,6 @@ void foodForChange(){
 
     free(recipes);
     free(ingredients);
-    //free(categories);
+    free(categories);
 
 }
