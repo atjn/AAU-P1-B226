@@ -256,7 +256,7 @@ Category * readCategories(int *categoryCount, IngredientData *ingredients) {
                     else {
                         categoryNum++;
                         loadedCategories = realloc(loadedCategories, categoryNum * sizeof(Category)); //(Category*)
-                        strcpy(loadedCategories[categoryNum - 1].categoryName, categoryPtr);
+                        strcpy(loadedCategories[categoryNum - 1].name, categoryPtr);
                         loadedCategories[categoryNum - 1].ingredientCount = 1;
                         strcpy(loadedCategories[categoryNum - 1].ingredientData[0].name, ingredients[currLine - 1].name);
                         loadedCategories[categoryNum - 1].ingredientData[0].coo = ingredients[currLine - 1].coo;
@@ -283,8 +283,8 @@ Category * readCategories(int *categoryCount, IngredientData *ingredients) {
 /* A function that checks if the category has already been made and allocated */
 int categoryExist(char categoryName[], Category *categoryArray, int categories) {
     for (int i = 0; i < categories; i++){
-        //printf("%s %s %s\n", categoryName, (strcmp(categoryName, categoryArray[i].categoryName) == 0) ? "is the same as" : "is not the same as", categoryArray[i].categoryName);
-        if (strcmp(categoryName, categoryArray[i].categoryName) == 0) {
+        //printf("%s %s %s\n", categoryName, (strcmp(categoryName, categoryArray[i].name) == 0) ? "is the same as" : "is not the same as", categoryArray[i].name);
+        if (strcmp(categoryName, categoryArray[i].name) == 0) {
             return i;
         }
     }
