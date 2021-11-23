@@ -47,7 +47,7 @@ int getIdFromString(char *recipeName, Recipe *recipes, int recipeCount){
     toLowerCase(recipeNameInLower);
 
     for (int i = 0; i < recipeCount; i++){
-        if (strcmp(recipes[i].name, recipeNameInLower) == 0){
+        if (strcmp(recipes[i].recipeName, recipeNameInLower) == 0){
             return i;
         }
     }
