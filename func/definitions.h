@@ -27,8 +27,8 @@ typedef struct {
 } IngredientData;
 
 typedef struct {
-   char categoryName[MAX_CATEGORY_NAME];
-   IngredientData *ingredientData[MAX_INGREDIENTS_CATEGORY];
+   char name[MAX_CATEGORY_NAME];
+   IngredientData ingredientData[MAX_INGREDIENTS_CATEGORY];
    unsigned short ingredientCount;
 } Category;
 

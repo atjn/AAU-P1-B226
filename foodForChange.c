@@ -26,11 +26,13 @@ int main(int argc, char **argv){
 }
 
 void foodForChange(){
-    /* How to use the readFile funtion */
 
     int recipesNumber;
+    int ingredientsNumber;
+    //int categoriesNumber;
     Recipe *recipes = readRecipe(&recipesNumber);
-    //printf("Loaded recipes: %d\n", recipesNumber);
+    IngredientData *ingredients = readIngredients(&ingredientsNumber);
+    //Category *categories = readCategories(&categoriesNumber, ingredients);
 
     const int originalRecipeIndex = requestRecipeName(recipes, recipesNumber);
     const int people = requestAmountOfPeople();
@@ -43,4 +45,7 @@ void foodForChange(){
     printRecipe(&alternativeRecipes[alternativeRecipeIndex], people);
 
     free(recipes);
+    free(ingredients);
+    //free(categories);
+
 }

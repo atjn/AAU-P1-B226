@@ -1,3 +1,4 @@
+
 Recipe * readRecipe(int *recipesNumber);
-IngredientCategory readIngredients();
-/* CuSuite *readFileGetSuite(); */
+IngredientData * readIngredients(int *ingredientCount);
+Category * readCategories(int *categoryCount, IngredientData *ingredients);
