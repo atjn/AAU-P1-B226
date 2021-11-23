@@ -121,7 +121,7 @@ int requestRecipeNumber(){
 /**
  * Prints information about a given recipe.
  */
-void printRecipe(Recipe recipe, int people){
+void printRecipe(const Recipe *recipe, const int people){
     /**
      * For mysterious reasons, the last digit of "cellLengths" becomes really big, and wrecks the system.
      * This issue is solved with a hack: add an extra item at the end of the array, and don't read it.
@@ -132,7 +132,7 @@ void printRecipe(Recipe recipe, int people){
     const int titleLength = 50;
     char title[titleLength];
     char name[MAX_RECIPE_NAME];
-    strcpy(name, recipe.name);
+    strcpy(name, recipe->name);
     capitaliseFirst(name);
     padAround(name, title, titleLength);
 
@@ -140,14 +140,14 @@ void printRecipe(Recipe recipe, int people){
     printLine("┌", "─", "┐", numberOfCells, cellLengths);
     printf("│ %s │", title);
     printLine("├", "┬", "┤", numberOfCells, cellLengths);
-    for (int i = 0; i < recipe.ingredientCount; i++){
+    for (int i = 0; i < recipe->ingredientCount; i++){
         char ingredientName[MAX_INGREDIENT_NAME];
-        strcpy(ingredientName, recipe.ingredients[i].name);
+        strcpy(ingredientName, recipe->ingredients[i].name);
         capitaliseFirst(ingredientName);
 
         //TODO: print the correct g CO₂ number
-        printf("│ %-20s │ %9.1lf(g) │ %5d(g CO₂) │", ingredientName, recipe.ingredients[i].amount * people , 25);
-        if(i < recipe.ingredientCount - 1) printf("\n");
+        printf("│ %-20s │ %9.1lf(g) │ %5d(g CO₂) │", ingredientName, recipe->ingredients[i].amount * people , 25);
+        if(i < recipe->ingredientCount - 1) printf("\n");
 
     }
     printLine("├", "┴", "┤", numberOfCells, cellLengths);

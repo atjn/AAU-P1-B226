@@ -1,6 +1,6 @@
 # P1 Exam Program for B226
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/atjn/AAU-P1-B226/Compile/main)
-![LGTM Grade](https://img.shields.io/lgtm/grade/cpp/github/atjn/AAU-P1-B226)
+[![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/atjn/AAU-P1-B226/Compile/main)](https://github.com/atjn/AAU-P1-B226/actions/workflows/compile.yml)
+[![LGTM Grade](https://img.shields.io/lgtm/grade/cpp/github/atjn/AAU-P1-B226)](https://lgtm.com/projects/g/atjn/AAU-P1-B226)
 
 ## Developer zone
 
