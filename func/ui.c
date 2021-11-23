@@ -130,7 +130,7 @@ void printRecipe(const Recipe *recipe, const int people){
     const int numberOfCells = sizeof(cellLengths) / sizeof(cellLengths[0]) - 1;
 
     const int titleLength = 50;
-    char title[titleLength];
+    char title[titleLength+1];
     char name[MAX_RECIPE_NAME];
     strcpy(name, recipe->name);
     capitaliseFirst(name);
@@ -162,6 +162,7 @@ void printRecipe(const Recipe *recipe, const int people){
 /**
  * Takes a string and inserts it in the center of a wider string.
  * Useful when you want to center some text in a graphical output.
+ * Note that the passed string must be at least one char wider than the passed length.
  */
 void padAround(char string[], char centeredString[], int centeredStringLength){
 
@@ -169,6 +170,7 @@ void padAround(char string[], char centeredString[], int centeredStringLength){
     const int frontPadding = floor((centeredStringLength - stringLength) / 2);
 
     for(int c = 0; c < centeredStringLength; c++) centeredString[c] = ' ';
+    centeredString[centeredStringLength] = '\0';
     for(int c = 0; c < stringLength; c++) centeredString[c + frontPadding] = string[c];
 
 }
