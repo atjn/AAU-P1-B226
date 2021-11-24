@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 
 /**
  * Flushes the input buffer.
@@ -17,10 +18,10 @@ void flushInput(){
 /**
  * Capitalises the first character of a string.
  */
-void capitaliseFirst(char* string){
+char* capitaliseFirst(char* string){
 
     string[0] = toupper(string[0]);
-
+    return string;
 }
 
 void testCapitaliseFirst(CuTest* testCase){
@@ -66,12 +67,12 @@ void testCapitaliseFirst(CuTest* testCase){
 /**
  * Takes the letters in a char array and makes them all lower case.
  */
-void toLowerCase(char* string){
+char* toLowerCase(char* string){
 
     for(int i = 0; string[i]; i++){
         string[i] = tolower(string[i]);
     }
-
+    return string;
 }
 
 void testToLowerCase(CuTest* testCase){
