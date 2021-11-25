@@ -8,11 +8,11 @@ ifeq ($(OS),Windows_NT)
 	extension := exe
 else
 	extension := out
-	ubsan := -fsanitize=address -fsanitize=undefined -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize-recover=all
+	runtime_sanitizers := -fsanitize=address -fsanitize=undefined -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize-recover=all
 endif
 
 $(name).$(extension): $(name).c $(cutest) $(function_files) $(test_runner_name).c
-	$(compiler) $(ubsan) -o $(name).$(extension) $(name).c $(cutest) $(function_files) $(test_runner_name).c -lm
+	$(compiler) $(runtime_sanitizers) -o $(name).$(extension) $(name).c $(cutest) $(function_files) $(test_runner_name).c -lm
 
 $(test_runner_name).c: $(name).c $(cutest) $(function_files)
 	./make-tests.sh > tests.c
