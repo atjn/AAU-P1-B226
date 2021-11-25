@@ -111,10 +111,6 @@ int requestRecipeNumber(){
     return recipeNumber -1;
 }
 
-    /**
-     * For mysterious reasons, the last digit of "cellLengths" becomes really big, and wrecks the system.
-     * This issue is solved with a hack: add an extra item at the end of the array, and don't read it.
-     */
 void printRecipe(const Recipe *recipe, const int people){
 
     printf("\n\n");
