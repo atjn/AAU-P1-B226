@@ -120,17 +120,17 @@ int requestRecipeNumber(){
  */
 void printRecipe(const Recipe *recipe, const int people){
 
-    printf("\n\n");
-    printf("------------------------------------------------------\n");
     char name[MAX_RECIPE_NAME];
     strcpy(name, recipe->name);
     capitaliseFirst(name);
+
+    printf("\n\n");
+    printf("------------------------------------------------------\n");
     printf("|                       %-10s                   |\n", name);
     printf("|----------------------------------------------------|\n");
     for (int i = 0; i < recipe->ingredientCount; i++){
         //TODO: print the correct g CO₂ number
         printf("| %-20s | %9.1lf(g) | %5d(g CO₂) |\n", name, recipe->ingredients[i].amount*people , 25);
-
     }
     printf("|----------------------------------------------------|\n");
     //TODO: print the correct g CO₂ number
