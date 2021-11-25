@@ -72,15 +72,18 @@ int requestAmountOfPeople(){
 
 void printListOfAlternativeRecipes(Recipe alternativeRecipes[]){
 
-
     printf("\nHere are some alternative versions:\n");
 
     for(int r = 0; r < RECIPES_IN_ALTERNATIVES_LIST; r++){
         char name[MAX_RECIPE_NAME];
         strcpy(name, alternativeRecipes[0].name);
         capitaliseFirst(name);
-        printf("---------------------------------------------\n");
-        printf("| %d | %-26s | %3d%% CO2 |\n", i +1, name, -50);
+        if(r == 0){
+            printf("---------------------------------------------\n");
+            printf("| %d | %-26s | %3d%% CO2 |\n", r +1, name, -50);
+        }
+        printf("|-------------------------------------------|\n");
+        printf("| %d | %-26s | %3d%% CO2 |\n", r +1, name, -50);
 
     }
     printf("---------------------------------------------\n");
