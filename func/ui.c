@@ -124,7 +124,7 @@ void printRecipe(const Recipe *recipe, const int people){
     strcpy(name, recipe->name);
     capitaliseFirst(name);
 
-    printf("\n\n");
+    printf("\nHere you go:\n");
     printf("------------------------------------------------------\n");
     printf("|                       %-10s                   |\n", name);
     printf("|----------------------------------------------------|\n");
