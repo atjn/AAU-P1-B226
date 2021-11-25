@@ -80,7 +80,7 @@ void printListOfAlternativeRecipes(Recipe alternativeRecipes[]){
         strcpy(name, alternativeRecipes[0].name);
         capitaliseFirst(name);
         printf("---------------------------------------------\n");
-        printf("| %d | %-26s | %3d%% CO2 |\n", i +1, name, -50);
+        printf("| %d | %-26s | %3d%% CO2 |\n", r +1, name, -50);
 
     }
     printf("---------------------------------------------\n");
