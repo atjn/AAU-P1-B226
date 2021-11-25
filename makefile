@@ -1,4 +1,4 @@
-compiler = gcc -std=c17 -Wall -Wextra -Werror -pedantic -O2
+compiler = gcc -std=c17 -Wall -Wextra -Werror -pedantic -O2 -fsanitize=undefined -fno-sanitize-recover
 cutest = lib/CuTest-AAU/CuTest.c
 name = foodForChange
 function_files = func/fileHandle.c func/ui.c func/algorithm.c func/utilities.c lib/GNU-Func/strtok_gnu.c
