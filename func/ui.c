@@ -125,7 +125,7 @@ void printRecipe(Recipe *recipe, const int people){
     printf("|--------------------------------------------------------|\n");
     for (int i = 0; i < recipe->ingredientCount; i++){
         //TODO: do the number
-        printf("| %-20s|%10f(g)     |%6d(g CO₂)  |\n", capitaliseFirst(name), recipe->ingredients[i].amount*people , 25);
+        printf("| %-20s | %9.1lf(g) | %5d(g CO₂) |\n", capitaliseFirst(name), recipe->ingredients[i].amount*people , 25);
 
     }
     printf("|--------------------------------------------------------|\n");
