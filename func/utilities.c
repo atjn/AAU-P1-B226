@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 #include <ctype.h>
-#include <string.h>
 
 /**
  * Flushes the input buffer.
@@ -21,6 +20,7 @@ void flushInput(){
 void capitaliseFirst(char* string){
 
     string[0] = toupper(string[0]);
+
 }
 
 
@@ -72,6 +72,7 @@ void toLowerCase(char* string){
     for(int i = 0; string[i]; i++){
         string[i] = tolower(string[i]);
     }
+
 }
 
 void testToLowerCase(CuTest* testCase){

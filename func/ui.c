@@ -75,7 +75,7 @@ void printListOfAlternativeRecipes(Recipe alternativeRecipes[]){
 
     printf("\nHere are some alternative versions:\n");
 
-    for(int i = 0; i < RECIPES_IN_ALTERNATIVES_LIST; i++){
+    for(int r = 0; r < RECIPES_IN_ALTERNATIVES_LIST; r++){
         char name[MAX_RECIPE_NAME];
         strcpy(name, alternativeRecipes[0].name);
         capitaliseFirst(name);
