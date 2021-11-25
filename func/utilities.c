@@ -23,7 +23,6 @@ void capitaliseFirst(char* string){
 
 }
 
-
 void testCapitaliseFirst(CuTest* testCase){
 
     char string1[] = "hello";
