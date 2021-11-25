@@ -81,9 +81,9 @@ void printListOfAlternativeRecipes(Recipe alternativeRecipes[]){
 
         if(r == 0){
             printf("---------------------------------------------\n");
-            printf("| %d | %-26s | %3d%% CO2 |\n", r +1, name, -50);
+        }else{
+            printf("|-------------------------------------------|\n");
         }
-        printf("|-------------------------------------------|\n");
         printf("| %d | %-26s | %3d%% CO2 |\n", r +1, name, -50);
 
     }
