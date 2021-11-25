@@ -63,7 +63,7 @@ Recipe * readRecipe(int *recipesNumber) {
             tempIngredientCount = 0;
 
 
-            /* INSERT EXPLANATION HERE LOL XD GAMING GAMERS */
+            /* Replacing the first ";" with an '\0' character to make the snprintf function work the same on Linux, macOS and Windows */
             for (int i = 0; i < (int) strlen(line); i++) {
                 if (line[i] == ';') {
                     line[i] = '\0';
