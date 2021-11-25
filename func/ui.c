@@ -111,6 +111,9 @@ int requestRecipeNumber(){
     return recipeNumber -1;
 }
 
+/**
+ * Prints information about a given recipe.
+ */
 void printRecipe(const Recipe *recipe, const int people){
 
     printf("\n\n");
@@ -121,12 +124,12 @@ void printRecipe(const Recipe *recipe, const int people){
     printf("|                       %-10s                   |\n", name);
     printf("|----------------------------------------------------|\n");
     for (int i = 0; i < recipe->ingredientCount; i++){
-        //TODO: do the number
+        //TODO: print the correct g CO₂ number
         printf("| %-20s | %9.1lf(g) | %5d(g CO₂) |\n", name, recipe->ingredients[i].amount*people , 25);
 
     }
     printf("|----------------------------------------------------|\n");
-    //TODO: do the number
+    //TODO: print the correct g CO₂ number
     printf("| Amount of CO2: %-10d                          |\n", 10);
     printf("------------------------------------------------------\n");
 }
