@@ -6,9 +6,10 @@ test_runner_name = tests
 
 ifeq ($(OS),Windows_NT)
 	extension := exe
+	ubsan := -fsanitize=address -fno-sanitize-recover=all
 else
 	extension := out
-	ubsan := -fsanitize=undefined -fno-sanitize-recover
+	ubsan := -fsanitize=address -fsanitize=undefined -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize-recover=all
 endif
 
 $(name).$(extension): $(name).c $(cutest) $(function_files) $(test_runner_name).c
