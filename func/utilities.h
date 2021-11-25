@@ -1,5 +1,5 @@
 
 void flushInput();
-char* capitaliseFirst(char*);
-char* toLowerCase(char*);
+void capitaliseFirst(char*);
+void toLowerCase(char*);
 

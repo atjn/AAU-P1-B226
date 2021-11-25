@@ -115,22 +115,22 @@ int requestRecipeNumber(){
      * For mysterious reasons, the last digit of "cellLengths" becomes really big, and wrecks the system.
      * This issue is solved with a hack: add an extra item at the end of the array, and don't read it.
      */
-void printRecipe(Recipe *recipe, const int people){
+void printRecipe(const Recipe *recipe, const int people){
 
     printf("\n\n");
-    printf("----------------------------------------------------------\n");
+    printf("------------------------------------------------------\n");
     char name[MAX_RECIPE_NAME];
     strcpy(name, recipe->name);
     capitaliseFirst(name);
-    printf("|                        %-10s                      |\n", name);
-    printf("|--------------------------------------------------------|\n");
+    printf("|                       %-10s                   |\n", name);
+    printf("|----------------------------------------------------|\n");
     for (int i = 0; i < recipe->ingredientCount; i++){
         //TODO: do the number
         printf("| %-20s | %9.1lf(g) | %5d(g CO₂) |\n", name, recipe->ingredients[i].amount*people , 25);
 
     }
-    printf("|--------------------------------------------------------|\n");
+    printf("|----------------------------------------------------|\n");
     //TODO: do the number
-    printf("| Amount of CO2: %-10d                              |\n", 10);
-    printf("----------------------------------------------------------\n");
+    printf("| Amount of CO2: %-10d                          |\n", 10);
+    printf("------------------------------------------------------\n");
 }
