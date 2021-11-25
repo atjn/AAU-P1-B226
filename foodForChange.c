@@ -34,7 +34,6 @@ void foodForChange(){
     IngredientData *ingredients = readIngredients(&ingredientsNumber);
     //Category *categories = readCategories(&categoriesNumber, ingredients);
 
-
     const int originalRecipeIndex = requestRecipeName(recipes, recipesNumber);
     const int people = requestAmountOfPeople();
 
