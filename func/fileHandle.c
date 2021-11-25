@@ -62,8 +62,17 @@ Recipe * readRecipe(int *recipesNumber) {
             currRecipeIndex++;
             tempIngredientCount = 0;
 
+
+            /* Replacing the first ";" with an '\0' character to make the snprintf function work the same on Linux, macOS and Windows */
+            for (int i = 0; i < (int) strlen(line); i++) {
+                if (line[i] == ';') {
+                    line[i] = '\0';
+                    break;
+                }
+            }
+
             /* Copies the recipe name into the given structs recipeName variable */
-            snprintf(loadedRecipes[currRecipeIndex].name, strlen(line) - 3, "%s", line);
+            snprintf(loadedRecipes[currRecipeIndex].name, strlen(line) + 1, "%s", line);
             strcat(loadedRecipes[currRecipeIndex].name, "\0");
         }
         else {
