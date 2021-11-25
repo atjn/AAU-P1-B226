@@ -18,11 +18,11 @@ void flushInput(){
 /**
  * Capitalises the first character of a string.
  */
-char* capitaliseFirst(char* string){
+void capitaliseFirst(char* string){
 
     string[0] = toupper(string[0]);
-    return string;
 }
+
 
 void testCapitaliseFirst(CuTest* testCase){
 
@@ -67,12 +67,11 @@ void testCapitaliseFirst(CuTest* testCase){
 /**
  * Takes the letters in a char array and makes them all lower case.
  */
-char* toLowerCase(char* string){
+void toLowerCase(char* string){
 
     for(int i = 0; string[i]; i++){
         string[i] = tolower(string[i]);
     }
-    return string;
 }
 
 void testToLowerCase(CuTest* testCase){
