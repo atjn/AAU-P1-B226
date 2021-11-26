@@ -9,7 +9,7 @@
 
 /* Functions */
 int getCategoryIndex(const char *, const Category *, const int);
-
+void sanitize(char*);
 
 /* This function is used in the beginning of the foodForChange.c file to load the recipes file in the data folder */
 /* The function takes a pointer to an integer as a parameter. The parameter is used to return the number to recipes loaded */
@@ -149,8 +149,7 @@ void readIngredients(const char *dataPath, IngredientData **ingredients, Categor
         // Skip the first line (it only contains CSV metadata)
         if(lineIndex == 0) continue;
 
-        // Remove the newline at the end of the string, otherwise it could for example be interpreted as a delimiter for an extra category
-        rawFileLine[strcspn(rawFileLine, "\n")] = '\0';
+        sanitize(rawFileLine);
 
         // Loop over every cell in the line
         int cellIndex = -1;
@@ -342,4 +341,18 @@ void testGetCategoryIndex(CuTest* tc){
     CuAssertIntEquals(tc, -1, getCategoryIndex(" ", categories, categoriesLength));
     CuAssertIntEquals(tc, -1, getCategoryIndex("", categories, categoriesLength));
 
+}
+
+void sanitize(char* string){
+
+    // Remove the newline at the end of the string, otherwise it could for example be interpreted as a delimiter for an extra category
+    string[strcspn(string, "\n")] = '\0';
+
+    // If we have a char 13 in the string, it make it a end of string character.
+    //This is a problem on Windows when using WSL.
+    int i = 0;
+    while(string[i] != '\0'){
+        if (string[i] == (char) 13) string[i] = '\0';
+        i++;
+    }
 }
