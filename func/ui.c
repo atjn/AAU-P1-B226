@@ -18,11 +18,12 @@ int getIdFromString(char *, Recipe *, int);
 void listLoadedRecipes(Recipe *recipes, int recipeCount){
     char printList = '0';
 
+
     // Asking the user whether a list of the loaded recipes should be printed?
     printf("Would you like a list of recipes?  (Y/N)\n");
-    scanf(" %c", &printList);
+    const int inputs = scanf(" %c", &printList);
 
-    if (printList == 'y' || printList == 'Y') {
+    if (inputs == 1 && (printList == 'y' || printList == 'Y')) {
         printf("\nThe loaded recipes are: \n");
         for (int i = 0; i < recipeCount; i++) {
             printf("\t - %s\n", recipes[i].name);
