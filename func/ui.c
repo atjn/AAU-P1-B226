@@ -16,7 +16,7 @@ int getIdFromString(char *, Recipe *, int);
 // Function to print the list of recipes if the user wants it.
 // This is done to make it easier for the user to select the correct recipe
 void listLoadedRecipes(Recipe *recipes, int recipeCount){
-    char printList = '0';
+    char printList;
 
 
     // Asking the user whether a list of the loaded recipes should be printed?
