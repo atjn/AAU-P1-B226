@@ -33,11 +33,12 @@ void foodForChange(){
     Category *categories = NULL;
     readIngredients(INGREDIENT_DATA_LOCATION, &ingredients, &categories, &ingredientsLength, &categoriesLength);
 
+    listLoadedRecipes(recipes, recipesLength);
     const int originalRecipeIndex = requestRecipeName(recipes, recipesLength);
     const int people = requestAmountOfPeople();
 
     Recipe alternativeRecipes[RECIPES_IN_ALTERNATIVES_LIST];
-    makeListOfAlternativeRecipes(originalRecipeIndex, recipes, alternativeRecipes);
+    makeListOfAlternativeRecipes(originalRecipeIndex, recipes, alternativeRecipes, ingredients, ingredientsLength);
     printListOfAlternativeRecipes(alternativeRecipes);
     const int alternativeRecipeIndex = requestRecipeNumber();
 
