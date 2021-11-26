@@ -13,20 +13,36 @@
 
 int getIdFromString(char *, Recipe *, int);
 
+// Function to print the list of recipes if the user wants it.
+// This is done to make it easier for the user to select the correct recipe
+void listLoadedRecipes(Recipe *recipes, int recipeCount){
+    char printList;
+
+
+    // Asking the user whether a list of the loaded recipes should be printed?
+    printf("Would you like a list of recipes?  (Y/N)\n");
+    const int inputs = scanf(" %c", &printList);
+
+    if (inputs == 1 && (printList == 'y' || printList == 'Y')) {
+        printf("\nThe loaded recipes are: \n");
+        for (int i = 0; i < recipeCount; i++) {
+            printf("\t - %s\n", recipes[i].name);
+        }
+    }
+}
 
 //This function ask the user for a recipe name. If it cannot match the user input to a recipe, it will return itself, and thus start the process again.
 //It returns an `int` corresponding the index of the recipe in the recipes array.
 int requestRecipeName(Recipe *recipes, int recipeCount){
     char recipeName[MAX_RECIPE_NAME];
 
-    printf("What recipe do you want to make? ");
+    printf("\nWhat recipe do you want to make? ");
     const int inputs = scanf(" %s", recipeName);
 
     flushInput();
 
     if (inputs <= 0)
         return requestRecipeName(recipes, recipeCount);
-
 
     int id = getIdFromString(recipeName, recipes, recipeCount);
 
@@ -58,7 +74,7 @@ int getIdFromString(char *recipeName, Recipe *recipes, int recipeCount){
  */
 int requestAmountOfPeople(){
     int amountOfPeople = 0;
-    printf("How many people are you cooking for (1─100)? ");
+    printf("\nHow many people are you cooking for (1─100)? ");
     int res = scanf(" %d", &amountOfPeople);
 
     flushInput();
