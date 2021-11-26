@@ -33,6 +33,7 @@ void foodForChange(){
     Category *categories = NULL;
     readIngredients(INGREDIENT_DATA_LOCATION, &ingredients, &categories, &ingredientsLength, &categoriesLength);
 
+    listLoadedRecipes(recipes, recipesLength);
     const int originalRecipeIndex = requestRecipeName(recipes, recipesLength);
     const int people = requestAmountOfPeople();
 
