@@ -344,9 +344,8 @@ void testGetCategoryIndex(CuTest* tc){
 }
 
 /**
- *
  * This function removes characters that some systems cant handle.
- *
+ * The function takes a string and makes the changes directly on the string.
  */
 void sanitize(char* string){
 
@@ -354,7 +353,7 @@ void sanitize(char* string){
     string[strcspn(string, "\n")] = '\0';
 
     // If we have a char 13 in the string, make it a end of string character.
-    //This is a problem on Windows when using WSL.
+    // This is a problem on Windows when using WSL.
     int i = 0;
     while(string[i] != '\0'){
         if (string[i] == (char) 13) string[i] = '\0';
