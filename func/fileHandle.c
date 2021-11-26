@@ -343,12 +343,17 @@ void testGetCategoryIndex(CuTest* tc){
 
 }
 
+/**
+ *
+ * This function removes characters that some systems cant handle.
+ *
+ */
 void sanitize(char* string){
 
     // Remove the newline at the end of the string, otherwise it could for example be interpreted as a delimiter for an extra category
     string[strcspn(string, "\n")] = '\0';
 
-    // If we have a char 13 in the string, it make it a end of string character.
+    // If we have a char 13 in the string, make it a end of string character.
     //This is a problem on Windows when using WSL.
     int i = 0;
     while(string[i] != '\0'){
