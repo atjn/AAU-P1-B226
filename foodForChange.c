@@ -37,7 +37,7 @@ void foodForChange(){
     const int people = requestAmountOfPeople();
 
     Recipe alternativeRecipes[RECIPES_IN_ALTERNATIVES_LIST];
-    makeListOfAlternativeRecipes(originalRecipeIndex, recipes, alternativeRecipes);
+    makeListOfAlternativeRecipes(originalRecipeIndex, recipes, alternativeRecipes, ingredients, ingredientsLength);
     printListOfAlternativeRecipes(alternativeRecipes);
     const int alternativeRecipeIndex = requestRecipeNumber();
 

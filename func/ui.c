@@ -27,7 +27,6 @@ int requestRecipeName(Recipe *recipes, int recipeCount){
     if (inputs <= 0)
         return requestRecipeName(recipes, recipeCount);
 
-
     int id = getIdFromString(recipeName, recipes, recipeCount);
 
     if (id == -1)
