@@ -1,9 +1,12 @@
 #define RECIPES_LOCATION "data/recipes.csv"
 #define INGREDIENT_DATA_LOCATION "data/ingredientData.csv"
+#define FILE_CELL_DELIMITER ";"
+#define FILE_CATEGORY_DELIMITER "."
+#define MAX_FILE_LINE_LENGTH 128
 #define MAX_RECIPE_NAME 128
 #define MAX_INGREDIENTS 400
 #define MAX_INGREDIENTS_RECIPE 32
-#define MAX_INGREDIENTS_CATEGORY 64
+#define MAX_INGREDIENTS_CATEGORY 128
 #define MAX_INGREDIENT_NAME 128
 #define MAX_CATEGORY_NAME 128
 #define MAX_CATEGORIES 128
@@ -28,7 +31,7 @@ typedef struct {
 
 typedef struct {
    char name[MAX_CATEGORY_NAME];
-   IngredientData ingredientData[MAX_INGREDIENTS_CATEGORY];
+   IngredientData *ingredientData[MAX_INGREDIENTS_CATEGORY];
    unsigned short ingredientCount;
 } Category;
 
