@@ -126,10 +126,6 @@ void testFactorial(CuTest *testCase){
 
 }
 
-/**
- * Takes the name (string) of a category, and returns it index in the array of categories.
- * If no match is found, returns -1.
- */
 int getCategoryIndex(const char *categoryName, const Category *categories, const int categoriesLength) {
 
     for (int i = 0; i < categoriesLength; i++){

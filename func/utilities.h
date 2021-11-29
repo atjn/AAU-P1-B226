@@ -26,6 +26,19 @@ void capitaliseFirst(char*);
  */
 void toLowerCase(char*);
 int factorial(const int);
+
+/**
+ * @brief A function to get the index of a speciic category
+ *
+ * This function is used to get the index of the category with categoryName in the array categories.
+ * Takes the name (string) of a category, and returns it's index in the array of categories.
+ * If no match is found, returns -1.
+ *
+ * @param categoryName
+ * @param categories
+ * @param categoriesLength
+ * @return int
+ */
 int getCategoryIndex(const char *, const Category *, const int);
 float calculateRecipeCoo(Recipe *, IngredientData *, int);
 float getIngrCoo(Ingredient *, IngredientData *, int);
