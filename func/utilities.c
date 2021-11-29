@@ -1,7 +1,10 @@
 #include "../lib/CuTest-AAU/CuTest.h"
+#include "definitions.h"
 
 #include <stdio.h>
 #include <ctype.h>
+#include <assert.h>
+#include <string.h>
 
 /**
  * Flushes the input buffer.
@@ -107,5 +110,81 @@ void testToLowerCase(CuTest* testCase){
     char string8[] = "&_!/";
     toLowerCase(string8);
     CuAssertStrEquals(testCase, "&_!/", string8);
+
+}
+
+/**
+ * Returns the factorial of a given integer
+ */
+int factorial(const int size){
+    assert(size >= 0);
+    int result = 1;
+    for (int i = 1; i <= size; i++){
+        result = result * i;
+    }
+    return result;
+}
+
+void testFactorial(CuTest *testCase){
+
+    CuAssertIntEquals(testCase, 1, factorial(1));
+
+     CuAssertIntEquals(testCase, 120, factorial(5));
+
+     CuAssertIntEquals(testCase, 5040, factorial(7));
+
+     CuAssertIntEquals(testCase, 1, factorial(0));
+
+}
+
+/**
+ * Takes the name (string) of a category, and returns it index in the array of categories.
+ * If no match is found, returns -1.
+ */
+int getCategoryIndex(const char *categoryName, const Category *categories, const int categoriesLength) {
+
+    for (int i = 0; i < categoriesLength; i++){
+        if (strcmp(categoryName, categories[i].name) == 0) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+void testGetCategoryIndex(CuTest* tc){
+
+    const Category categories[] = {
+        {
+            "cowsFarts",
+            {NULL},1,
+        },
+        {
+            "cows",
+            {NULL},1,
+        },
+        {
+            "based beans",
+            {NULL},1,
+        },
+        {
+            "3 acres of 5",
+            {NULL},1,
+        },
+    };
+    const int categoriesLength = sizeof(categories) / sizeof(categories[0]);
+
+    CuAssertIntEquals(tc, 0, getCategoryIndex("cowsFarts", categories, categoriesLength));
+    CuAssertIntEquals(tc, 1, getCategoryIndex("cows", categories, categoriesLength));
+    CuAssertIntEquals(tc, -1, getCategoryIndex("cow", categories, categoriesLength));
+
+    CuAssertIntEquals(tc, 2, getCategoryIndex("based beans", categories, categoriesLength));
+    CuAssertIntEquals(tc, 3, getCategoryIndex("3 acres of 5", categories, categoriesLength));
+
+    CuAssertIntEquals(tc, -1, getCategoryIndex("3", categories, categoriesLength));
+    CuAssertIntEquals(tc, -1, getCategoryIndex("5", categories, categoriesLength));
+    CuAssertIntEquals(tc, -1, getCategoryIndex("s", categories, categoriesLength));
+    CuAssertIntEquals(tc, -1, getCategoryIndex(" ", categories, categoriesLength));
+    CuAssertIntEquals(tc, -1, getCategoryIndex("", categories, categoriesLength));
 
 }

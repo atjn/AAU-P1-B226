@@ -7,10 +7,10 @@
 
 #include "../lib/CuTest-AAU/CuTest.h"
 
-#include "./definitions.h"
-#include "./ui.h"
-#include "./utilities.h"
-#include "./algorithm.h"
+#include "definitions.h"
+#include "ui.h"
+#include "utilities.h"
+#include "algorithm.h"
 
 int getIdFromString(char *, Recipe *, int);
 

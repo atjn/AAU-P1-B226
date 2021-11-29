@@ -5,7 +5,7 @@
 #include <string.h>
 #include <assert.h>
 #include "definitions.h"
-
+#include "utilities.h"
 
 /* Functions */
 int getCategoryIndex(const char *, const Category *, const int);
@@ -55,6 +55,8 @@ Recipe * readRecipe(int *recipesNumber) {
             currLine++;
             continue;
         }
+
+        sanitize(line);
 
         /* Checking if line starts with semicolon, if so its an ingredient and the if statement does not run */
         if (line[0] != ';') {
@@ -289,58 +291,6 @@ void testReadIngredients(CuTest* tc){
 
     free(ingredients);
     free(categories);
-}
-
-/**
- * Takes the name (string) of a category, and returns it index in the array of categories.
- * If no match is found, returns -1.
- */
-int getCategoryIndex(const char *categoryName, const Category *categories, const int categoriesLength) {
-
-    for (int i = 0; i < categoriesLength; i++){
-        if (strcmp(categoryName, categories[i].name) == 0) {
-            return i;
-        }
-    }
-
-    return -1;
-}
-
-void testGetCategoryIndex(CuTest* tc){
-
-    const Category categories[] = {
-        {
-            "cowsFarts",
-            {NULL},1,
-        },
-        {
-            "cows",
-            {NULL},1,
-        },
-        {
-            "based beans",
-            {NULL},1,
-        },
-        {
-            "3 acres of 5",
-            {NULL},1,
-        },
-    };
-    const int categoriesLength = sizeof(categories) / sizeof(categories[0]);
-
-    CuAssertIntEquals(tc, 0, getCategoryIndex("cowsFarts", categories, categoriesLength));
-    CuAssertIntEquals(tc, 1, getCategoryIndex("cows", categories, categoriesLength));
-    CuAssertIntEquals(tc, -1, getCategoryIndex("cow", categories, categoriesLength));
-
-    CuAssertIntEquals(tc, 2, getCategoryIndex("based beans", categories, categoriesLength));
-    CuAssertIntEquals(tc, 3, getCategoryIndex("3 acres of 5", categories, categoriesLength));
-
-    CuAssertIntEquals(tc, -1, getCategoryIndex("3", categories, categoriesLength));
-    CuAssertIntEquals(tc, -1, getCategoryIndex("5", categories, categoriesLength));
-    CuAssertIntEquals(tc, -1, getCategoryIndex("s", categories, categoriesLength));
-    CuAssertIntEquals(tc, -1, getCategoryIndex(" ", categories, categoriesLength));
-    CuAssertIntEquals(tc, -1, getCategoryIndex("", categories, categoriesLength));
-
 }
 
 /**
