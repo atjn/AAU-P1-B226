@@ -44,10 +44,10 @@ float calculateRecipeCoo(Recipe *recipe, IngredientData *ingredients, int ingrNu
  * TODO: change the structure of the Ingredient struct to include
  * a pointer to the corresponding IngredientData struct
  */
-float getIngrCoo(Ingredient ingrediens, IngredientData *ingredients, int ingrNum) {
+float getIngrCoo(Ingredient *ingrediens, IngredientData *ingredients, int ingrNum) {
     float tempCoo = 0;
     for (int j = 0; j < ingrNum; j++) {
-        if (strcmp(ingrediens.name, ingredients[j].name) == 0) {
+        if (strcmp(ingrediens->name, ingredients[j].name) == 0) {
             tempCoo = ingredients[j].coo;
         }
     }
