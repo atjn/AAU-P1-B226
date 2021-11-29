@@ -89,9 +89,9 @@ Recipe * readRecipe(int *recipesNumber) {
                     loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].amount = atof(ingredientPtr);
                     tempIngredientInfoCount++;
                 }
-                /* Stores the weight for the given ingredient */
+                /* Stores the category for the given ingredient */
                 else if (tempIngredientInfoCount == 2) {
-                    loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].weight = (unsigned short) atoi(ingredientPtr);
+                    strcpy(loadedRecipes[currRecipeIndex].ingredients[tempIngredientCount].ingredientCategory, ingredientPtr);
                     loadedRecipes[currRecipeIndex].ingredientCount++;
                     tempIngredientInfoCount = 0;
                     tempIngredientCount++;
@@ -103,13 +103,13 @@ Recipe * readRecipe(int *recipesNumber) {
     }
 
     /* For loop for checking input */
-   /* for (int i = 0; i < 1; i++) {
+    /*for (int i = 0; i < 1; i++) {
         printf("%s\n", loadedRecipes[i].name);
         printf("%d\n", loadedRecipes[i].ingredientCount);
         for (unsigned short j = 0; j < loadedRecipes[i].ingredientCount; j++) {
-            printf("%s, %f, %hu\n", loadedRecipes[i].ingredients[j].name,
+            printf("%s, %f, %s\n", loadedRecipes[i].ingredients[j].name,
                                      loadedRecipes[i].ingredients[j].amount,
-                                     loadedRecipes[i].ingredients[j].weight);
+                                     loadedRecipes[i].ingredients[j].ingredientCategory);
         }
     }
     */
