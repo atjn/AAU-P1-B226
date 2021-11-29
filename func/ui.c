@@ -153,7 +153,7 @@ void printRecipe(Recipe *recipe, const int people, IngredientData *ingredients, 
         strcpy(ingredientName, recipe->ingredients[i].name);
         capitaliseFirst(ingredientName);
         printf("| %-20s | %12.1lf | %12.1lf |\n", ingredientName, recipe->ingredients[i].amount * people,
-                                                        (getIngrCoo(recipe->ingredients[i], ingredients, ingrNum)) * recipe->ingredients[i].amount * people);
+                                                        (getIngrCoo(&recipe->ingredients[i], ingredients, ingrNum)) * recipe->ingredients[i].amount * people);
     }
     printf("|----------------------------------------------------|\n");
     printf("| Amount of CO2 (kg): %-10.1lf                     |\n", calculateRecipeCoo(recipe, ingredients, ingrNum) * people);
