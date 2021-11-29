@@ -18,7 +18,7 @@ celery;0.03;vegetableSubstitute
 red beet;0.31;vegetableSubstitute.slicedVegetableSubstitute
 chives;0.32;herbs
 leek;0.32;vegetableSubstitute
-portobello mushroom;0.36;chickenSubstitute.beefSubstitute
+portobello mushroom;0.36;chickenSubstitute.beefSubstitute.vegetableSubstitute
 potato;0.36;vegetableSubstitute
 parsley;0.37;herbs
 dill;0.37;herbs
@@ -33,8 +33,8 @@ ricemilk;0.39;milk product
 sliced mushroom;0.41;vegetableSubstitute.slicedVegetableSubstitute
 table salt;0.44;spices
 octopus;0.46;unprepared shellfish
-mushroom;0.47;chickenSubstitute.beefSubstitute
-oyster mushroom;0.47;chickenSubstitute.beefSubstitute
+mushroom;0.47;chickenSubstitute.beefSubstitute.vegetableSubstitute
+oyster mushroom;0.47;chickenSubstitute.beefSubstitute.vegetableSubstitute
 skimmed milk;0.48;milk product
 pea drink;0.48;milk product
 arugula salad;0.48;vegetable meals
