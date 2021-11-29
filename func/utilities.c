@@ -188,3 +188,36 @@ void testGetCategoryIndex(CuTest* tc){
     CuAssertIntEquals(tc, -1, getCategoryIndex("", categories, categoriesLength));
 
 }
+
+/**
+ * Calculating the total COO emission of a given recipe
+ * TODO: change the structure of the Ingredient struct to include
+ * a pointer to the corresponding IngredientData struct
+ */
+float calculateRecipeCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum) {
+    float tempCOO = 0;
+    for (int i = 0; i < recipe->ingredientCount; i++) {
+        for (int j = 0; j < ingrNum; j++) {
+            if (strcmp(recipe->ingredients[i].name, ingredients[j].name) == 0) {
+                tempCOO += ingredients[j].coo * (recipe->ingredients[i].amount/1000);
+                break;
+            }
+        }
+    }
+    return tempCOO;
+}
+
+/**
+ * Returns the total COO emission of a given ingredient
+ * TODO: change the structure of the Ingredient struct to include
+ * a pointer to the corresponding IngredientData struct
+ */
+float getIngrCoo(Ingredient *ingredient, IngredientData *ingredients, int ingrNum) {
+    float tempCoo = 0;
+    for (int j = 0; j < ingrNum; j++) {
+        if (strcmp(ingredient->name, ingredients[j].name) == 0) {
+            tempCoo = ingredients[j].coo;
+        }
+    }
+    return tempCoo;
+}

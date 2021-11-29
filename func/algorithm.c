@@ -48,7 +48,7 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
             }
 
         }
-         int indexToIncrease = originalRecipe->ingredientCount-1;
+        int indexToIncrease = originalRecipe->ingredientCount-1;
         do
         {
             ingredientIndexes[indexToIncrease]++;
@@ -74,7 +74,6 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
                 bestIngredientScores[t] = score;
 
                 for (int i = 0; i < originalRecipe->ingredientCount; i++){
-                    printf("dette er lig med:%s\n",ingredientCategories[i]->ingredientData[ingredientIndexes[i]]->name);
                     bestIngredients[t][i] = ingredientCategories[i]->ingredientData[ingredientIndexes[i]];
                 }
             }
@@ -83,45 +82,12 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
 
     for (int t = 0; t < RECIPES_IN_ALTERNATIVES_LIST; t++)
     {
-        printf("\n%d\n",t);
-
         strcpy(alternativeRecipes[t].name, originalRecipe->name);
         alternativeRecipes[t].ingredientCount = originalRecipe->ingredientCount;
         for(int i = 0; i < originalRecipe->ingredientCount; i++){
             strcpy(alternativeRecipes[t].ingredients[i].name, bestIngredients[t][i]->name);
+            strcpy(alternativeRecipes[t].ingredients[i].ingredientCategory, originalRecipe->ingredients[i].ingredientCategory);
+            alternativeRecipes[t].ingredients[i].amount = originalRecipe->ingredients[i].amount;
         }
     }
-}
-
-/**
- * Calculating the total COO emission of a given recipe
- * TODO: change the structure of the Ingredient struct to include
- * a pointer to the corresponding IngredientData struct
- */
-float calculateRecipeCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum) {
-    float tempCOO = 0;
-    for (int i = 0; i < recipe->ingredientCount; i++) {
-        for (int j = 0; j < ingrNum; j++) {
-            if (strcmp(recipe->ingredients[i].name, ingredients[j].name) == 0) {
-                tempCOO += ingredients[j].coo * (recipe->ingredients[i].amount/1000);
-                break;
-            }
-        }
-    }
-    return tempCOO;
-}
-
-/**
- * Returns the total COO emission of a given ingredient
- * TODO: change the structure of the Ingredient struct to include
- * a pointer to the corresponding IngredientData struct
- */
-float getIngrCoo(Ingredient *ingredient, IngredientData *ingredients, int ingrNum) {
-    float tempCoo = 0;
-    for (int j = 0; j < ingrNum; j++) {
-        if (strcmp(ingredient->name, ingredients[j].name) == 0) {
-            tempCoo = ingredients[j].coo;
-        }
-    }
-    return tempCoo;
 }

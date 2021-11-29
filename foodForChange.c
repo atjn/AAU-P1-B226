@@ -37,9 +37,9 @@ void foodForChange(){
     const int originalRecipeIndex = requestRecipeName(recipes, recipesLength);
     const int people = requestAmountOfPeople();
 
-    Recipe alternativeRecipes[RECIPES_IN_ALTERNATIVES_LIST+2]; //TODO .adding to here is a hack to get around memeory coropsition and should be fixed
+    Recipe alternativeRecipes[RECIPES_IN_ALTERNATIVES_LIST];
     makeListOfAlternativeRecipes(originalRecipeIndex, recipes, alternativeRecipes, ingredients, ingredientsLength, categories, categoriesLength);
-    printListOfAlternativeRecipes(alternativeRecipes);
+    printListOfAlternativeRecipes(alternativeRecipes, recipes, originalRecipeIndex, ingredients, ingredientsLength);
     const int alternativeRecipeIndex = requestRecipeNumber();
 
     printRecipe(&alternativeRecipes[alternativeRecipeIndex], people, ingredients, ingredientsLength);
