@@ -16,7 +16,7 @@
 typedef struct {
    char name[MAX_INGREDIENT_NAME];
    float amount;
-   char ingredientCategory[MAX_INGREDIENT_CATEGORY];
+   char ingredientCategory[MAX_INGREDIENT_CATEGORY_NAME];
 } Ingredient;
 
 typedef struct {
