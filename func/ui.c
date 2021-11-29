@@ -14,8 +14,7 @@
 
 int getIdFromString(char *, Recipe *, int);
 
-// Function to print the list of recipes if the user wants it.
-// This is done to make it easier for the user to select the correct recipe
+
 void listLoadedRecipes(Recipe *recipes, int recipeCount){
     char printList;
 
@@ -56,7 +55,12 @@ int requestRecipeName(Recipe *recipes, int recipeCount){
 }
 
 /**
- * Takes the name (string) of a recipe, and returns the recipe's index in the recipes array.
+ * @brief gets the id of a recipe
+ * @param recipeName name of the recipe
+ * @param recipes pointer to array of recipes
+ * @param recipesCount number of recipes in recepies pointer
+ *
+ * @return int id of the recipe in the array recepies
  */
 int getIdFromString(char *recipeName, Recipe *recipes, int recipeCount){
     char recipeNameInLower[MAX_RECIPE_NAME];
@@ -71,9 +75,8 @@ int getIdFromString(char *recipeName, Recipe *recipes, int recipeCount){
     return -1;
 }
 
-/**
- * Asks the user how many people they are making dinner for, and returns the value in an int.
- */
+
+
 int requestAmountOfPeople(){
     int amountOfPeople = 0;
     printf("\nHow many people are you cooking for (1-100)? ");
@@ -108,10 +111,7 @@ void printListOfAlternativeRecipes(Recipe alternativeRecipes[]){
     printf("---------------------------------------------\n");
 }
 
-/**
- * Ask the user which recipes number they want.
- * Returns the choice in an int pointer.
- */
+
 int requestRecipeNumber(){
     int recipeNumber;
 
@@ -133,9 +133,7 @@ int requestRecipeNumber(){
     return recipeNumber -1;
 }
 
-/**
- * Prints information about a given recipe.
- */
+
 void printRecipe(Recipe *recipe, const int people, IngredientData *ingredients, const int ingrNum){
 
     char name[MAX_RECIPE_NAME];
