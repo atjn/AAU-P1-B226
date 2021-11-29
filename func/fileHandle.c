@@ -11,10 +11,17 @@
 int getCategoryIndex(const char *, const Category *, const int);
 void sanitize(char*);
 
-/* This function is used in the beginning of the foodForChange.c file to load the recipes file in the data folder */
-/* The function takes a pointer to an integer as a parameter. The parameter is used to return the number to recipes loaded */
-/* The function returns a pointer to the array of structs loaded */
-/* Using semicolons instead of commas in the .csv files (Thanks Microsoft) */
+/**
+ * @brief This function reads the recipe file
+ *
+ * This function is used in the beginning of the foodForChange.c file to load the recipes file in the data folder
+ * The function takes a pointer to an integer as a parameter. The parameter is used to return the number to recipes loaded
+ * The function returns a pointer to the array of structs loaded
+ * Using semicolons instead of commas in the .csv files (Thanks Microsoft)
+ *
+ * @param recipesNumber
+ * @return Recipe*
+ */
 Recipe * readRecipe(int *recipesNumber) {
     /* Tempoary variabls for reading the recipe file */
     FILE *fp;
@@ -121,6 +128,20 @@ Recipe * readRecipe(int *recipesNumber) {
     return loadedRecipes;
 }
 
+/**
+ * @brief This function reads the ingredientsdata file
+ *
+ * This function is used in the beginning of the foodForChange.c file to load the ingredients file in the data folder
+ * The function takes a pointer to the path of the data file as a parameter.
+ * The function also takes a pointer to an array of IngredientsData and an array of Category. These parameters are used to return the loaded ingredients and categories.
+ * The function also takes a pointer to the integers ingredientsLength and categoriesLength. These parameters are used to return the length of the two arrays.
+ *
+ * @param dataPath
+ * @param ingredients
+ * @param categories
+ * @param ingredientsLength
+ * @param categoriesLength
+ */
 void readIngredients(const char *dataPath, IngredientData **ingredients, Category **categories, int *ingredientsLength, int *categoriesLength){
 
     // Open the ingredients data file
@@ -213,9 +234,12 @@ void readIngredients(const char *dataPath, IngredientData **ingredients, Categor
     fclose(rawFile);
 }
 
-
+/**
+ * @brief A function to run tests on the readIngredients function
+ *
+ * @param tc
+ */
 void testReadIngredients(CuTest* tc){
-
     IngredientData correctIngredients[] = {
         {"very balanced raddish", 1},
         {"beef from the future", 0},
@@ -292,11 +316,18 @@ void testReadIngredients(CuTest* tc){
 }
 
 /**
- * Takes the name (string) of a category, and returns it index in the array of categories.
+ * @brief A function to get the index of a speciic category
+ *
+ * This function is used to get the index of the category with categoryName in the array categories.
+ * Takes the name (string) of a category, and returns it's index in the array of categories.
  * If no match is found, returns -1.
+ *
+ * @param categoryName
+ * @param categories
+ * @param categoriesLength
+ * @return int
  */
 int getCategoryIndex(const char *categoryName, const Category *categories, const int categoriesLength) {
-
     for (int i = 0; i < categoriesLength; i++){
         if (strcmp(categoryName, categories[i].name) == 0) {
             return i;
@@ -306,6 +337,11 @@ int getCategoryIndex(const char *categoryName, const Category *categories, const
     return -1;
 }
 
+/**
+ * @brief A function to run tests on the getCategoryIndex function
+ *
+ * @param tc
+ */
 void testGetCategoryIndex(CuTest* tc){
 
     const Category categories[] = {
@@ -344,11 +380,14 @@ void testGetCategoryIndex(CuTest* tc){
 }
 
 /**
+ * @brief A function to sanitize a string
+ *
  * This function removes characters that some systems cant handle.
  * The function takes a string and makes the changes directly on the string.
+ *
+ * @param string
  */
 void sanitize(char* string){
-
     // Remove the newline at the end of the string, otherwise it could for example be interpreted as a delimiter for an extra category
     string[strcspn(string, "\n")] = '\0';
 
