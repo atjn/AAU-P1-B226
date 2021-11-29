@@ -43,7 +43,7 @@ int requestRecipeNumber();
  *
  * @param recipe Pointer to a recipe
  * @param people Amount of people who are eating
- * @param ingredients Pointer to the ingredient data for co2 purposes
+ * @param ingredients Pointer to the ingredient data for CO2 purposes
  * @param ingrNum Amount of total ingredients
  *
  * @return void
