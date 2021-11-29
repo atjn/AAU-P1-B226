@@ -10,6 +10,7 @@
 #include "./definitions.h"
 #include "./ui.h"
 #include "./utilities.h"
+#include "./algorithm.h"
 
 int getIdFromString(char *, Recipe *, int);
 
@@ -135,7 +136,7 @@ int requestRecipeNumber(){
 /**
  * Prints information about a given recipe.
  */
-void printRecipe(const Recipe *recipe, const int people){
+void printRecipe(Recipe *recipe, const int people, IngredientData *ingredients, const int ingrNum){
 
     char name[MAX_RECIPE_NAME];
     strcpy(name, recipe->name);
@@ -148,11 +149,10 @@ void printRecipe(const Recipe *recipe, const int people){
     printf("|      Ingredient      |  Amount (g)  |    CO2 (g)   |\n");
     printf("|----------------------------------------------------|\n");
     for (int i = 0; i < recipe->ingredientCount; i++){
-        //TODO: print the correct g CO₂ number
-        printf("| %-20s | %12.1lf | %12.1lf |\n", name, recipe->ingredients[i].amount*people , 25.0f);
+        printf("| %-20s | %12.1lf | %12.1lf |\n", recipe->ingredients[i].name, recipe->ingredients[i].amount * people,
+                                                        (getIngrCoo(recipe->ingredients[i], ingredients, ingrNum)) * recipe->ingredients[i].amount * people);
     }
     printf("|----------------------------------------------------|\n");
-    //TODO: print the correct g CO₂ number
-    printf("| Amount of CO2 (g): %-10.1lf                      |\n", 10.0f);
+    printf("| Amount of CO2 (kg): %-10.1lf                     |\n", calculateRecipeCoo(recipe, ingredients, ingrNum) * people);
     printf("------------------------------------------------------\n");
 }
