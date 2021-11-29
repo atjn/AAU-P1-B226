@@ -4,4 +4,4 @@ int requestRecipeName(Recipe* recipes, int recipeCount);
 int requestAmountOfPeople();
 void printListOfAlternativeRecipes(Recipe[]);
 int requestRecipeNumber();
-void printRecipe(const Recipe *, const int);
+void printRecipe(Recipe *recipe, const int people, IngredientData *ingredients, const int ingrNum);

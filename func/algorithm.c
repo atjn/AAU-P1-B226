@@ -5,7 +5,8 @@
 
 #include "../lib/CuTest-AAU/CuTest.h"
 
-float calculateCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum);
+float calculateRecipeCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum);
+float calculateIngrCoo(Ingredient ingrediens, IngredientData *ingredients, int ingrNum);
 
 // Function to calculate and return alternative recipes
 // The function takes the recipe, recipelist, and the parameter alternativeRecipes
@@ -14,7 +15,7 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
     //Dummy-output:
     for(int i = 0; i < RECIPES_IN_ALTERNATIVES_LIST; i++) alternativeRecipes[i] = recipes[recipeIndex * 0];
 
-    float recipeCoo = calculateCoo(&recipes[recipeIndex], ingredients, ingrNum);
+    float recipeCoo = calculateRecipeCoo(&recipes[recipeIndex], ingredients, ingrNum);
 
     printf("\nThis recipe of a %s has a carbon footprint of: %.2f Kg/CO₂ pr. person\n", recipes[recipeIndex].name, recipeCoo);
 
@@ -25,7 +26,7 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
  * TODO: change the structure of the Ingredient struct to include
  * a pointer to the corresponding IngredientData struct
  */
-float calculateCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum) {
+float calculateRecipeCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum) {
     float tempCOO = 0;
     for (int i = 0; i < recipe->ingredientCount; i++) {
         for (int j = 0; j < ingrNum; j++) {
@@ -36,4 +37,19 @@ float calculateCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum) {
         }
     }
     return tempCOO;
+}
+
+/**
+ * Returns the total COO emission of a given ingredient
+ * TODO: change the structure of the Ingredient struct to include
+ * a pointer to the corresponding IngredientData struct
+ */
+float getIngrCoo(Ingredient ingrediens, IngredientData *ingredients, int ingrNum) {
+    float tempCoo = 0;
+    for (int j = 0; j < ingrNum; j++) {
+        if (strcmp(ingrediens.name, ingredients[j].name) == 0) {
+            tempCoo = ingredients[j].coo;
+        }
+    }
+    return tempCoo;
 }
