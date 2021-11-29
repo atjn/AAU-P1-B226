@@ -15,28 +15,28 @@ rhubarb;0.03;fruits
 fresh basil;0.03;herbs
 celeriac;0.03;vegetableSubstitute
 celery;0.03;vegetableSubstitute
-red beet;0.31;vegetableSubstitute.slicedVegetableSubstitute
+red beet;0.31;vegetableSubstitute.slicedVegetableSubstitute.potatoSubstitute
 chives;0.32;herbs
 leek;0.32;vegetableSubstitute
-portobello mushroom;0.36;chickenSubstitute.beefSubstitute
-potato;0.36;vegetableSubstitute
+portobello mushroom;0.36;chickenSubstitute.beefSubstitute.vegetableSubstitute.porkSubstitute
+potato;0.36;vegetableSubstitute.potatoSubstitute
 parsley;0.37;herbs
 dill;0.37;herbs
 cress;0.37;herbs
-oatmilk;0.37;milk product
+oatmilk;0.37;milkProduct
 frozen carrot;0.37;vegetableSubstitute
 radish;0.37;vegetableSubstitute.slicedVegetableSubstitute
-soymilk;0.38;milk product
+soymilk;0.38;milkProduct
 pear;0.38;pome fruits
 chicken bouillon;0.38;spices
-ricemilk;0.39;milk product
-sliced mushroom;0.41;vegetableSubstitute.slicedVegetableSubstitute
+ricemilk;0.39;milkProduct
+sliced mushroom;0.41;vegetableSubstitute.slicedVegetableSubstitute.porkSubstitute
 table salt;0.44;spices
 octopus;0.46;unprepared shellfish
-mushroom;0.47;chickenSubstitute.beefSubstitute
-oyster mushroom;0.47;chickenSubstitute.beefSubstitute
-skimmed milk;0.48;milk product
-pea drink;0.48;milk product
+mushroom;0.47;chickenSubstitute.beefSubstitute.vegetableSubstitute.porkSubstitute
+oyster mushroom;0.47;chickenSubstitute.beefSubstitute.vegetableSubstitute.porkSubstitute
+skimmed milk;0.48;milkProduct
+pea drink;0.48;milkProduct
 arugula salad;0.48;vegetable meals
 corn cob;0.49;vegetableSubstitute
 spinach;0.52;saladSubstitute
@@ -48,7 +48,7 @@ cucumber;0.56;vegetableSubstitute.slicedVegetableSubstitute
 plum;0.58;stone fruit
 lettuce iceberg;0.59;vegetableSubstitute.saladSubstitute
 looseleaf lettuce;0.59;vegetableSubstitute.saladSubstitute
-partly skimmed milk;0.61;milk product
+partly skimmed milk;0.61;milkProduct
 canned sweetcorn kernel;0.61;vegetableSubstitute
 baby corn;0.61;vegetableSubstitute
 rye bread;0.62;bread
@@ -56,11 +56,11 @@ corn flour;0.63;grains/flour
 frozen spinach;0.64;vegetableSubstitute
 rose hip;0.65;berries/small fruit
 pineapple;0.65;fruits
-skimmed chocolate milk;0.65;milk product
+skimmed chocolate milk;0.65;milkProduct
 frozen french fries;0.65;vegetableSubstitute
 apple;0.66;pome fruits
 green pea;0.67;peas
-canned mushroom;0.07;vegetableSubstitute
+canned mushroom;0.07;vegetableSubstitute.porkSubstitute
 tomato;0.07;vegetableSubstitute.slicedVegetableSubstitute
 honeydew melon;0.71;fruits
 cauliflower;0.71;vegetableSubstitute
@@ -71,20 +71,20 @@ bread;0.74;bread
 hot dog bread;0.74;bread
 bread roll;0.74;bread
 tortilla bread;0.74;bread
-burger bun;0.74;bread
+burger bun;0.74;bread.burgerBunSubstitude
 sugar pea;0.74;peas
 cassava;0.74;vegetableSubstitute
 cherry;0.75;stone fruit
 rye flour;0.77;grains/flour
 rye kernel;0.77;grains/flour
-honey;0.77;sweet spreads
+honey;0.77;sweetSpreads
 watermelon;0.78;fruits
-whole milk;0.79;milk product
+whole milk;0.79;milkProduct
 orange;0.81;citrus
 barley groat;0.83;grains/flour
 canned pear;0.83;processed fruit
 canned red beet;0.83;vegetableSubstitute
-pumpkin;0.83;vegetableSubstitute
+pumpkin;0.83;vegetableSubstitute.potatoSubstitute
 squash;0.83;vegetableSubstitute.slicedVegetableSubstitute
 raspberry;0.84;berries/small fruit
 wheat flour;0.84;grains/flour
@@ -98,7 +98,7 @@ frozen raspberry;0.86;processed fruit
 cranberry;0.87;berries/small fruit
 lime;0.87;citrus
 frozen green pea;0.87;vegetableSubstitute
-canned chickpeas;0.88;vegetableSubstitute.chickenSubstitute.beefSubstitute
+canned chickpeas;0.88;vegetableSubstitute.chickenSubstitute.beefSubstitute.porkSubstitute
 asparagus;0.88;vegetableSubstitute.slicedVegetableSubstitute
 parsley root;0.89;vegetableSubstitute
 canned potato;0.89;vegetableSubstitute
@@ -116,7 +116,7 @@ oats;0.95;grains/flour
 peach;0.96;stone fruit
 nectarine;0.96;stone fruit
 tangerine;0.97;citrus
-buttermilk soup;0.97;milk product
+buttermilk soup;0.97;milkProduct
 aubergine;0.97;vegetableSubstitute.slicedVegetableSubstitute
 banana;0.98;fruits
 artichoke;0.98;vegetableSubstitute
@@ -125,8 +125,8 @@ vegan cheese;1;cheeseSubstitute
 pepper;1.02;peppers
 chili;1.02;peppers
 frozen blueberry;1.02;processed fruit
-wax bean;1.04;beans
-green bean;1.04;beans
+wax bean;1.04;beans.potatoSubstitute
+green bean;1.04;beans.potatoSubstitute
 mung bean sprout;1.04;vegetableSubstitute.chickenSubstitute.beefSubstitute
 bean sprout;1.04;vegetableSubstitute.chickenSubstitute.beefSubstitute
 kidney bean;1.05;beans
@@ -145,18 +145,18 @@ kamut;1.15;processed cereal products
 dried soy bean;1.16;beans
 potato salad;1.18;vegetableSubstitute
 canned bamboo shoot;1.21;vegetableSubstitute
-low fat mayonnaise;1.22;sauces/condiments
+low fat mayonnaise;1.22;sauces/condiments.mayonnaiseSubstitute
 skyr;1.25;yogurt
-breadcrumbs;1.26;bread
+breadcrumbs;1.26;bread.breadcrumbsSubstitute
 canned tomatojuice;1.26;sauces/condiments
 canned peeled tomato;1.26;vegetableSubstitute
 parboiled rice;1.28;grains/flour
 canned pineapple;1.03;processed fruit
 potato flour;1.31;grains/flour
-chicken drumstick;1.32;chickenSubstitute
+chicken drumstick;1.32;chickenSubstitute.porkSubstitute
 garlic;1.33;vegetableSubstitute
 canned green pea;1.36;peas
-chicken leg;1.39;chickenSubstitute
+chicken leg;1.39;chickenSubstitute.porkSubstitute
 caper;1.39;vegetableSubstitute
 rice noodle;1.41;pasta/noodles
 frozen green bean;1.42;beans
@@ -177,20 +177,20 @@ green olives;1.69;olives
 black olive;1.69;olives
 sprouted lentil;1.07;vegetableSubstitute
 tofu;1.71;chickenSubstitute.beefSubstitute
-chestnut;1.71;nuts and seeds
+chestnut;1.71;nutsAndSeeds
 vegan bean paste;1.72;vegetable meals
 frozen falafel;1.72;vegetableSubstitute.chickenSubstitute
 pasta;1.73;pasta/noodles
 mustard;1.76;sauces/condiments
 mussel;1.77;fish
-sunflower seed;1.77;nuts and seeds
+sunflower seed;1.77;nutsAndSeeds
 green lentil;1.78;chickenSubstitute.beefSubstitute
 dried red lentil;1.78;vegetableSubstitute.chickenSubstitute.beefSubstitute
 strawberry jam;1.08;processed fruit
 taco shell;1.81;dough product
-pork bratwurst;1.81;prepared meat
-cocktail sausage;1.81;prepared meat
-grilled sausage;1.81;prepared meat
+pork bratwurst;1.81;preparedMeat
+cocktail sausage;1.81;preparedMeat
+grilled sausage;1.81;preparedMeat
 chili sauce;1.82;sauces/condiments
 vegan chorizo;1.84;beefSubstitute
 tomato soup;1.84;prepared soups
@@ -208,34 +208,34 @@ sundried tomato;1.95;vegetableSubstitute
 dried tomato;1.95;vegetableSubstitute
 green curry paste;1.97;sauces/condiments
 sucrose sugar;2;sugar
-tomato ketchup;2.01;sauces/condiments
-cream;2.02;milk product
+tomato ketchup;2.01;sauces/condiments.mayonnaiseSubstitute
+cream;2.02;milkProduct
 gravad lax sauce;2.03;sauces/condiments
 vegan fillet piece;2.04;beefSubstitute
 stuffed pasta;2.14;pasta/noodles
-barbeque sauce;2.18;sauces/condiments
-pork sausage;2.21;prepared meat
+barbeque sauce;2.18;sauces/condiments.mayonnaiseSubstitute
+pork sausage;2.21;preparedMeat
 chicken hen;2.22;chickenSubstitute
 chick pea;2.23;chickenSubstitute.beefSubstitute
 duck flesh;2.27;chickenSubstitute
 goose flesh;2.27;chickenSubstitute
 hare;2.27;chickenSubstitute
 rabbit flesh;2.27;chickenSubstitute
-pheasant;2.27;unprepared meat
+pheasant;2.27;unpreparedMeat
 pizzasauce;2.33;sauces/condiments
 pastasauce;2.33;sauces/condiments
 tomato paste;2.48;vegetableSubstitute
 black quinoa;2.49;grains/flour
-ajvar;2.49;sauces/condiments
-salted peanut;2.05;nuts and seeds
+ajvar;2.49;sauces/condiments.mayonnaiseSubstitute
+salted peanut;2.05;nutsAndSeeds
 raisin;2.63;processed fruit
 trout;2.72;unprepared fish
 garlic in oil;2.79;vegetableSubstitute
 canned herring;2.83;fish
-peanut butter;2.85;sweet spreads
+peanut butter;2.85;sweetSpreads
 marinated grilled pepper;2.89;peppers
 mango chutney;2.09;chutney
-minced pork low fat;2.09;prepared meat
+minced pork low fat;2.09;preparedMeat.porkSubstitute
 blueberries;2.91;berries/small fruit
 feta;2.92;cheeseSubstitute
 brie cheese;2.92;cheeseSubstitute
@@ -243,55 +243,55 @@ cottage cheese;2.92;cheeseSubstitute
 blue cheese;2.92;cheeseSubstitute
 goat cheese;2.92;cheeseSubstitute
 mozarella stick;2.92;snacks
-magarine;2.93;fats
-minced pork;2.97;prepared meat
-meatball;3;prepared meat
-vegan mayo;3.07;sauces/condiments
+magarine;2.93;fats.butterSubstitute
+minced pork;2.97;preparedMeat.porkSubstitute
+meatball;3;preparedMeat
+vegan mayo;3.07;sauces/condiments.mayonnaiseSubstitute
 olive tapenade;3.12;vegetableSubstitute
-walnut;3.15;nuts and seeds
-turkey flesh;3.18;unprepared meat
-pumpkin seed;3.02;nuts and seeds
-chicken nugget;3.24;chickenSubstitute
-minced turkey;3.34;unprepared meat
+walnut;3.15;nutsAndSeeds
+turkey flesh;3.18;unpreparedMeat
+pumpkin seed;3.02;nutsAndSeeds.potatoSubstitute
+chicken nugget;3.24;chickenSubstitute.porkSubstitute
+minced turkey;3.34;unpreparedMeat
 marinated artichoke;3.38;vegetableSubstitute
-chicken breast;3.44;chickenSubstitute
+chicken breast;3.44;chickenSubstitute.porkSubstitute
 coconut milk;3.05;vegetableSubstitute
-pork liver paste;3.51;prepared meat
-almondmilk;3.52;milk product
-italian mayonnaise salad;3.55;sauces/condiments
-mayonnaise;3.55;sauces/condiments
+pork liver paste;3.51;preparedMeat
+almondmilk;3.52;milkProduct
+italian mayonnaise salad;3.55;sauces/condiments.mayonnaiseSubstitute
+mayonnaise;3.55;sauces/condiments.mayonnaiseSubstitute
 crayfish;3.55;unprepared shellfish
 lobster;3.55;unprepared shellfish
 pork collar;3.58;beefSubstitute
 pork ham;3.58;beefSubstitute
-sesame seed;3.62;nuts and seeds
-pulled pork;3.68;prepared meat
-minced chicken;3.76;chickenSubstitute.beefSubstitute
+sesame seed;3.62;nutsAndSeeds
+pulled pork;3.68;preparedMeat
+minced chicken;3.76;chickenSubstitute.beefSubstitute.porkSubstitute
 sunflower oil;3.76;oils
-blended spread;3.08;butterfats
-olive oil;3.83;oils
-pesto;3.83;sauces/condiments
+blended spread;3.08;butterfats.butterSubstitute
+olive oil;3.83;oils.butterSubstitute
+pesto;3.83;sauces/condiments.mayonnaiseSubstitute
 rapeseed oil;3.84;oils
-salted butter;3.92;fats
-cashew nut;4.01;nuts and seeds
-salad dressing;4.02;sauces/condiments
+salted butter;3.92;fats.butterSubstitute
+cashew nut;4.01;nutsAndSeeds
+salad dressing;4.02;sauces/condiments.mayonnaiseSubstitute
 tahin;4.08;spices
 pork loin;4.19;beefSubstitute
 black pepper;4.03;spices
 deepfried onion;4.03;vegetable meals
-hazelnut;4.35;nuts and seeds
-goat milk;4.04;milk product
+hazelnut;4.35;nutsAndSeeds
+goat milk;4.04;milkProduct
 dried basil;4.44;herbs
 fennel root;4.46;herbs
 curry powder;4.07;spices
 bacon;4.08;baconSubstitute.beefSubstitute
-thousand island;4.86;sauces/condiments
-pepperoni;5.06;prepared meat
+thousand island;4.86;sauces/condiments.mayonnaiseSubstitute
+pepperoni;5.06;preparedMeat
 trimmed pork tenderloin;5.04;beefSubstitute
 canned tuna;5.06;fish
 fish ball;5.74;fish
 boiled crab;5.09;shellfish
-chorizo;6.07;prepared meat
+chorizo;6.07;preparedMeat
 breaded fish finger;6.59;fish
 cod fillet breaded;6.63;fish
 concentrated beef bouillon;7.26;spices
@@ -318,13 +318,13 @@ tuna;10.14;unprepared fish
 fish cake;10.28;fish
 boiled shrimp;10.52;shellfish
 brined shrimp;10.52;shellfish
-frozen meat ball;11.08;unprepared meat
+frozen meat ball;11.08;unpreparedMeat
 cod roe;11.27;fish
 caviar;11.32;fish
 caviar;11.33;fish
 cod roe;11.36;fish
-canned meat ball;11.42;prepared meat
-meat ball;11.42;prepared meat
+canned meat ball;11.42;preparedMeat
+meat ball;11.42;preparedMeat
 smoked halibut;11.59;fish
 shrimp;11.89;fish
 cold smoked salmon;11.89;fish
@@ -336,18 +336,18 @@ burbot;12.54;unprepared fish
 whitefish;12.54;unprepared fish
 perch;13.84;unprepared fish
 crab claw;14.68;fish
-minced veal and pork;15.26;prepared meat
+minced veal and pork;15.26;preparedMeat
 bream;16.78;unprepared fish
 minced lamb;26.3;beefSubstitute
 lamb;27.43;beefSubstitute
 minced beef;30.84;beefSubstitute
-salami;34.11;prepared meat
+salami;34.11;preparedMeat
 low fat minced beef;34.19;beefSubstitute
-kebab;36.49;prepared meat
+kebab;36.49;preparedMeat
 pulled beef;38.22;beefSubstitute
 beef top loin steak;45.69;beefSubstitute
 beef sirloin steak;45.69;beefSubstitute
-roastbeef;45.84;prepared meat
+roastbeef;45.84;preparedMeat
 medium fat veal;50.36;beefSubstitute
 beef t-bone steak;80.89;beefSubstitute
 beef fillet without fat;151.95;beefSubstitute
