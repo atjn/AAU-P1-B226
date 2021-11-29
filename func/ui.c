@@ -149,7 +149,10 @@ void printRecipe(Recipe *recipe, const int people, IngredientData *ingredients, 
     printf("|      Ingredient      |  Amount (g)  |    CO2 (g)   |\n");
     printf("|----------------------------------------------------|\n");
     for (int i = 0; i < recipe->ingredientCount; i++){
-        printf("| %-20s | %12.1lf | %12.1lf |\n", recipe->ingredients[i].name, recipe->ingredients[i].amount * people,
+        char ingredientName[MAX_INGREDIENT_NAME];
+        strcpy(ingredientName, recipe->ingredients[i].name);
+        capitaliseFirst(ingredientName);
+        printf("| %-20s | %12.1lf | %12.1lf |\n", ingredientName, recipe->ingredients[i].amount * people,
                                                         (getIngrCoo(recipe->ingredients[i], ingredients, ingrNum)) * recipe->ingredients[i].amount * people);
     }
     printf("|----------------------------------------------------|\n");
