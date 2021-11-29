@@ -18,10 +18,11 @@ int getIdFromString(char *, Recipe *, int);
 void listLoadedRecipes(Recipe *recipes, int recipeCount){
     char printList;
 
-
     // Asking the user whether a list of the loaded recipes should be printed?
-    printf("Would you like a list of recipes?  (Y/N)\n");
+    printf("Would you like a list of recipes? (Y/N)\n");
     const int inputs = scanf(" %c", &printList);
+
+    flushInput();
 
     if (inputs == 1 && (printList == 'y' || printList == 'Y')) {
         printf("\nThe loaded recipes are: \n");
@@ -74,7 +75,7 @@ int getIdFromString(char *recipeName, Recipe *recipes, int recipeCount){
  */
 int requestAmountOfPeople(){
     int amountOfPeople = 0;
-    printf("\nHow many people are you cooking for (1─100)? ");
+    printf("\nHow many people are you cooking for (1-100)? ");
     int res = scanf(" %d", &amountOfPeople);
 
     flushInput();
@@ -119,10 +120,10 @@ int requestRecipeNumber(){
         printf("Which version would you like to try making? ");
         const int inputs = scanf(" %d", &recipeNumber);
 
-        inputSuccess = inputs == 1 && recipeNumber >= 1 && recipeNumber <= 5;
+        inputSuccess = inputs == 1 && recipeNumber >= 1 && recipeNumber <= RECIPES_IN_ALTERNATIVES_LIST;
 
         if(!inputSuccess){
-            printf("Sorry, I did not understand that. Please input a number between 1 and 5\n");
+            printf("Sorry, I did not understand that. Please input a number between 1 and %d\n", RECIPES_IN_ALTERNATIVES_LIST);
         }
 
         flushInput();
@@ -144,12 +145,14 @@ void printRecipe(const Recipe *recipe, const int people){
     printf("------------------------------------------------------\n");
     printf("|                       %-10s                   |\n", name);
     printf("|----------------------------------------------------|\n");
+    printf("|      Ingredient      |  Amount (g)  |    CO2 (g)   |\n");
+    printf("|----------------------------------------------------|\n");
     for (int i = 0; i < recipe->ingredientCount; i++){
         //TODO: print the correct g CO₂ number
-        printf("| %-20s | %9.1lf(g) | %5d(g CO₂) |\n", name, recipe->ingredients[i].amount*people , 25);
+        printf("| %-20s | %12.1lf | %12.1lf |\n", name, recipe->ingredients[i].amount*people , 25.0f);
     }
     printf("|----------------------------------------------------|\n");
     //TODO: print the correct g CO₂ number
-    printf("| Amount of CO2: %-10d                          |\n", 10);
+    printf("| Amount of CO2 (g): %-10.1lf                      |\n", 10.0f);
     printf("------------------------------------------------------\n");
 }
