@@ -76,11 +76,7 @@ int getIdFromString(char *recipeName, Recipe *recipes, int recipeCount){
 }
 
 
-/**
- * @brief asks the user how many people they are making dinner for
- *
- * @return int amount of people
- */
+
 int requestAmountOfPeople(){
     int amountOfPeople = 0;
     printf("\nHow many people are you cooking for (1-100)? ");
@@ -115,10 +111,7 @@ void printListOfAlternativeRecipes(Recipe alternativeRecipes[]){
     printf("---------------------------------------------\n");
 }
 
-/**
- * Ask the user which recipes number they want.
- * Returns the choice in an int pointer.
- */
+
 int requestRecipeNumber(){
     int recipeNumber;
 
@@ -140,9 +133,7 @@ int requestRecipeNumber(){
     return recipeNumber -1;
 }
 
-/**
- * Prints information about a given recipe.
- */
+
 void printRecipe(Recipe *recipe, const int people, IngredientData *ingredients, const int ingrNum){
 
     char name[MAX_RECIPE_NAME];

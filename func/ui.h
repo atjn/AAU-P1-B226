@@ -12,7 +12,7 @@ void listLoadedRecipes(Recipe *recipes, int recipeCount);
  * @param recipes pointer to array of recipes
  * @param recipesCount number of recipes in recepies pointer
  *
- * @return int
+ * @return int index of recipe in recipes array
  */
 int requestRecipeName(Recipe* recipes, int recipeCount);
 
@@ -26,12 +26,14 @@ int requestAmountOfPeople();
 /**
  * @brief prints the alternative recepies
  * @param recipes pointer to array of recipes
+ *
  * @return void
  */
 void printListOfAlternativeRecipes(Recipe[]);
 
 /**
  * @brief prompts the user for a recipe number
+ *
  * @return void
  */
 int requestRecipeNumber();
