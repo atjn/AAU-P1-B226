@@ -4,6 +4,7 @@
 #define FILE_CATEGORY_DELIMITER "."
 #define MAX_FILE_LINE_LENGTH 128
 #define MAX_RECIPE_NAME 128
+#define MAX_INGREDIENT_CATEGORY_NAME 128
 #define MAX_INGREDIENTS 400
 #define MAX_INGREDIENTS_RECIPE 32
 #define MAX_INGREDIENTS_CATEGORY 128
@@ -15,7 +16,7 @@
 typedef struct {
    char name[MAX_INGREDIENT_NAME];
    float amount;
-   unsigned short weight;
+   char ingredientCategory[MAX_INGREDIENT_CATEGORY_NAME];
 } Ingredient;
 
 typedef struct {
