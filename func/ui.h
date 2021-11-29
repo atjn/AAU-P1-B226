@@ -1,50 +1,50 @@
 /**
- * @brief lists loaded recipes
- * @param recipes pointer to array of recipes
- * @param recipesCount number of recipes
+ * @brief Lists loaded recipes
+ * @param recipes Pointer to array of recipes
+ * @param recipesCount Number of recipes
  *
  * @return void
  */
 void listLoadedRecipes(Recipe *recipes, int recipeCount);
 
 /**
- * @brief asks the user for a recipe name
- * @param recipes pointer to array of recipes
- * @param recipesCount number of recipes in recepies pointer
+ * @brief Asks the user for a recipe name
+ * @param recipes Pointer to array of recipes
+ * @param recipesCount Number of recipes in recepies pointer
  *
- * @return int index of recipe in recipes array
+ * @return int Index of recipe in recipes array
  */
 int requestRecipeName(Recipe* recipes, int recipeCount);
 
 /**
- * @brief asks the user how many people they are making dinner for
+ * @brief Asks the user how many people they are making dinner for
  *
- * @return int amount of people
+ * @return int Amount of people
  */
 int requestAmountOfPeople();
 
 /**
- * @brief prints the alternative recepies
- * @param recipes pointer to array of recipes
+ * @brief Prints the alternative recepies
+ * @param recipes Pointer to array of recipes
  *
  * @return void
  */
 void printListOfAlternativeRecipes(Recipe[]);
 
 /**
- * @brief prompts the user for a recipe number
+ * @brief Prompts the user for a recipe number
  *
  * @return void
  */
 int requestRecipeNumber();
 
 /**
- * @brief prints a recipe with its co2 output in grams
+ * @brief Prints a recipe with its CO2 output in grams
  *
- * @param recipe a pointer to a recipe
- * @param people amount of people who are eating
- * @param ingredients pointer to the ingredient data for co2 purposes
- * @param ingrNum amount of total ingredients
+ * @param recipe Pointer to a recipe
+ * @param people Amount of people who are eating
+ * @param ingredients Pointer to the ingredient data for co2 purposes
+ * @param ingrNum Amount of total ingredients
  *
  * @return void
  */
