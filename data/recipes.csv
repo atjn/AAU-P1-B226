@@ -1,24 +1,24 @@
 "RECIPE";"INGREDIENT";"AMOUNT";"WEIGHT"
 burger;;;
-;minced beef;125;1
-;bacon;14;1
-;salted butter;4;1
-;cheese;28;1
-;burger bun;60;1
-;mayonnaise;2.43;1
-;tomato;70;1
-;cucumber;29;1
-;red onion;28;1
-;looseleaf lettuce;6;1
+;minced beef;125;beefSubstitute
+;bacon;14;baconSubstitute
+;salted butter;4;butterSubstitute
+;cheese;28;cheeseSubstitute
+;burger bun;60;burgerBunSubstitude
+;mayonnaise;2.43;mayonnaiseSubstitute
+;tomato;70;slicedVegetableSubstitute
+;cucumber;29;slicedVegetableSubstitute
+;red onion;28;slicedVegetableSubstitute
+;looseleaf lettuce;6;saladSubstitute
 rissole;;;
-;breadcrumbs;12.5;1
-;cheese;37.5;1
-;minced pork;200;1
-;salted butter;10;1
-;pasta;150;1
-;mushroom;225;1
-;tomato;125;1
+;breadcrumbs;12.5;breadcrumbsSubstitute
+;cheese;37.5;cheeseSubstitute
+;minced pork;200;porkSubstitute
+;salted butter;10;butterSubstitute
+;pasta;150;pasta/noodles
+;mushroom;225;vegetableSubstitute
+;tomato;125;slicedVegetableSubstitute
 chicken;;;
-;chicken leg;125;1
-;potato;200;1
-;olive oil;14;1
+;chicken leg;125;chickenSubstitute
+;potato;200;potatoSubstitute
+;olive oil;14;butterSubstitute
