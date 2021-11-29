@@ -42,7 +42,7 @@ void foodForChange(){
     printListOfAlternativeRecipes(alternativeRecipes);
     const int alternativeRecipeIndex = requestRecipeNumber();
 
-    printRecipe(&alternativeRecipes[alternativeRecipeIndex], people);
+    printRecipe(&alternativeRecipes[alternativeRecipeIndex], people, ingredients, ingredientsLength);
 
     free(recipes);
     free(ingredients);

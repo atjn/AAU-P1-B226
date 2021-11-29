@@ -10,6 +10,7 @@
 #include "./definitions.h"
 #include "./ui.h"
 #include "./utilities.h"
+#include "./algorithm.h"
 
 int getIdFromString(char *, Recipe *, int);
 
@@ -134,22 +135,21 @@ int requestRecipeNumber(){
 /**
  * Prints information about a given recipe.
  */
-void printRecipe(const Recipe *recipe, const int people){
+void printRecipe(Recipe *recipe, const int people, IngredientData *ingredients, const int ingrNum){
 
     char name[MAX_RECIPE_NAME];
     strcpy(name, recipe->name);
     capitaliseFirst(name);
 
     printf("\nHere you go:\n");
-    printf("------------------------------------------------------\n");
-    printf("|                       %-10s                   |\n", name);
-    printf("|----------------------------------------------------|\n");
+    printf("----------------------------------------------------------\n");
+    printf("|                         %-10s                     |\n", name);
+    printf("|--------------------------------------------------------|\n");
     for (int i = 0; i < recipe->ingredientCount; i++){
-        //TODO: print the correct g CO₂ number
-        printf("| %-20s | %9.1lf(g) | %5d(g CO₂) |\n", name, recipe->ingredients[i].amount*people , 25);
+        printf("| %-20s | %9.1lf(g) | %9.1lf(g CO₂) |\n", recipe->ingredients[i].name, recipe->ingredients[i].amount*people,
+                                                        (getIngrCoo(recipe->ingredients[i], ingredients, ingrNum)) * recipe->ingredients[i].amount * people);
     }
-    printf("|----------------------------------------------------|\n");
-    //TODO: print the correct g CO₂ number
-    printf("| Amount of CO2: %-10d                          |\n", 10);
-    printf("------------------------------------------------------\n");
+    printf("|--------------------------------------------------------|\n");
+    printf("| Amount of CO2: %-9.2lf(Kg CO₂)                       |\n", calculateRecipeCoo(recipe, ingredients, ingrNum) * people);
+    printf("----------------------------------------------------------\n");
 }
