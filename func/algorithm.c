@@ -6,7 +6,7 @@
 #include "../lib/CuTest-AAU/CuTest.h"
 
 float calculateRecipeCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum);
-float calculateIngrCoo(Ingredient ingrediens, IngredientData *ingredients, int ingrNum);
+float calculateIngrCoo(Ingredient ingredient, IngredientData *ingredients, int ingrNum);
 
 // Function to calculate and return alternative recipes
 // The function takes the recipe, recipelist, and the parameter alternativeRecipes
@@ -44,10 +44,10 @@ float calculateRecipeCoo(Recipe *recipe, IngredientData *ingredients, int ingrNu
  * TODO: change the structure of the Ingredient struct to include
  * a pointer to the corresponding IngredientData struct
  */
-float getIngrCoo(Ingredient *ingrediens, IngredientData *ingredients, int ingrNum) {
+float getIngrCoo(Ingredient *ingredient, IngredientData *ingredients, int ingrNum) {
     float tempCoo = 0;
     for (int j = 0; j < ingrNum; j++) {
-        if (strcmp(ingrediens->name, ingredients[j].name) == 0) {
+        if (strcmp(ingredient->name, ingredients[j].name) == 0) {
             tempCoo = ingredients[j].coo;
         }
     }
