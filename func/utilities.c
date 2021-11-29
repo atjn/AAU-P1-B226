@@ -6,20 +6,12 @@
 #include <assert.h>
 #include <string.h>
 
-/**
- * Flushes the input buffer.
- * This is useful when taking input from the user with `scanf`,
- * because unreadable input might be left in the buffer, causing an infinite loop.
- */
 void flushInput(){
     int inputChar;
 
     while((inputChar = getchar()) != '\n' && inputChar != EOF);
 }
 
-/**
- * Capitalises the first character of a string.
- */
 void capitaliseFirst(char* string){
 
     string[0] = toupper(string[0]);
@@ -66,9 +58,6 @@ void testCapitaliseFirst(CuTest* testCase){
 
 }
 
-/**
- * Takes the letters in a char array and makes them all lower case.
- */
 void toLowerCase(char* string){
 
     for(int i = 0; string[i]; i++){
