@@ -141,19 +141,19 @@ void printRecipe(Recipe *recipe, const int people, IngredientData *ingredients, 
     capitaliseFirst(name);
 
     printf("\nHere you go:\n");
-    printf("------------------------------------------------------\n");
-    printf("|                       %-10s                   |\n", name);
-    printf("|----------------------------------------------------|\n");
-    printf("|      Ingredient      |  Amount (g)  |    CO2 (g)   |\n");
-    printf("|----------------------------------------------------|\n");
+    printf("-------------------------------------------------------------\n");
+    printf("|                           %-10s                      |\n", name);
+    printf("|-----------------------------------------------------------|\n");
+    printf("|          Ingredient         |  Amount (g)  |    CO2 (g)   |\n");
+    printf("|-----------------------------------------------------------|\n");
     for (int i = 0; i < recipe->ingredientCount; i++){
         char ingredientName[MAX_INGREDIENT_NAME];
         strcpy(ingredientName, recipe->ingredients[i].name);
         capitaliseFirst(ingredientName);
-        printf("| %-20s | %12.1lf | %12.1lf |\n", ingredientName, recipe->ingredients[i].amount * people,
+        printf("| %-27s | %12.1lf | %12.1lf |\n", ingredientName, recipe->ingredients[i].amount * people,
                                                         (getIngrCoo(&recipe->ingredients[i], ingredients, ingrNum)) * recipe->ingredients[i].amount * people);
     }
-    printf("|----------------------------------------------------|\n");
-    printf("| Amount of CO2 (kg): %-10.1lf                     |\n", calculateRecipeCoo(recipe, ingredients, ingrNum) * people);
-    printf("------------------------------------------------------\n");
+    printf("|-----------------------------------------------------------|\n");
+    printf("| Amount of CO2 (kg): %-10.1lf                            |\n", calculateRecipeCoo(recipe, ingredients, ingrNum) * people);
+    printf("-------------------------------------------------------------\n");
 }
