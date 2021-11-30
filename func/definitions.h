@@ -35,10 +35,3 @@ typedef struct {
    IngredientData *ingredientData[MAX_INGREDIENTS_CATEGORY];
    unsigned short ingredientCount;
 } Category;
-
-typedef struct {
-   Category categories[MAX_CATEGORIES];
-   unsigned short categoriesCount;
-   IngredientData ingredients[MAX_INGREDIENTS];
-   unsigned short ingredientsCount;
-} IngredientCategory;
