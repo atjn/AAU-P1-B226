@@ -1,7 +1,10 @@
 #include "../lib/CuTest-AAU/CuTest.h"
+#include "definitions.h"
 
 #include <stdio.h>
 #include <ctype.h>
+#include <assert.h>
+#include <string.h>
 
 void flushInput(){
     int inputChar;
@@ -97,4 +100,109 @@ void testToLowerCase(CuTest* testCase){
     toLowerCase(string8);
     CuAssertStrEquals(testCase, "&_!/", string8);
 
+}
+
+/**
+ * Returns the factorial of a given integer
+ */
+int factorial(const int size){
+    assert(size >= 0);
+    int result = 1;
+    for (int i = 1; i <= size; i++){
+        result = result * i;
+    }
+    return result;
+}
+
+void testFactorial(CuTest *testCase){
+
+    CuAssertIntEquals(testCase, 1, factorial(1));
+
+     CuAssertIntEquals(testCase, 120, factorial(5));
+
+     CuAssertIntEquals(testCase, 5040, factorial(7));
+
+     CuAssertIntEquals(testCase, 1, factorial(0));
+
+}
+
+int getCategoryIndex(const char *categoryName, const Category *categories, const int categoriesLength) {
+
+    for (int i = 0; i < categoriesLength; i++){
+        if (strcmp(categoryName, categories[i].name) == 0) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+void testGetCategoryIndex(CuTest* tc){
+
+    const Category categories[] = {
+        {
+            "cowsFarts",
+            {NULL},1,
+        },
+        {
+            "cows",
+            {NULL},1,
+        },
+        {
+            "based beans",
+            {NULL},1,
+        },
+        {
+            "3 acres of 5",
+            {NULL},1,
+        },
+    };
+    const int categoriesLength = sizeof(categories) / sizeof(categories[0]);
+
+    CuAssertIntEquals(tc, 0, getCategoryIndex("cowsFarts", categories, categoriesLength));
+    CuAssertIntEquals(tc, 1, getCategoryIndex("cows", categories, categoriesLength));
+    CuAssertIntEquals(tc, -1, getCategoryIndex("cow", categories, categoriesLength));
+
+    CuAssertIntEquals(tc, 2, getCategoryIndex("based beans", categories, categoriesLength));
+    CuAssertIntEquals(tc, 3, getCategoryIndex("3 acres of 5", categories, categoriesLength));
+
+    CuAssertIntEquals(tc, -1, getCategoryIndex("3", categories, categoriesLength));
+    CuAssertIntEquals(tc, -1, getCategoryIndex("5", categories, categoriesLength));
+    CuAssertIntEquals(tc, -1, getCategoryIndex("s", categories, categoriesLength));
+    CuAssertIntEquals(tc, -1, getCategoryIndex(" ", categories, categoriesLength));
+    CuAssertIntEquals(tc, -1, getCategoryIndex("", categories, categoriesLength));
+
+}
+
+/**
+ * Calculating the total COO emission of a given recipe
+ * TODO: change the structure of the Ingredient struct to include
+ * a pointer to the corresponding IngredientData struct
+ */
+float calculateRecipeCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum) {
+    float tempCOO = 0;
+    for (int i = 0; i < recipe->ingredientCount; i++) {
+        for (int j = 0; j < ingrNum; j++) {
+            if (strcmp(recipe->ingredients[i].name, ingredients[j].name) == 0) {
+                tempCOO += ingredients[j].coo * (recipe->ingredients[i].amount/1000);
+                break;
+            }
+        }
+    }
+    return tempCOO;
+}
+
+/**
+ * Returns the total COO emission of a given ingredient
+ * TODO: change the structure of the Ingredient struct to include
+ * a pointer to the corresponding IngredientData struct
+ */
+float getIngrCoo(Ingredient *ingredient, IngredientData *ingredients, int ingrNum) {
+    float tempCoo = 0;
+    for (int j = 0; j < ingrNum; j++) {
+        if (strcmp(ingredient->name, ingredients[j].name) == 0) {
+            tempCoo = ingredients[j].coo;
+        }
+    }
+    return tempCoo;
 }

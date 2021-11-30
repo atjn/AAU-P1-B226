@@ -7,10 +7,10 @@
 
 #include "../lib/CuTest-AAU/CuTest.h"
 
-#include "./definitions.h"
-#include "./ui.h"
-#include "./utilities.h"
-#include "./algorithm.h"
+#include "definitions.h"
+#include "ui.h"
+#include "utilities.h"
+#include "algorithm.h"
 
 int getIdFromString(char *, Recipe *, int);
 
@@ -91,7 +91,9 @@ int requestAmountOfPeople(){
 }
 
 
-void printListOfAlternativeRecipes(Recipe alternativeRecipes[]){
+void printListOfAlternativeRecipes(Recipe alternativeRecipes[], Recipe recipes[], const int recipeIndex, IngredientData ingredients[], const int ingredientsLength){
+
+    const float originalCoo = calculateRecipeCoo(&recipes[recipeIndex], ingredients, ingredientsLength);
 
     printf("\nHere are some alternative versions:\n");
 
@@ -105,7 +107,7 @@ void printListOfAlternativeRecipes(Recipe alternativeRecipes[]){
         }else{
             printf("|-------------------------------------------|\n");
         }
-        printf("| %d | %-26s | %3d%% CO2 |\n", r +1, name, -50);
+        printf("| %d | %-26s | %3.0lf%% CO2 |\n", r +1, name, (calculateRecipeCoo(&alternativeRecipes[r], ingredients, ingredientsLength) / originalCoo) * 100);
 
     }
     printf("---------------------------------------------\n");
