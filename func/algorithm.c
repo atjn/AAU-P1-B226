@@ -68,16 +68,15 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
         //the ratio is the percentage-wise difference in co2 emision between the new and orginal recipe.
         float coo = 0;
         for(int i = 0; i < originalRecipe->ingredientCount; i++){
-            coo += ingredientCategories[i]->ingredientData[ingredientIndexes[i]]->coo*originalRecipe->ingredients[i].amount/1000;
+            coo += (ingredientCategories[i]->ingredientData[ingredientIndexes[i]]->coo*originalRecipe->ingredients[i].amount)/1000;
         }
-        const float ratio = coo / originalRecipeCoo;
+        const float ratio = 1 - coo / originalRecipeCoo;
 
         //Calculate a score for the ingredients combination
         //if the score is better than any other score for a given target,
         //then save it as the best option for now
         for (int t = 0; t < RECIPES_IN_ALTERNATIVES_LIST ; t++){
-            const float target = targets[t];
-            const float score = fabs(ratio-target);
+            const float score = fabs(ratio-targets[t]);
 
             if(score < bestIngredientScores[t]){
                 bestIngredientScores[t] = score;
