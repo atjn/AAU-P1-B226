@@ -29,7 +29,7 @@ int requestAmountOfPeople();
  *
  * @return void
  */
-void printListOfAlternativeRecipes(Recipe[]);
+void printListOfAlternativeRecipes(Recipe[], Recipe [], const int, IngredientData [], const int);
 
 /**
  * @brief Prompts the user for a recipe number
