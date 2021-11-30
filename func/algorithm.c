@@ -34,7 +34,7 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
     //this keeps track of the best combination of ingredients for each respective targets
     IngredientData* bestIngredients[RECIPES_IN_ALTERNATIVES_LIST][originalRecipe->ingredientCount];
     float bestIngredientScores[RECIPES_IN_ALTERNATIVES_LIST];
-    for (int i = 0; i < RECIPES_IN_ALTERNATIVES_LIST-1; i++) {
+    for (int i = 0; i < RECIPES_IN_ALTERNATIVES_LIST; i++) {
         bestIngredientScores[i] = 100;
     }
 
