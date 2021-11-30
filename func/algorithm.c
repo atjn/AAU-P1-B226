@@ -68,7 +68,7 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
         }while(indexToIncrease >= 0 && ingredientIndexes[indexToIncrease + 1] == 0);
 
         //calculate the co2 foodprint of the given combination of ingredients
-        //the ratio is the percentage-wise diffrence in co2 emision between the new and orginal recipe.
+        //the ratio is the percentage-wise difference in co2 emision between the new and orginal recipe.
         float coo = 0;
         for(int i = 0; i < originalRecipe->ingredientCount; i++){
             coo += ingredientCategories[i]->ingredientData[ingredientIndexes[i]]->coo*originalRecipe->ingredients[i].amount/1000;
