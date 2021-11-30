@@ -9,9 +9,6 @@
 #include "utilities.h"
 #include "../lib/CuTest-AAU/CuTest.h"
 
-float calculateRecipeCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum);
-float calculateIngrCoo(Ingredient ingredient, IngredientData *ingredients, int ingrNum);
-
 // Function to calculate and return alternative recipes
 // The function takes the recipe, recipelist, and the parameter alternativeRecipes
 // in with the alternative recipes will be returned. The func also takes the ingredient list and its length.
