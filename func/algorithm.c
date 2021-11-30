@@ -79,10 +79,21 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
             const float score = fabs(ratio-targets[t]);
 
             if(score < bestIngredientScores[t]){
-                bestIngredientScores[t] = score;
 
-                for (int i = 0; i < originalRecipe->ingredientCount; i++){
-                    bestIngredients[t][i] = ingredientCategories[i]->ingredientData[ingredientIndexes[i]];
+                bool noDuplicatedIngredients = true;
+                for(int i = 0; i < originalRecipe->ingredientCount; i++){
+                    for(int j = 0; j < originalRecipe->ingredientCount; j++){
+                        if(i != j && strcmp(ingredientCategories[i]->ingredientData[ingredientIndexes[i]]->name, ingredientCategories[j]->ingredientData[ingredientIndexes[j]]->name) == 0){
+                            noDuplicatedIngredients = false;
+                        }
+                    }
+                }
+
+                if(noDuplicatedIngredients){
+                    bestIngredientScores[t] = score;
+                    for (int i = 0; i < originalRecipe->ingredientCount; i++){
+                        bestIngredients[t][i] = ingredientCategories[i]->ingredientData[ingredientIndexes[i]];
+                    }
                 }
             }
         }
