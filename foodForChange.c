@@ -27,6 +27,8 @@ int main(int argc, char **argv){
 
 void foodForChange(){
 
+    if(DEBUG) printf("\nNOTE: Debug output is enabled\n\n");
+
     int recipesLength, ingredientsLength, categoriesLength;
     Recipe *recipes = readRecipe(&recipesLength);
     IngredientData *ingredients = NULL;
