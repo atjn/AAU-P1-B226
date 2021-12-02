@@ -10,8 +10,6 @@
 #include "utilities.h"
 #include "../lib/CuTest-AAU/CuTest.h"
 
-#define DEBUG false
-
 bool duplicatedIngredients(Category *[], const int [], const int);
 void scopeIngredientIndexes(int [], int [], int [], const Recipe *, const float, Category *[], const float, const float, bool *, const int);
 
