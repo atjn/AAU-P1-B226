@@ -103,14 +103,14 @@ void printListOfAlternativeRecipes(Recipe alternativeRecipes[], Recipe recipes[]
         capitaliseFirst(name);
 
         if(r == 0){
-            printf("---------------------------------------------\n");
+            printf("----------------------------------------------\n");
         }else{
-            printf("|-------------------------------------------|\n");
+            printf("|--------------------------------------------|\n");
         }
-        printf("| %d | %-26s | %3.0lf%% CO2 |\n", r +1, name, (calculateRecipeCoo(&alternativeRecipes[r], ingredients, ingredientsLength) / originalCoo) * 100);
+        printf("| %d | %-26s | %4.0lf%% CO2 |\n", r +1, name, ( -1 + calculateRecipeCoo(&alternativeRecipes[r], ingredients, ingredientsLength) / originalCoo) * 100);
 
     }
-    printf("---------------------------------------------\n");
+    printf("----------------------------------------------\n");
 }
 
 
