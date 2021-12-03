@@ -10,6 +10,6 @@ var searchData=
   ['requestamountofpeople_7',['requestAmountOfPeople',['../ui_8c.html#ab160ce6725cefcfe67668800b49a4872',1,'requestAmountOfPeople():&#160;ui.c'],['../ui_8h.html#ab160ce6725cefcfe67668800b49a4872',1,'requestAmountOfPeople():&#160;ui.c']]],
   ['requestrecipename_8',['requestRecipeName',['../ui_8c.html#aa5e7c439defa1a05887be7499644c485',1,'requestRecipeName(Recipe *recipes, int recipeCount):&#160;ui.c'],['../ui_8h.html#aa5e7c439defa1a05887be7499644c485',1,'requestRecipeName(Recipe *recipes, int recipeCount):&#160;ui.c']]],
   ['requestrecipenumber_9',['requestRecipeNumber',['../ui_8c.html#adf78a8cb3f6308df8e8149c41b0bff26',1,'requestRecipeNumber():&#160;ui.c'],['../ui_8h.html#adf78a8cb3f6308df8e8149c41b0bff26',1,'requestRecipeNumber():&#160;ui.c']]],
-  ['runalltests_10',['runAllTests',['../tests_8c.html#ae24963b94f6da79f94138b8bd45defa2',1,'runAllTests():&#160;tests.c'],['../tests_8h.html#ae24963b94f6da79f94138b8bd45defa2',1,'runAllTests():&#160;tests.c']]],
-  ['runalltests_11',['RunAllTests',['../_all_tests_8c.html#a0733a029032379b9e74c6242baefe5ca',1,'AllTests.c']]]
+  ['runalltests_10',['RunAllTests',['../_all_tests_8c.html#a0733a029032379b9e74c6242baefe5ca',1,'AllTests.c']]],
+  ['runalltests_11',['runAllTests',['../tests_8c.html#ae24963b94f6da79f94138b8bd45defa2',1,'runAllTests():&#160;tests.c'],['../tests_8h.html#ae24963b94f6da79f94138b8bd45defa2',1,'runAllTests():&#160;tests.c']]]
 ];
