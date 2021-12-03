@@ -102,30 +102,6 @@ void testToLowerCase(CuTest* testCase){
 
 }
 
-/**
- * Returns the factorial of a given integer
- */
-int factorial(const int size){
-    assert(size >= 0);
-    int result = 1;
-    for (int i = 1; i <= size; i++){
-        result = result * i;
-    }
-    return result;
-}
-
-void testFactorial(CuTest *testCase){
-
-    CuAssertIntEquals(testCase, 1, factorial(1));
-
-     CuAssertIntEquals(testCase, 120, factorial(5));
-
-     CuAssertIntEquals(testCase, 5040, factorial(7));
-
-     CuAssertIntEquals(testCase, 1, factorial(0));
-
-}
-
 int getCategoryIndex(const char *categoryName, const Category *categories, const int categoriesLength) {
 
     for (int i = 0; i < categoriesLength; i++){

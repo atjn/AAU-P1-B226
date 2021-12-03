@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>P1 - B226: func/algorithm.c File Reference</title>
+<title>P1 - B226: AAU-P1-B226/func/algorithm.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,7 +20,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.gif"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">P1 - B226
    </div>
@@ -64,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_27274c145b5957ee00156fc3be142077.html">func</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_7bb7b3009f3b07b6b618aa8ea9e7c5e7.html">AAU-P1-B226</a></li><li class="navelem"><a class="el" href="dir_0338f0bf42c7a8ae78a017965f97f3e4.html">func</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -77,132 +76,22 @@ $(function() {
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;assert.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="utilities_8h_source.html">utilities.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_cu_test_8h_source.html">../lib/CuTest-AAU/CuTest.h</a>&quot;</code><br />
 </div>
 <p><a href="algorithm_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a66dae3a6fca2ae47ffe457c812234f6f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="algorithm_8c.html#a66dae3a6fca2ae47ffe457c812234f6f">calculateRecipeCoo</a> (<a class="el" href="struct_recipe.html">Recipe</a> *recipe, <a class="el" href="struct_ingredient_data.html">IngredientData</a> *ingredients, int ingrNum)</td></tr>
-<tr class="separator:a66dae3a6fca2ae47ffe457c812234f6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bdc0e3a366ebfb3984b39d1a9de44e6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="algorithm_8c.html#a3bdc0e3a366ebfb3984b39d1a9de44e6">calculateIngrCoo</a> (<a class="el" href="struct_ingredient.html">Ingredient</a> ingredient, <a class="el" href="struct_ingredient_data.html">IngredientData</a> *ingredients, int ingrNum)</td></tr>
-<tr class="separator:a3bdc0e3a366ebfb3984b39d1a9de44e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a069558e96ed4cba27ed023c1959dc418"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="algorithm_8c.html#a069558e96ed4cba27ed023c1959dc418">makeListOfAlternativeRecipes</a> (int recipeIndex, <a class="el" href="struct_recipe.html">Recipe</a> recipes[], <a class="el" href="struct_recipe.html">Recipe</a> alternativeRecipes[], <a class="el" href="struct_ingredient_data.html">IngredientData</a> ingredients[], const int ingrNum)</td></tr>
-<tr class="separator:a069558e96ed4cba27ed023c1959dc418"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3b4ce0e1e386d260399f820e83aa59c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="algorithm_8c.html#af3b4ce0e1e386d260399f820e83aa59c">getIngrCoo</a> (<a class="el" href="struct_ingredient.html">Ingredient</a> *ingredient, <a class="el" href="struct_ingredient_data.html">IngredientData</a> *ingredients, int ingrNum)</td></tr>
-<tr class="separator:af3b4ce0e1e386d260399f820e83aa59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb393c2b1b95be2535ccf89341232067"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="algorithm_8c.html#abb393c2b1b95be2535ccf89341232067">makeListOfAlternativeRecipes</a> (int recipeIndex, <a class="el" href="struct_recipe.html">Recipe</a> recipes[], <a class="el" href="struct_recipe.html">Recipe</a> alternativeRecipes[], <a class="el" href="struct_ingredient_data.html">IngredientData</a> ingredients[], const int ingrNum, <a class="el" href="struct_category.html">Category</a> categories[], const int categoriesLength)</td></tr>
+<tr class="separator:abb393c2b1b95be2535ccf89341232067"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a3bdc0e3a366ebfb3984b39d1a9de44e6" name="a3bdc0e3a366ebfb3984b39d1a9de44e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3bdc0e3a366ebfb3984b39d1a9de44e6">&#9670;&nbsp;</a></span>calculateIngrCoo()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float calculateIngrCoo </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_ingredient.html">Ingredient</a>&#160;</td>
-          <td class="paramname"><em>ingredient</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_ingredient_data.html">IngredientData</a> *&#160;</td>
-          <td class="paramname"><em>ingredients</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>ingrNum</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a66dae3a6fca2ae47ffe457c812234f6f" name="a66dae3a6fca2ae47ffe457c812234f6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66dae3a6fca2ae47ffe457c812234f6f">&#9670;&nbsp;</a></span>calculateRecipeCoo()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float calculateRecipeCoo </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_recipe.html">Recipe</a> *&#160;</td>
-          <td class="paramname"><em>recipe</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_ingredient_data.html">IngredientData</a> *&#160;</td>
-          <td class="paramname"><em>ingredients</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>ingrNum</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Calculating the total COO emission of a given recipe TODO: change the structure of the <a class="el" href="struct_ingredient.html">Ingredient</a> struct to include a pointer to the corresponding <a class="el" href="struct_ingredient_data.html">IngredientData</a> struct </p>
-
-<p class="definition">Definition at line <a class="el" href="algorithm_8c_source.html#l00029">29</a> of file <a class="el" href="algorithm_8c_source.html">algorithm.c</a>.</p>
-
-</div>
-</div>
-<a id="af3b4ce0e1e386d260399f820e83aa59c" name="af3b4ce0e1e386d260399f820e83aa59c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3b4ce0e1e386d260399f820e83aa59c">&#9670;&nbsp;</a></span>getIngrCoo()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float getIngrCoo </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_ingredient.html">Ingredient</a> *&#160;</td>
-          <td class="paramname"><em>ingredient</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_ingredient_data.html">IngredientData</a> *&#160;</td>
-          <td class="paramname"><em>ingredients</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>ingrNum</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Returns the total COO emission of a given ingredient TODO: change the structure of the <a class="el" href="struct_ingredient.html">Ingredient</a> struct to include a pointer to the corresponding <a class="el" href="struct_ingredient_data.html">IngredientData</a> struct </p>
-
-<p class="definition">Definition at line <a class="el" href="algorithm_8c_source.html#l00047">47</a> of file <a class="el" href="algorithm_8c_source.html">algorithm.c</a>.</p>
-
-</div>
-</div>
-<a id="a069558e96ed4cba27ed023c1959dc418" name="a069558e96ed4cba27ed023c1959dc418"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a069558e96ed4cba27ed023c1959dc418">&#9670;&nbsp;</a></span>makeListOfAlternativeRecipes()</h2>
+<a id="abb393c2b1b95be2535ccf89341232067" name="abb393c2b1b95be2535ccf89341232067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb393c2b1b95be2535ccf89341232067">&#9670;&nbsp;</a></span>makeListOfAlternativeRecipes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,7 +124,19 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>ingrNum</em>&#160;</td>
+          <td class="paramname"><em>ingrNum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_category.html">Category</a>&#160;</td>
+          <td class="paramname"><em>categories</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>categoriesLength</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -245,7 +146,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="algorithm_8c_source.html#l00014">14</a> of file <a class="el" href="algorithm_8c_source.html">algorithm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="algorithm_8c_source.html#l00015">15</a> of file <a class="el" href="algorithm_8c_source.html">algorithm.c</a>.</p>
 
 </div>
 </div>
