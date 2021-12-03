@@ -11,17 +11,17 @@
 #include "../lib/CuTest-AAU/CuTest.h"
 
 bool duplicatedIngredients(Category *[], const int [], const int);
-void scopeIngredientIndexes(int [], int [], int [], const Recipe *, const float, Category *[], const float, const float, bool *, const int);
+void scopeIngredientIndexes(int [], int [], int [], const Recipe *, const float, Category *[], const float, const float, bool *, const int, const bool);
 
 // Function to calculate and return alternative recipes
 // The function takes the recipe, recipelist, and the parameter alternativeRecipes
 // in with the alternative recipes will be returned. The func also takes the ingredient list and its length.
-void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alternativeRecipes[], IngredientData ingredients[], const int ingrNum, Category categories[], const int categoriesLength){
+void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alternativeRecipes[], IngredientData ingredients[], const int ingrNum, Category categories[], const int categoriesLength, const bool optimize){
     //TODO: make targets auto generatet based on RECIPES_IN_ALTERNATIVES_LIST
     //This list of targets is how many percent co2 (compared to the original recipe) the recipes should emit.
     const float targets[] = {0.80, 0.40, 0.10};
-    const float accuracy = 0.10;
-    const float maxTime = 2;
+    const float accuracy = optimize ? 0.10 : 0.0;
+    const float maxTime = optimize ? 2 : 5400;
     bool targetCanBeSatisfied = true;
     Recipe *originalRecipe = &recipes[recipeIndex];
 
@@ -42,7 +42,6 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
     }
 
     // This keeps track of the best combination of ingredients for each respective targets
-    //IngredientData* matchingIngredients[RECIPES_IN_ALTERNATIVES_LIST][originalRecipe->ingredientCount];
     IngredientData* bestIngredients[RECIPES_IN_ALTERNATIVES_LIST][originalRecipe->ingredientCount];
     float bestIngredientScores[RECIPES_IN_ALTERNATIVES_LIST];
     for (int i = 0; i < RECIPES_IN_ALTERNATIVES_LIST; i++) {
@@ -51,7 +50,7 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
 
     for (int t = 0; t < RECIPES_IN_ALTERNATIVES_LIST; t++){
 
-        scopeIngredientIndexes(ingredientMaxIndexes, ingredientMinIndexes, ingredientStartIndexes, originalRecipe, originalRecipeCoo, ingredientCategories, targets[t], accuracy, &targetCanBeSatisfied, t);
+        scopeIngredientIndexes(ingredientMaxIndexes, ingredientMinIndexes, ingredientStartIndexes, originalRecipe, originalRecipeCoo, ingredientCategories, targets[t], accuracy, &targetCanBeSatisfied, t, optimize);
 
         if(DEBUG){
             printf("\n\nNew target: %1.2lf\nCan satisfy target: %s", targets[t], targetCanBeSatisfied ? "yes" : "no");
@@ -132,9 +131,10 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
 
         }while(!triedAllCombinations && !foundMatchingIngredients && (!foundValidIngredients || (double)(clock()-start) < (maxTime/RECIPES_IN_ALTERNATIVES_LIST)*CLOCKS_PER_SEC));
 
+        if(!optimize) printf(" %.0lf%%", (double)((t+1)*100) / RECIPES_IN_ALTERNATIVES_LIST);
         if(DEBUG) printf("Finished in %3.2lfs, max allowed was %3.2lfs\n\n", (double)(clock()-start)/CLOCKS_PER_SEC, maxTime/RECIPES_IN_ALTERNATIVES_LIST);
 
-        //This fails if the algorithm was not able to finde even possible recipe candidate
+        //This fails if the algorithm was not able to find even one possible recipe candidate
         assert(foundValidIngredients);
 
     }
@@ -156,24 +156,24 @@ bool duplicatedIngredients(Category *ingredientCategories[], const int ingredien
 
     bool duplicatedIngredients = false;
     for(int i = 0; i < ingredientCount; i++){
-        //for(int minJ = 0; minJ < ingredientCount; minJ++){
-            for(int j = 0; j < ingredientCount; j++){
-                if(i != j && strcmp(ingredientCategories[i]->ingredientData[ingredientIndexes[i]]->name, ingredientCategories[j]->ingredientData[ingredientIndexes[j]]->name) == 0){
-                    duplicatedIngredients = true;
-                }
+        for(int j = 0; j < ingredientCount; j++){
+            if(i != j && strcmp(ingredientCategories[i]->ingredientData[ingredientIndexes[i]]->name, ingredientCategories[j]->ingredientData[ingredientIndexes[j]]->name) == 0){
+                duplicatedIngredients = true;
             }
-        //}
+        }
     }
 
     return duplicatedIngredients;
 }
 
-void scopeIngredientIndexes(int ingredientMaxIndexes[], int ingredientMinIndexes[], int ingredientStartIndexes[], const Recipe *originalRecipe, const float originalRecipeCoo, Category *ingredientCategories[], const float target, const float accuracy, bool *targetCanBeSatisfied, const int ingredientCategoryIndex){
+void scopeIngredientIndexes(int ingredientMaxIndexes[], int ingredientMinIndexes[], int ingredientStartIndexes[], const Recipe *originalRecipe, const float originalRecipeCoo, Category *ingredientCategories[], const float target, const float accuracy, bool *targetCanBeSatisfied, const int ingredientCategoryIndex, const bool optimize){
 
     for (int c = 0; c < originalRecipe->ingredientCount; c++){
         ingredientMinIndexes[c] = 0;
         ingredientMaxIndexes[c] = ingredientCategories[c]->ingredientCount-1;
     }
+
+    if(!optimize) return;
 
 
     for (int c = 0; c < originalRecipe->ingredientCount; c++){
