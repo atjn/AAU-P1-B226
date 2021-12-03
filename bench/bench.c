@@ -36,17 +36,30 @@ void bench(const int length, const bool checkAccuracy){
         recipes[r].ingredientCount = length;
 
         for(int i = 0; i < length; i++){
-            const IngredientData *randIngredient = &ingredients[rand() % ingredientsLength];
-            strcpy(recipes[r].ingredients[i].name, randIngredient->name);
-            recipes[r].ingredients[i].amount = rand() % 200;
-            for(int c = 0; c < categoriesLength; c++){
-                for(int d = 0; d < categories[c].ingredientCount; d++){
-                    if(strcmp(categories[c].ingredientData[d]->name, randIngredient->name) == 0){
-                        strcpy(recipes[r].ingredients[i].ingredientCategory, categories[c].name);
-                        break;
+            bool ingredientCategoryIsUnique = false;
+            while(!ingredientCategoryIsUnique){
+
+                const IngredientData *randIngredient = &ingredients[rand() % ingredientsLength];
+                strcpy(recipes[r].ingredients[i].name, randIngredient->name);
+                recipes[r].ingredients[i].amount = rand() % 200;
+
+                // Find a fitting ingredientCategory
+                for(int c = 0; c < categoriesLength; c++){
+                    for(int d = 0; d < categories[c].ingredientCount; d++){
+                        if(strcmp(categories[c].ingredientData[d]->name, randIngredient->name) == 0){
+                            strcpy(recipes[r].ingredients[i].ingredientCategory, categories[c].name);
+                            break;
+                        }
                     }
                 }
+
+                // Make sure the recipe category isn't duplicated, since this can make it impossible for the algorithm to find a match
+                ingredientCategoryIsUnique = true;
+                for(int otherI = 0; otherI < length; otherI++){
+                    if(i != otherI && strcmp(recipes[r].ingredients[i].ingredientCategory, recipes[r].ingredients[otherI].ingredientCategory) == 0) ingredientCategoryIsUnique = false;
+                }
             }
+
         }
 
     }
@@ -61,12 +74,11 @@ void bench(const int length, const bool checkAccuracy){
             makeListOfAlternativeRecipes(r, recipes, accurateAlternativeRecipes[r], ingredients, ingredientsLength, categories, categoriesLength, false);
 
         }
-        printf("\n");
     }
 
     // Run the benchmark
     Recipe alternativeRecipes[BENCH_RECIPES_LENGTH][RECIPES_IN_ALTERNATIVES_LIST];
-    printf("\nStarting test with recipes of length %i. It should take at most %i seconds.\n", length, MAX_TEST_DURATION);
+    printf("\n\nStarting test with recipes of length %i. It should take at most %i seconds.\n", length, MAX_TEST_DURATION);
     const clock_t start = clock();
     int runs = 0;
     while(((double)(clock()-start) < MIN_TEST_DURATION * CLOCKS_PER_SEC || runs < BENCH_RECIPES_LENGTH*2) && (double)(clock()-start) < MAX_TEST_DURATION * CLOCKS_PER_SEC){
