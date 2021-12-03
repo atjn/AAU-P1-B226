@@ -27,7 +27,7 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
     // A target is how many percent co2 (compared to the original recipe) the alternative recipe should emit.
     float targets[RECIPES_IN_ALTERNATIVES_LIST];
     for(int t = 0; t < RECIPES_IN_ALTERNATIVES_LIST; t++){
-        targets[t] = (float)(t+1) / (RECIPES_IN_ALTERNATIVES_LIST+1);
+        targets[RECIPES_IN_ALTERNATIVES_LIST-t-1] = (float)(t+1) / (RECIPES_IN_ALTERNATIVES_LIST+1);
     }
 
     // Gets the respective ingredientcategories from the original recipe
