@@ -30,6 +30,7 @@ void bench(const int length, const bool checkAccuracy){
     Recipe recipes[BENCH_RECIPES_LENGTH];
 
     // Generate test recipes
+    // They are random, but will always be the same between runs, because srand is initialized with a static number
     for(int r = 0; r < BENCH_RECIPES_LENGTH; r++){
 
         recipes[r].ingredientCount = length;
@@ -50,8 +51,9 @@ void bench(const int length, const bool checkAccuracy){
 
     }
 
+    // If accuracy should also be checked, this runs the algorithm with optimizations disabled (meaning it is 100% accurate),
+    // in order to create a baseline to compare the optimized algorithm against
     Recipe accurateAlternativeRecipes[BENCH_RECIPES_LENGTH][RECIPES_IN_ALTERNATIVES_LIST];
-
     if(checkAccuracy){
         printf("\n\nCalculating optimal Co2 emmissions for each recipe. If you have chosen a high number, this could take a loong time.\n");
         for(int r = 0; r < BENCH_RECIPES_LENGTH; r++){
@@ -62,9 +64,8 @@ void bench(const int length, const bool checkAccuracy){
         printf("\n");
     }
 
-
+    // Run the benchmark
     Recipe alternativeRecipes[BENCH_RECIPES_LENGTH][RECIPES_IN_ALTERNATIVES_LIST];
-
     printf("\nStarting test with recipes of length %i. It should take at most %i seconds.\n", length, MAX_TEST_DURATION);
     const clock_t start = clock();
     int runs = 0;
@@ -75,7 +76,7 @@ void bench(const int length, const bool checkAccuracy){
 
     printf("Test done!\n\nAlgorithm ran %i times and took %.8lf seconds per recipe.\n", runs, ((double)(clock()-start) / CLOCKS_PER_SEC) / runs);
 
-
+    // Generate values for accuracy by comparing Co2 output of returned recipes
     if(checkAccuracy){
 
         float globalBias = 0;

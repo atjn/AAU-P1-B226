@@ -134,7 +134,7 @@ void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alte
         if(!optimize) printf(" %.0lf%%", (double)((t+1)*100) / RECIPES_IN_ALTERNATIVES_LIST);
         if(DEBUG) printf("Finished in %3.2lfs, max allowed was %3.2lfs\n\n", (double)(clock()-start)/CLOCKS_PER_SEC, maxTime/RECIPES_IN_ALTERNATIVES_LIST);
 
-        //This fails if the algorithm was not able to find even one possible recipe candidate
+        // This fails if the algorithm was not able to find even one possible recipe candidate
         assert(foundValidIngredients);
 
     }
