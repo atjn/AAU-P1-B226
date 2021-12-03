@@ -13,9 +13,7 @@
 bool duplicatedIngredients(Category *[], const int [], const int);
 void scopeIngredientIndexes(int [], int [], int [], const Recipe *, const float, Category *[], const float, const float, bool *, const int, const bool);
 
-// Function to calculate and return alternative recipes
-// The function takes the recipe, recipelist, and the parameter alternativeRecipes
-// in with the alternative recipes will be returned. The func also takes the ingredient list and its length.
+
 void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alternativeRecipes[], IngredientData ingredients[], const int ingrNum, Category categories[], const int categoriesLength, const bool optimize){
 
     const float accuracy = optimize ? 0.10 : 0.0;
