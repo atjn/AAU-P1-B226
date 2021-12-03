@@ -17,15 +17,21 @@ void scopeIngredientIndexes(int [], int [], int [], const Recipe *, const float,
 // The function takes the recipe, recipelist, and the parameter alternativeRecipes
 // in with the alternative recipes will be returned. The func also takes the ingredient list and its length.
 void makeListOfAlternativeRecipes(int recipeIndex, Recipe recipes[], Recipe alternativeRecipes[], IngredientData ingredients[], const int ingrNum, Category categories[], const int categoriesLength, const bool optimize){
-    //TODO: make targets auto generatet based on RECIPES_IN_ALTERNATIVES_LIST
-    //This list of targets is how many percent co2 (compared to the original recipe) the recipes should emit.
-    const float targets[] = {0.80, 0.40, 0.10};
+;
     const float accuracy = optimize ? 0.10 : 0.0;
     const float maxTime = optimize ? 2 : 5400;
     bool targetCanBeSatisfied = true;
     Recipe *originalRecipe = &recipes[recipeIndex];
 
     const float originalRecipeCoo = calculateRecipeCoo(originalRecipe, ingredients, ingrNum);
+
+    // Generate list of targets
+    // A target is how many percent co2 (compared to the original recipe) the alternative recipe should emit.
+    float targets[RECIPES_IN_ALTERNATIVES_LIST];
+    for(int t = 0; t < RECIPES_IN_ALTERNATIVES_LIST; t++){
+        targets[t] = (float)(t+1) / (RECIPES_IN_ALTERNATIVES_LIST+1);
+        printf("targets %i: %lf", t, targets[t]);
+    }
 
     // Get this respective ingredientcategory from the original recipe
     // also makes a list of the indexes of ingredients in each category list
