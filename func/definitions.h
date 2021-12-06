@@ -13,6 +13,8 @@
 #define MAX_CATEGORIES 128
 #define RECIPES_IN_ALTERNATIVES_LIST 3
 
+#define DEBUG false
+
 typedef struct {
    char name[MAX_INGREDIENT_NAME];
    float amount;
