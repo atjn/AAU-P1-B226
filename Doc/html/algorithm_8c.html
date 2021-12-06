@@ -79,6 +79,7 @@ $(function() {
 <code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;time.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="utilities_8h_source.html">utilities.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_cu_test_8h_source.html">../lib/CuTest-AAU/CuTest.h</a>&quot;</code><br />
 </div>
@@ -86,12 +87,68 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abb393c2b1b95be2535ccf89341232067"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="algorithm_8c.html#abb393c2b1b95be2535ccf89341232067">makeListOfAlternativeRecipes</a> (int recipeIndex, <a class="el" href="struct_recipe.html">Recipe</a> recipes[], <a class="el" href="struct_recipe.html">Recipe</a> alternativeRecipes[], <a class="el" href="struct_ingredient_data.html">IngredientData</a> ingredients[], const int ingrNum, <a class="el" href="struct_category.html">Category</a> categories[], const int categoriesLength)</td></tr>
-<tr class="separator:abb393c2b1b95be2535ccf89341232067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03d89ef2765020dc7655d3adaca5db94"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="algorithm_8c.html#a03d89ef2765020dc7655d3adaca5db94">duplicatedIngredients</a> (<a class="el" href="struct_category.html">Category</a> *ingredientCategories[], const int ingredientIndexes[], const int ingredientCount)</td></tr>
+<tr class="memdesc:a03d89ef2765020dc7655d3adaca5db94"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if a list of ingredients contains duplicate ingredients  <a href="algorithm_8c.html#a03d89ef2765020dc7655d3adaca5db94">More...</a><br /></td></tr>
+<tr class="separator:a03d89ef2765020dc7655d3adaca5db94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15e81633272d12528955dd4c9b710f31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="algorithm_8c.html#a15e81633272d12528955dd4c9b710f31">scopeIngredientIndexes</a> (int ingredientMaxIndexes[], int ingredientMinIndexes[], int ingredientStartIndexes[], const <a class="el" href="struct_recipe.html">Recipe</a> *originalRecipe, const float originalRecipeCoo, <a class="el" href="struct_category.html">Category</a> *ingredientCategories[], const float target, const float accuracy, bool *targetCanBeSatisfied, const int ingredientCategoryIndex, const bool optimize)</td></tr>
+<tr class="memdesc:a15e81633272d12528955dd4c9b710f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">uses a less intensive algorithm to remove ingredients that would never be able to satisfy the given target, before the main algorithm us run  <a href="algorithm_8c.html#a15e81633272d12528955dd4c9b710f31">More...</a><br /></td></tr>
+<tr class="separator:a15e81633272d12528955dd4c9b710f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5c0625a428c199b90c5a2cf56ee5b28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="algorithm_8c.html#ac5c0625a428c199b90c5a2cf56ee5b28">makeListOfAlternativeRecipes</a> (int recipeIndex, <a class="el" href="struct_recipe.html">Recipe</a> recipes[], <a class="el" href="struct_recipe.html">Recipe</a> alternativeRecipes[], <a class="el" href="struct_ingredient_data.html">IngredientData</a> ingredients[], const int ingrNum, <a class="el" href="struct_category.html">Category</a> categories[], const int categoriesLength, const bool optimize)</td></tr>
+<tr class="memdesc:ac5c0625a428c199b90c5a2cf56ee5b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates a list of alternative recipes with varying levels of improved Co2-reductions  <a href="algorithm_8c.html#ac5c0625a428c199b90c5a2cf56ee5b28">More...</a><br /></td></tr>
+<tr class="separator:ac5c0625a428c199b90c5a2cf56ee5b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="abb393c2b1b95be2535ccf89341232067" name="abb393c2b1b95be2535ccf89341232067"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb393c2b1b95be2535ccf89341232067">&#9670;&nbsp;</a></span>makeListOfAlternativeRecipes()</h2>
+<a id="a03d89ef2765020dc7655d3adaca5db94" name="a03d89ef2765020dc7655d3adaca5db94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03d89ef2765020dc7655d3adaca5db94">&#9670;&nbsp;</a></span>duplicatedIngredients()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool duplicatedIngredients </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_category.html">Category</a> *&#160;</td>
+          <td class="paramname"><em>ingredientCategories</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>ingredientIndexes</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>ingredientCount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>checks if a list of ingredients contains duplicate ingredients </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ingredientCategories</td><td></td></tr>
+    <tr><td class="paramname">ingredientIndexes</td><td></td></tr>
+    <tr><td class="paramname">ingredientCount</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="algorithm_8c_source.html#l00172">172</a> of file <a class="el" href="algorithm_8c_source.html">algorithm.c</a>.</p>
+
+</div>
+</div>
+<a id="ac5c0625a428c199b90c5a2cf56ee5b28" name="ac5c0625a428c199b90c5a2cf56ee5b28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5c0625a428c199b90c5a2cf56ee5b28">&#9670;&nbsp;</a></span>makeListOfAlternativeRecipes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,7 +193,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>categoriesLength</em>&#160;</td>
+          <td class="paramname"><em>categoriesLength</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>optimize</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -146,7 +209,124 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="algorithm_8c_source.html#l00015">15</a> of file <a class="el" href="algorithm_8c_source.html">algorithm.c</a>.</p>
+<p>generates a list of alternative recipes with varying levels of improved Co2-reductions </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">recipeIndex</td><td></td></tr>
+    <tr><td class="paramname">recipes</td><td></td></tr>
+    <tr><td class="paramname">alternativeRecipes</td><td>- returns a list of alternative recipes </td></tr>
+    <tr><td class="paramname">ingredients</td><td></td></tr>
+    <tr><td class="paramname">ingrNum</td><td></td></tr>
+    <tr><td class="paramname">categories</td><td></td></tr>
+    <tr><td class="paramname">categoriesLength</td><td></td></tr>
+    <tr><td class="paramname">optimize</td><td>- should the algorithm be 100% accurate towards its given targets, or should it optimize for speed, and allow a certain level of inaccuracy </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="algorithm_8c_source.html#l00017">17</a> of file <a class="el" href="algorithm_8c_source.html">algorithm.c</a>.</p>
+
+</div>
+</div>
+<a id="a15e81633272d12528955dd4c9b710f31" name="a15e81633272d12528955dd4c9b710f31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15e81633272d12528955dd4c9b710f31">&#9670;&nbsp;</a></span>scopeIngredientIndexes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void scopeIngredientIndexes </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ingredientMaxIndexes</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ingredientMinIndexes</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ingredientStartIndexes</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_recipe.html">Recipe</a> *&#160;</td>
+          <td class="paramname"><em>originalRecipe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>originalRecipeCoo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_category.html">Category</a> *&#160;</td>
+          <td class="paramname"><em>ingredientCategories</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>accuracy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&#160;</td>
+          <td class="paramname"><em>targetCanBeSatisfied</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>ingredientCategoryIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>optimize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>uses a less intensive algorithm to remove ingredients that would never be able to satisfy the given target, before the main algorithm us run </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ingredientMaxIndexes</td><td>- will return the max ingredient index that the main algorithm should check </td></tr>
+    <tr><td class="paramname">ingredientMinIndexes</td><td>- will return the minimum ingredient index that the main algorithm should check </td></tr>
+    <tr><td class="paramname">ingredientStartIndexes</td><td>- will return the recommended ingredient start index for the main algorithm (speculative) </td></tr>
+    <tr><td class="paramname">originalRecipe</td><td></td></tr>
+    <tr><td class="paramname">originalRecipeCoo</td><td></td></tr>
+    <tr><td class="paramname">ingredientCategories</td><td></td></tr>
+    <tr><td class="paramname">target</td><td></td></tr>
+    <tr><td class="paramname">accuracy</td><td></td></tr>
+    <tr><td class="paramname">targetCanBeSatisfied</td><td>- will return whether or not it should be possible to satisfy the target </td></tr>
+    <tr><td class="paramname">ingredientCategoryIndex</td><td></td></tr>
+    <tr><td class="paramname">optimize</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="algorithm_8c_source.html#l00201">201</a> of file <a class="el" href="algorithm_8c_source.html">algorithm.c</a>.</p>
 
 </div>
 </div>

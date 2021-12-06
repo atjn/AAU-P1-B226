@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ingredient_5fdata_5flocation_0',['INGREDIENT_DATA_LOCATION',['../definitions_8h.html#a9d6c2283f3e2e7bc3a823fdae1e63589',1,'definitions.h']]]
+  ['file_5fcategory_5fdelimiter_0',['FILE_CATEGORY_DELIMITER',['../definitions_8h.html#a5df0ddd29e3616feeea6d198f0b0bbd3',1,'definitions.h']]],
+  ['file_5fcell_5fdelimiter_1',['FILE_CELL_DELIMITER',['../definitions_8h.html#ac737722a44022934ea4b94b71c261c60',1,'definitions.h']]]
 ];

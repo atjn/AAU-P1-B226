@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['ztestfails_0',['zTestFails',['../_cu_test_test_8c.html#af9b179da59d2131a18d28a764bc44422',1,'CuTestTest.c']]]
+  ['sanitize_0',['sanitize',['../file_handle_8c.html#ad5e493612d65d3fa120d69b66da16355',1,'fileHandle.c']]],
+  ['scopeingredientindexes_1',['scopeIngredientIndexes',['../algorithm_8c.html#a15e81633272d12528955dd4c9b710f31',1,'algorithm.c']]]
 ];

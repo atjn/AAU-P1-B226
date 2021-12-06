@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['huge_5fstring_5flen_0',['HUGE_STRING_LEN',['../_cu_test_8h.html#a0c9dd98f46b90b5bcd4cbf75e252d0da',1,'CuTest.h']]]
+  ['debug_0',['DEBUG',['../definitions_8h.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'definitions.h']]]
 ];
