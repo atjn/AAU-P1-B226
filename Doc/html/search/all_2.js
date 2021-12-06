@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['calculaterecipecoo_0',['calculateRecipeCoo',['../utilities_8h.html#ada520609ee263cf9b8fdce1e3d1e3d17',1,'calculateRecipeCoo(Recipe *, IngredientData *, int):&#160;utilities.c'],['../algorithm_8h.html#a66dae3a6fca2ae47ffe457c812234f6f',1,'calculateRecipeCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum):&#160;utilities.c'],['../utilities_8c.html#a66dae3a6fca2ae47ffe457c812234f6f',1,'calculateRecipeCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum):&#160;utilities.c']]],
-  ['capitalisefirst_1',['capitaliseFirst',['../utilities_8h.html#a7b1c54ddb4bb3891150be8b5d682d9e9',1,'capitaliseFirst(char *):&#160;utilities.c'],['../utilities_8c.html#a80c4ccc32d99dec7d2c539607df1c351',1,'capitaliseFirst(char *string):&#160;utilities.c']]],
+  ['calculaterecipecoo_0',['calculateRecipeCoo',['../utilities_8c.html#a66dae3a6fca2ae47ffe457c812234f6f',1,'calculateRecipeCoo(Recipe *recipe, IngredientData *ingredients, int ingrNum):&#160;utilities.c'],['../utilities_8h.html#ada520609ee263cf9b8fdce1e3d1e3d17',1,'calculateRecipeCoo(Recipe *, IngredientData *, int):&#160;utilities.c']]],
+  ['capitalisefirst_1',['capitaliseFirst',['../utilities_8c.html#a80c4ccc32d99dec7d2c539607df1c351',1,'capitaliseFirst(char *string):&#160;utilities.c'],['../utilities_8h.html#a7b1c54ddb4bb3891150be8b5d682d9e9',1,'capitaliseFirst(char *):&#160;utilities.c']]],
   ['category_2',['Category',['../struct_category.html',1,'']]],
   ['compareasserts_3',['CompareAsserts',['../_cu_test_test_8c.html#a26ac7e0a6d58f6109e4870d064a9909e',1,'CuTestTest.c']]],
   ['coo_4',['coo',['../struct_ingredient_data.html#ac6856d8fdc98029317eb6555e9ce707e',1,'IngredientData']]],
