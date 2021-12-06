@@ -99,18 +99,6 @@ Recipe * readRecipe(int *recipesNumber) {
         currLine++;
     }
 
-    /* For loop for checking input */
-    /*for (int i = 0; i < 1; i++) {
-        printf("%s\n", loadedRecipes[i].name);
-        printf("%d\n", loadedRecipes[i].ingredientCount);
-        for (unsigned short j = 0; j < loadedRecipes[i].ingredientCount; j++) {
-            printf("%s, %f, %s\n", loadedRecipes[i].ingredients[j].name,
-                                     loadedRecipes[i].ingredients[j].amount,
-                                     loadedRecipes[i].ingredients[j].ingredientCategory);
-        }
-    }
-    */
-
     /* Closing the file */
     fclose(fp);
 

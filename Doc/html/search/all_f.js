@@ -33,13 +33,14 @@ var searchData=
   ['testcutestinit_30',['TestCuTestInit',['../_cu_test_test_8c.html#a9508800912eea1faa8ac66ad96d445ca',1,'CuTestTest.c']]],
   ['testcutestnew_31',['TestCuTestNew',['../_cu_test_test_8c.html#a7c0bd1edfeb3efe387619ab57f096e16',1,'CuTestTest.c']]],
   ['testcutestrun_32',['TestCuTestRun',['../_cu_test_test_8c.html#a8674065bbc1b7792336a10e35d2c7c1d',1,'CuTestTest.c']]],
-  ['testfail_33',['TestFail',['../_cu_test_test_8c.html#a225ed6b592c457c9ed087493fc6ff38c',1,'CuTestTest.c']]],
-  ['testfunction_34',['TestFunction',['../_cu_test_8h.html#ad8f061077e9c04c0c6d09051c7c828a6',1,'CuTest.h']]],
-  ['testgetcategoryindex_35',['testGetCategoryIndex',['../file_handle_8c.html#ac2d6fbc1ca7edca233be94808ccd0d84',1,'testGetCategoryIndex(CuTest *tc):&#160;fileHandle.c'],['../tests_8c.html#ace9d9f8ed05e00eacd81a67cb58f7ca9',1,'testGetCategoryIndex(CuTest *):&#160;fileHandle.c']]],
-  ['testpasses_36',['TestPasses',['../_cu_test_test_8c.html#af60d2a1b3a8beae44a001a9ee9804abd',1,'CuTestTest.c']]],
-  ['testreadingredients_37',['testReadIngredients',['../file_handle_8c.html#a477f4b023f88b490c100dbd2c51fec42',1,'testReadIngredients(CuTest *tc):&#160;fileHandle.c'],['../tests_8c.html#acf01d3fc575ecab14a4548fbb4e7cb51',1,'testReadIngredients(CuTest *):&#160;fileHandle.c']]],
-  ['tests_2ec_38',['tests.c',['../tests_8c.html',1,'']]],
-  ['tests_2eh_39',['tests.h',['../tests_8h.html',1,'']]],
-  ['testtolowercase_40',['testToLowerCase',['../utilities_8c.html#af7e060c486123cbedd0e8a128e1795dc',1,'testToLowerCase(CuTest *testCase):&#160;utilities.c'],['../tests_8c.html#af9140a9722f621a8682ba2791f13e888',1,'testToLowerCase(CuTest *):&#160;utilities.c']]],
-  ['tolowercase_41',['toLowerCase',['../utilities_8c.html#ab86865d1de40b3b4e48aefb73d7abab4',1,'toLowerCase(char *string):&#160;utilities.c'],['../utilities_8h.html#ab2df888e76038a73c0b9f23b01fd7f6e',1,'toLowerCase(char *):&#160;utilities.c']]]
+  ['testfactorial_33',['testFactorial',['../tests_8c.html#acdcc75e327f9355cc56e75301e6d411c',1,'tests.c']]],
+  ['testfail_34',['TestFail',['../_cu_test_test_8c.html#a225ed6b592c457c9ed087493fc6ff38c',1,'CuTestTest.c']]],
+  ['testfunction_35',['TestFunction',['../_cu_test_8h.html#ad8f061077e9c04c0c6d09051c7c828a6',1,'CuTest.h']]],
+  ['testgetcategoryindex_36',['testGetCategoryIndex',['../utilities_8c.html#ac2d6fbc1ca7edca233be94808ccd0d84',1,'testGetCategoryIndex(CuTest *tc):&#160;utilities.c'],['../tests_8c.html#ace9d9f8ed05e00eacd81a67cb58f7ca9',1,'testGetCategoryIndex(CuTest *):&#160;utilities.c']]],
+  ['testpasses_37',['TestPasses',['../_cu_test_test_8c.html#af60d2a1b3a8beae44a001a9ee9804abd',1,'CuTestTest.c']]],
+  ['testreadingredients_38',['testReadIngredients',['../file_handle_8c.html#a477f4b023f88b490c100dbd2c51fec42',1,'testReadIngredients(CuTest *tc):&#160;fileHandle.c'],['../tests_8c.html#acf01d3fc575ecab14a4548fbb4e7cb51',1,'testReadIngredients(CuTest *):&#160;fileHandle.c']]],
+  ['tests_2ec_39',['tests.c',['../tests_8c.html',1,'']]],
+  ['tests_2eh_40',['tests.h',['../tests_8h.html',1,'']]],
+  ['testtolowercase_41',['testToLowerCase',['../utilities_8c.html#af7e060c486123cbedd0e8a128e1795dc',1,'testToLowerCase(CuTest *testCase):&#160;utilities.c'],['../tests_8c.html#af9140a9722f621a8682ba2791f13e888',1,'testToLowerCase(CuTest *):&#160;utilities.c']]],
+  ['tolowercase_42',['toLowerCase',['../utilities_8c.html#ab86865d1de40b3b4e48aefb73d7abab4',1,'toLowerCase(char *string):&#160;utilities.c'],['../utilities_8h.html#ab2df888e76038a73c0b9f23b01fd7f6e',1,'toLowerCase(char *):&#160;utilities.c']]]
 ];
