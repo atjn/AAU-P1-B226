@@ -20,6 +20,7 @@ void bench(const int length, const bool checkAccuracy){
 
     //DEBUG can affect the bench performance, so it is outlawed
     assert(!DEBUG);
+    assert(length <= MAX_INGREDIENTS_RECIPE);
     srand(69420);
 
     int ingredientsLength, categoriesLength;
@@ -28,6 +29,7 @@ void bench(const int length, const bool checkAccuracy){
     readIngredients(INGREDIENT_DATA_LOCATION, &ingredients, &categories, &ingredientsLength, &categoriesLength);
 
     Recipe recipes[BENCH_RECIPES_LENGTH];
+    int allCategoriesLength = 0;
 
     // Generate test recipes
     // They are random, but will always be the same between runs, because srand is initialized with a static number
@@ -37,6 +39,7 @@ void bench(const int length, const bool checkAccuracy){
 
         for(int i = 0; i < length; i++){
             bool ingredientCategoryIsUnique = false;
+            int categoryLength = 0;
             while(!ingredientCategoryIsUnique){
 
                 const IngredientData *randIngredient = &ingredients[rand() % ingredientsLength];
@@ -48,6 +51,7 @@ void bench(const int length, const bool checkAccuracy){
                     for(int d = 0; d < categories[c].ingredientCount; d++){
                         if(strcmp(categories[c].ingredientData[d]->name, randIngredient->name) == 0){
                             strcpy(recipes[r].ingredients[i].ingredientCategory, categories[c].name);
+                            categoryLength = categories[c].ingredientCount;
                             break;
                         }
                     }
@@ -59,10 +63,14 @@ void bench(const int length, const bool checkAccuracy){
                     if(i != otherI && strcmp(recipes[r].ingredients[i].ingredientCategory, recipes[r].ingredients[otherI].ingredientCategory) == 0) ingredientCategoryIsUnique = false;
                 }
             }
+            allCategoriesLength += categoryLength;
 
         }
 
     }
+
+    // Calculate and display the average length of each category for each ingredient
+    printf("\nAverage category length for test data: %.1lf", (float)allCategoriesLength / (BENCH_RECIPES_LENGTH*length));
 
     // If accuracy should also be checked, this runs the algorithm with optimizations disabled (meaning it is 100% accurate),
     // in order to create a baseline to compare the optimized algorithm against
