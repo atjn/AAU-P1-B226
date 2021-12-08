@@ -18,8 +18,7 @@ void bench(const int length, const bool checkAccuracy){
 
     printf("NOTE: If the imported recipe data changes, it can have effect on the performance of this benchmark, so please only compare benches made on the same dataset.");
 
-    //DEBUG can affect the bench performance, so it is outlawed
-    assert(!DEBUG);
+    if(DEBUG) printf("\nWARNING: This code is compiled with debug output. Do not use the performance results from this run!");
     assert(length <= MAX_INGREDIENTS_RECIPE);
     srand(69420);
 
@@ -79,7 +78,7 @@ void bench(const int length, const bool checkAccuracy){
         printf("\n\nCalculating optimal Co2 emmissions for each recipe. If you have chosen a high number, this could take a loong time.\n");
         for(int r = 0; r < BENCH_RECIPES_LENGTH; r++){
             printf("\n%2i/%2i:", r+1, BENCH_RECIPES_LENGTH);
-            makeListOfAlternativeRecipes(r, recipes, accurateAlternativeRecipes[r], ingredients, ingredientsLength, categories, categoriesLength, false);
+            makeListOfAlternativeRecipes__UNOPTIMIZED(r, recipes, accurateAlternativeRecipes[r], ingredients, ingredientsLength, categories, categoriesLength);
 
         }
     }
@@ -90,7 +89,7 @@ void bench(const int length, const bool checkAccuracy){
     const clock_t start = clock();
     int runs = 0;
     while(((double)(clock()-start) < MIN_TEST_DURATION * CLOCKS_PER_SEC || runs < BENCH_RECIPES_LENGTH*2) && (double)(clock()-start) < MAX_TEST_DURATION * CLOCKS_PER_SEC){
-        makeListOfAlternativeRecipes(runs % BENCH_RECIPES_LENGTH, recipes, alternativeRecipes[runs % BENCH_RECIPES_LENGTH], ingredients, ingredientsLength, categories, categoriesLength, true);
+        makeListOfAlternativeRecipes(runs % BENCH_RECIPES_LENGTH, recipes, alternativeRecipes[runs % BENCH_RECIPES_LENGTH], ingredients, ingredientsLength, categories, categoriesLength);
         runs++;
     }
 
