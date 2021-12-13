@@ -78,13 +78,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac5c0625a428c199b90c5a2cf56ee5b28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="algorithm_8h.html#ac5c0625a428c199b90c5a2cf56ee5b28">makeListOfAlternativeRecipes</a> (int recipeIndex, <a class="el" href="struct_recipe.html">Recipe</a> recipes[], <a class="el" href="struct_recipe.html">Recipe</a> alternativeRecipes[], <a class="el" href="struct_ingredient_data.html">IngredientData</a> ingredients[], const int ingrNum, <a class="el" href="struct_category.html">Category</a> categories[], const int categoriesLength, const bool optimize)</td></tr>
-<tr class="memdesc:ac5c0625a428c199b90c5a2cf56ee5b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates a list of alternative recipes with varying levels of improved Co2-reductions  <a href="algorithm_8h.html#ac5c0625a428c199b90c5a2cf56ee5b28">More...</a><br /></td></tr>
-<tr class="separator:ac5c0625a428c199b90c5a2cf56ee5b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb393c2b1b95be2535ccf89341232067"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="algorithm_8h.html#abb393c2b1b95be2535ccf89341232067">makeListOfAlternativeRecipes</a> (int recipeIndex, <a class="el" href="struct_recipe.html">Recipe</a> recipes[], <a class="el" href="struct_recipe.html">Recipe</a> alternativeRecipes[], <a class="el" href="struct_ingredient_data.html">IngredientData</a> ingredients[], const int ingrNum, <a class="el" href="struct_category.html">Category</a> categories[], const int categoriesLength)</td></tr>
+<tr class="memdesc:abb393c2b1b95be2535ccf89341232067"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates a list of alternative recipes with varying levels of improved Co2-reductions  <a href="algorithm_8h.html#abb393c2b1b95be2535ccf89341232067">More...</a><br /></td></tr>
+<tr class="separator:abb393c2b1b95be2535ccf89341232067"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fd88c121530523872c5c6170bb16ee5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="algorithm_8h.html#a9fd88c121530523872c5c6170bb16ee5">makeListOfAlternativeRecipes__UNOPTIMIZED</a> (int recipeIndex, <a class="el" href="struct_recipe.html">Recipe</a> recipes[], <a class="el" href="struct_recipe.html">Recipe</a> alternativeRecipes[], <a class="el" href="struct_ingredient_data.html">IngredientData</a> ingredients[], const int ingrNum, <a class="el" href="struct_category.html">Category</a> categories[], const int categoriesLength)</td></tr>
+<tr class="memdesc:a9fd88c121530523872c5c6170bb16ee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates a list of alternative recipes with varying levels of improved Co2-reductions. This version is 100% accurate, but very slow. Only used for bench testing.  <a href="algorithm_8h.html#a9fd88c121530523872c5c6170bb16ee5">More...</a><br /></td></tr>
+<tr class="separator:a9fd88c121530523872c5c6170bb16ee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ac5c0625a428c199b90c5a2cf56ee5b28" name="ac5c0625a428c199b90c5a2cf56ee5b28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5c0625a428c199b90c5a2cf56ee5b28">&#9670;&nbsp;</a></span>makeListOfAlternativeRecipes()</h2>
+<a id="abb393c2b1b95be2535ccf89341232067" name="abb393c2b1b95be2535ccf89341232067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb393c2b1b95be2535ccf89341232067">&#9670;&nbsp;</a></span>makeListOfAlternativeRecipes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,13 +132,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>categoriesLength</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const bool&#160;</td>
-          <td class="paramname"><em>optimize</em>&#160;</td>
+          <td class="paramname"><em>categoriesLength</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -155,12 +152,85 @@ Functions</h2></td></tr>
     <tr><td class="paramname">ingrNum</td><td></td></tr>
     <tr><td class="paramname">categories</td><td></td></tr>
     <tr><td class="paramname">categoriesLength</td><td></td></tr>
-    <tr><td class="paramname">optimize</td><td>- should the algorithm be 100% accurate towards its given targets, or should it optimize for speed, and allow a certain level of inaccuracy </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="algorithm_8c_source.html#l00017">17</a> of file <a class="el" href="algorithm_8c_source.html">algorithm.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="algorithm_8c_source.html#l00018">18</a> of file <a class="el" href="algorithm_8c_source.html">algorithm.c</a>.</p>
+
+</div>
+</div>
+<a id="a9fd88c121530523872c5c6170bb16ee5" name="a9fd88c121530523872c5c6170bb16ee5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fd88c121530523872c5c6170bb16ee5">&#9670;&nbsp;</a></span>makeListOfAlternativeRecipes__UNOPTIMIZED()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void makeListOfAlternativeRecipes__UNOPTIMIZED </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>recipeIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_recipe.html">Recipe</a>&#160;</td>
+          <td class="paramname"><em>recipes</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_recipe.html">Recipe</a>&#160;</td>
+          <td class="paramname"><em>alternativeRecipes</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_ingredient_data.html">IngredientData</a>&#160;</td>
+          <td class="paramname"><em>ingredients</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>ingrNum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_category.html">Category</a>&#160;</td>
+          <td class="paramname"><em>categories</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>categoriesLength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>generates a list of alternative recipes with varying levels of improved Co2-reductions. This version is 100% accurate, but very slow. Only used for bench testing. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">recipeIndex</td><td></td></tr>
+    <tr><td class="paramname">recipes</td><td></td></tr>
+    <tr><td class="paramname">alternativeRecipes</td><td>- returns a list of alternative recipes </td></tr>
+    <tr><td class="paramname">ingredients</td><td></td></tr>
+    <tr><td class="paramname">ingrNum</td><td></td></tr>
+    <tr><td class="paramname">categories</td><td></td></tr>
+    <tr><td class="paramname">categoriesLength</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="algorithm_8c_source.html#l00283">283</a> of file <a class="el" href="algorithm_8c_source.html">algorithm.c</a>.</p>
 
 </div>
 </div>
